@@ -1,22 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 export const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-dark bg-dark fixed-top">
         <div className="container-fluid justify-content-end">
-          <Link className="navbar-brand" to="#">
-            Offcanvas navbar
-          </Link>
+          <ul className="nav navbar-nav navbar-right">
+            <li>
+              <Link to="#">
+                <span className="user-icon text-light"></span>
+					<i className="faUserCircle"></i>
+              </Link>
+            </li>
+            <li>
+              <Link to="#">
+                <span className="glyphicon glyphicon-log-in"></span> Login
+              </Link>
+            </li>
+          </ul>
           <button
-            className="navbar-toggler position-absolute top-0 start-0"
+            className="navbar-toggler position-absolute top-1 start-0"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
           >
-            <span className="navbar-toggler-icon text-light" />
+            <span className="navbar-toggler-icon" />
           </button>
           <div
             className="offcanvas offcanvas-start text-bg-dark"
@@ -26,11 +38,11 @@ export const Navbar = () => {
           >
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                Offcanvas
+                Menu
               </h5>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close btn-close-white"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               />
@@ -98,4 +110,4 @@ export const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;
