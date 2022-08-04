@@ -12,6 +12,8 @@ from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 
+
+#AGREGUE ESTE COMENTARIO PARA PROBAR EL PUSH
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
