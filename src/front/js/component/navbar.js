@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { FaUserCircle } from "react-icons/fa";
 
 export const Navbar = () => {
   return (
@@ -12,11 +11,11 @@ export const Navbar = () => {
             <li>
               <Link to="#">
                 <span className="user-icon text-light"></span>
-					<i className="faUserCircle"></i>
+					<i className="FaUserCircle"></i>
               </Link>
             </li>
             <li>
-              <Link to="#">
+              <Link to="/login">
                 <span className="glyphicon glyphicon-log-in"></span> Login
               </Link>
             </li>
