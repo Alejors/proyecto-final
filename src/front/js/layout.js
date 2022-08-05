@@ -9,27 +9,32 @@ import DetailsServices from "./component/DetailsServices.jsx";
 import DetailsCourses from "./component/DetailsCourses.jsx";
 import DetailsMeditation from "./component/DetailsMeditation.jsx";
 import DetailsHealthy from "./component/DetailsHealthy.jsx";
-
+import Login from "./component/login";
+import Footer from './component/footer'
+import Profile from './pages/profile'
+import PrivateHome from './pages/privatehome'
 
 //create your first component
 const Layout = () => {
-
     return (
-        <>
-            <BrowserRouter>
-                <Navbar />
-                <Routes>
-                    <Route element={<Home />} exact path="/" />
-                    <Route element={NotFound} />
-                    <Route element={<Services />} exact path="/services" />
-                    <Route element={<DetailsServices />} exact path="/services/:index" />
-                    <Route element={<DetailsCourses />} exact path="/courses/:index" />
-                    <Route element={<DetailsMeditation />} exact path="/meditation/:index" />
-                    <Route element={<DetailsHealthy />} exact path="/healthy/:index" />
-                </Routes>
-            </BrowserRouter>
-        </>
-    );
-};
+        <BrowserRouter>
+            <Navbar />
+            <Routes>
+                <Route element={<Home />} exact path='/' />
+                <Route element={<Profile />} exact path='/profile' />
+                <Route element={<Login />} exact path="/login" />
+                <Route element={<PrivateHome />} exact path='/private' />
+                <Route element={<NotFound />} />
+                <Route element={<Services />} exact path="/services" />
+                <Route element={<DetailsServices />} exact path="/services/:index" />
+                <Route element={<DetailsCourses />} exact path="/courses/:index" />
+                <Route element={<DetailsMeditation />} exact path="/meditation/:index" />
+                <Route element={<DetailsHealthy />} exact path="/healthy/:index" />
+            </Routes>
+            <Footer />
+        </BrowserRouter>
+    )
+}
 
 export default injectContext(Layout);
+
