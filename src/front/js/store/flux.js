@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			api: 'https://5000-alejandrogo-loginexerci-q1q83uzg0az.ws-us54.gitpod.io',
 			email: '',
 			password: '',
+			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 }
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
