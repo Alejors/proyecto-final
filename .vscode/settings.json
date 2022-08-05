@@ -2,6 +2,6 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[javascript]": {
-        "editor.defaultFormatter": "numso.prettier-standard-vscode"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     }
 }
