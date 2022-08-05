@@ -7,13 +7,17 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import DetailsServices from "./component/DetailsServices.jsx";
 import DetailsCourses from "./component/DetailsCourses.jsx";
-import DetailsMeditation from "./component/DetailsMeditation.jsx";
+import DetailsSpirituality from "./component/DetailsSpirituality.jsx";
 import DetailsHealthy from "./component/DetailsHealthy.jsx";
 import Login from "./component/login";
 import Footer from './component/footer'
 import Profile from './pages/profile'
 import PrivateHome from './pages/privatehome'
 import InfoUpdate from "./pages/infoUpdate";
+import OutdoorLiving from "./pages/Outdoor-Living";
+import Gaming from "./pages/Gaming";
+import Spirituality from "./pages/Spirituality";
+import Healthy from "./pages/Healthy";
 
 //create your first component
 const Layout = () => {
@@ -27,9 +31,13 @@ const Layout = () => {
                 <Route element={<PrivateHome />} exact path='/private' />
                 <Route element={<InfoUpdate />} exact path='/update' />
                 <Route element={<Services />} exact path="/services" />
+                <Route element={<OutdoorLiving />} exact path="/outdoor" />
+                <Route element={<Gaming />} exact path="/gaming" />
+                <Route element={<Spirituality />} exact path="/spirituality" />
+                <Route element={<Healthy />} exact path="/healthy" />
                 <Route element={<DetailsServices />} exact path="/services/:index" />
                 <Route element={<DetailsCourses />} exact path="/courses/:index" />
-                <Route element={<DetailsMeditation />} exact path="/meditation/:index" />
+                <Route element={<DetailsSpirituality />} exact path="/spirituality/:index" />
                 <Route element={<DetailsHealthy />} exact path="/healthy/:index" />
                 <Route element={<NotFound />} />
             </Routes>

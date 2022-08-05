@@ -3,7 +3,7 @@ import { Context } from '../store/appContext'
 import { Link } from "react-router-dom";
 
 const PrivateHome = () => {
-    const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
   return (
     <>
@@ -56,7 +56,7 @@ const PrivateHome = () => {
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <Link className='btn btn-outline-dark mt-auto' to='/services/1'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/outdoor'>
                       Checkout!
                     </Link>
                   </div>
@@ -97,7 +97,7 @@ const PrivateHome = () => {
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <Link className='btn btn-outline-dark mt-auto' to='/courses/1'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/gaming'>
                       Checkout!
                     </Link>
                   </div>
@@ -124,13 +124,13 @@ const PrivateHome = () => {
                 <div className='card-body p-4'>
                   <div className='text-center'>
                     {/* Product name*/}
-                    <h5 className='fw-bolder'>Meditation</h5>
+                    <h5 className='fw-bolder'>Spirituality</h5>
                   </div>
                 </div>
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <Link className='btn btn-outline-dark mt-auto' to='/meditation/1'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/spirituality'>
                       Checkout!
                     </Link>
                   </div>
@@ -150,13 +150,13 @@ const PrivateHome = () => {
                 <div className='card-body p-4'>
                   <div className='text-center'>
                     {/* Product name*/}
-                    <h5 className='fw-bolder'>Healthy Food</h5>
+                    <h5 className='fw-bolder'>Health</h5>
                   </div>
                 </div>
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <Link className='btn btn-outline-dark mt-auto' to='/healthy/1'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/healthy'>
                       Checkout!
                     </Link>
                   </div>

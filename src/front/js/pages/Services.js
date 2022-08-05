@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import CardServices from '../component/CardServices.jsx'
 import CardCourses from '../component/CardCourses.jsx'
-import CardMeditation from '../component/CardMeditation.jsx'
+import CardSpirituality from '../component/CardSpirituality.jsx'
 import CardHealthy from '../component/CardHealthy.jsx'
 
 
 
 const estiloBoton = {
-    margin: '10px',
+    marginTop: '10px',
     padding: 'none'
 };
 
@@ -54,7 +54,7 @@ const Services = () => {
                 <div className='row'>
                     {!!store.parametros &&
                         j.filter((index) => index < 5).map((index) => (
-                            <CardMeditation key={index} index={index} />
+                            <CardSpirituality key={index} index={index} />
                         ))}
                 </div>
             </div>

@@ -14,7 +14,7 @@ const estiloCard = {
 };
 
 
-const CardMeditation = ({ index }) => {
+const CardSpirituality = ({ index }) => {
     const { store } = useContext(Context);
 
     return (
@@ -28,7 +28,7 @@ const CardMeditation = ({ index }) => {
                             Some quick example text to build on the card title and make up the bulk of
                             the card's content.
                         </p>
-                        <Link to={`/meditation/${index}`} className="btn btn-primary">
+                        <Link to={`/spirituality/${index}`} className="btn btn-primary">
                             Learn More!
                         </Link>
                     </div>
@@ -37,4 +37,4 @@ const CardMeditation = ({ index }) => {
         </>
     );
 };
-export default CardMeditation;
+export default CardSpirituality;

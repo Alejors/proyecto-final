@@ -21,7 +21,7 @@ const estiloContainer2 = {
 }
 
 
-const DetailsMeditation = () => {
+const DetailsSpirituality = () => {
     const { store } = useContext(Context);
     const params = useParams();
     return (
@@ -120,4 +120,4 @@ const DetailsMeditation = () => {
     );
 };
 
-export default DetailsMeditation;
+export default DetailsSpirituality;

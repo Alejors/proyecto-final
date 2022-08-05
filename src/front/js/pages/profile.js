@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Context } from '../store/appContext'
 
 const Profile = () => {
@@ -54,16 +55,16 @@ const Profile = () => {
                 <td>
                   <ul>
                     <li>
-                      <a href='#'>Outdoor-Living</a>
+                      <Link to='/outdoor'>Outdoor-Living</Link>
                     </li>
                     <li>
-                      <a href='#'>Gaming</a>
+                      <Link to='/gaming'>Gaming</Link>
                     </li>
                     <li>
-                      <a href='#'>Spirituality</a>
+                      <Link to='/spirituality'>Spirituality</Link>
                     </li>
                     <li>
-                      <a href='#'>Health</a>
+                      <Link to='/healthy'>Health</Link>
                     </li>
                   </ul>
                 </td>
