@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from '../store/appContext'
+import { Link } from "react-router-dom";
 
 const PrivateHome = () => {
     const { store, actions } = useContext(Context);
@@ -55,9 +56,9 @@ const PrivateHome = () => {
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <a className='btn btn-outline-dark mt-auto' href='#'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/services/1'>
                       Checkout!
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -96,9 +97,9 @@ const PrivateHome = () => {
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <a className='btn btn-outline-dark mt-auto' href='#'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/courses/1'>
                       Checkout!
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -129,9 +130,9 @@ const PrivateHome = () => {
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <a className='btn btn-outline-dark mt-auto' href='#'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/meditation/1'>
                       Checkout!
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -155,9 +156,9 @@ const PrivateHome = () => {
                 {/* Product actions*/}
                 <div className='card-footer p-4 pt-0 border-top-0 bg-transparent'>
                   <div className='text-center'>
-                    <a className='btn btn-outline-dark mt-auto' href='#'>
+                    <Link className='btn btn-outline-dark mt-auto' to='/healthy/1'>
                       Checkout!
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -7,18 +7,19 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-dark bg-dark sticky-top">
         <div className="container-fluid justify-content-end">
-          <Link className="navbar-brand navbar-right" to="#">
-            Navbar
+          <Link className="navbar-brand navbar-right" to="/">
+            Better&Beyond
           </Link>
           <ul className="nav navbar-nav navbar-right">
             <li>
               <Link to="#" >
-                <span className="user-icon text-light" />
+                <span className="user-icon text-light" />????
               </Link>
             </li>
             <li>
               <Link to="/login" >
-                <span className="glyphicon glyphicon-log-in text-light" /></Link>
+                <span className="glyphicon glyphicon-log-in text-light"></span>
+              </Link>
             </li>
           </ul>
           <button
@@ -38,7 +39,7 @@ const Navbar = () => {
           >
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                Offcanvas
+                Menu
               </h5>
               <button
                 type="button"
@@ -50,13 +51,13 @@ const Navbar = () => {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="#">
+                  <Link className="nav-link active" aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="#">
-                    Link
+                  <Link className="nav-link" to="/private">
+                    My Recommendations
                   </Link>
                 </li>
                 <li className="nav-item dropdown">
@@ -68,15 +69,15 @@ const Navbar = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Dropdown
+                    Settings
                   </Link>
                   <ul
                     className="dropdown-menu"
                     aria-labelledby="offcanvasNavbarDropdown"
                   >
                     <li>
-                      <Link className="dropdown-item" to="#">
-                        Action
+                      <Link className="dropdown-item" to="/profile">
+                        Profile
                       </Link>
                     </li>
                     <li>
@@ -88,8 +89,8 @@ const Navbar = () => {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="#">
-                        Something else here
+                      <Link className="dropdown-item" to="/login">
+                        Logout
                       </Link>
                     </li>
                   </ul>

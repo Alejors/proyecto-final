@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import injectContext from "./store/appContext";
 import NotFound from "./pages/NotFound";
-import Navbar from "./component/Navbar";
+import Navbar from "./component/navbar";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import DetailsServices from "./component/DetailsServices.jsx";

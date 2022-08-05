@@ -71,7 +71,7 @@ const Profile = () => {
             </tbody>
           </table>
 
-          <span className='btn btn-primary float-end'>Update Information</span>
+          <span className='btn btn-primary mb-3 float-end'>Update Information</span>
         </div>
       </div>
     </div>

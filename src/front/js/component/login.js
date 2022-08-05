@@ -22,7 +22,7 @@ export default function login() {
                         <div className="form-group">
                           <input
                             type="email"
-                            className="form-control form-control-user"
+                            className="form-control form-control-user my-1"
                             id="exampleInputEmail"
                             aria-describedby="emailHelp"
                             placeholder="Enter Email Address..."
@@ -31,16 +31,16 @@ export default function login() {
                         <div className="form-group">
                           <input
                             type="password"
-                            className="form-control form-control-user"
+                            className="form-control form-control-user my-1"
                             id="exampleInputPassword"
                             placeholder="Password"
                           />
                         </div>
                         <div className="form-group">
-                          <div className="custom-control custom-checkbox small">
+                          <div className="custom-control custom-checkbox small my-1">
                             <input
                               type="checkbox"
-                              className="custom-control-input"
+                              className="custom-control-input me-1"
                               id="customCheck"
                             />
                             <label
@@ -52,7 +52,7 @@ export default function login() {
                           </div>
                         </div>
                         <Link
-                          to="index.html"
+                          to="/private"
                           className="btn btn-primary btn-user btn-block"
                         >
                           Login
