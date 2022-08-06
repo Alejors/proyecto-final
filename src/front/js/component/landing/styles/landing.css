@@ -1,0 +1,95 @@
+.Head {
+    height: 600px;
+}
+#FirstHead {
+    height: 1280px;
+    background-color: #183762;
+    padding-bottom: 200px;
+    padding-top: 50px;
+}
+#SecondHead {
+    height: 10px;
+    background-color: #fdebff;
+}
+.ThirdHead {
+    height: 600px;
+    position: relative;
+
+}
+
+.nav {
+    background-color: #fdebff;
+    color: black;
+}
+
+.form {
+    width: 200px;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.form-control {
+    margin-top: 10px;
+}
+
+.button {
+    position: relative;
+    top: 60%;
+    display: flex;
+    column-gap: 200px;
+    justify-content:center;
+}
+
+.test {
+    background: linear-gradient(180deg, #183762 14.06%, rgba(255, 148, 148, 0) 97.29%);
+    
+
+}
+
+.carousel {
+    margin-bottom: -15px;
+}
+
+h1 {
+    padding-bottom: 20px;
+}
+
+.Reg {
+    background-color: #183762;
+    padding: 10px;
+}
+
+.btn {
+    background-color: #183762;
+}
+
+h1 {
+    color: aliceblue;
+}
+
+.badge {
+    background-color: #183762;
+    padding-left: 15px;
+}
+
+h5 {
+    color: #4d45b2;
+}
+
+p {
+    color: #8e5ce1;
+}
+
+.InfoImage {
+    width: 1519px;
+}
+
+#signup {
+    position: absolute;
+    top: 6px;
+    left: 346px;
+}
