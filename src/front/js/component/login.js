@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export default function login() {
+
+  const { store, actions } = useContext(Context)
+
   return (
     <>
       <div className="container">
@@ -18,7 +22,7 @@ export default function login() {
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                       </div>
-                      <form className="user">
+                      <form className="user" onSubmit={() => actions.handleLogin()}>
                         <div className="form-group">
                           <input
                             type="email"
@@ -26,7 +30,8 @@ export default function login() {
                             id="exampleInputEmail"
                             aria-describedby="emailHelp"
                             placeholder="Enter Email Address..."
-                          />
+                            name='email'
+                          onChange={(e) => actions.handleChange(e, history)} />
                         </div>
                         <div className="form-group">
                           <input
@@ -34,6 +39,8 @@ export default function login() {
                             className="form-control form-control-user my-1"
                             id="exampleInputPassword"
                             placeholder="Password"
+                            name='password'
+                            onChange={(e) => actions.handleChange(e, history)}
                           />
                         </div>
                         <div className="form-group">
@@ -51,12 +58,7 @@ export default function login() {
                             </label>
                           </div>
                         </div>
-                        <Link
-                          to="/private"
-                          className="btn btn-primary btn-user btn-block"
-                        >
-                          Login
-                        </Link>
+                        <button type='submit' className="btn btn-primary btn-user btn-block">Login!</button>
                         <hr />
                         <Link
                           to="index.html"
