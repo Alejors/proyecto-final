@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Rol
+from api.models import db, User, Rol, Profile
 
 api = Blueprint('api', __name__)
 
@@ -19,7 +19,12 @@ def create_users():
     user = User()
     user.email = data['email']
     user.password = data['password']
+    
     rol = Rol()
-    user.rol = rol    
+    user.rol = rol
+    
+    profile = Profile()
+    user.profile = profile
+    
     user.save()
     return jsonify(user.serialize()), 201

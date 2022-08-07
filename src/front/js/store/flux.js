@@ -1,10 +1,17 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			api: 'https://5000-alejandrogo-loginexerci-q1q83uzg0az.ws-us54.gitpod.io',
+			api: 'http://127.0.0.1:5000/',
+			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 },
 			email: '',
 			password: '',
-			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 }
+			name: '',
+			phonenumber: '',
+			lastname: '',
+			facebook: '',
+			instagram: '',
+			twitter: '',
+			linkedin: ''			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -19,7 +26,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				data = setStore({ email: email, password: password })
 				console.log(data)
-			}
+			},
+			updateInfo: (e, history) => {
+				e.preventDefault();
+				console.log("Estoy funcionando");
+				history('/private');
+				return null;
+			},
+			handleChange: e => {
+				const { name, value } = e.target;
+				setStore({
+					[name]: value
+				});
+			},
 		}
 	}
 };

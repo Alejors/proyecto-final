@@ -47,6 +47,26 @@ const Profile = () => {
                 <td>pplospalotes@johndoe.com</td>
               </tr>
               <tr>
+                <th scope='row'>Phonenumber</th>
+                <td>555-666-7788</td>
+              </tr>
+              <tr>
+                <th scope='row'>Facebook</th>
+                <td>/pplspalotes</td>
+              </tr>
+              <tr>
+                <th scope='row'>Instagram</th>
+                <td>@pplospalotes</td>
+              </tr>
+              <tr>
+                <th scope='row'>Twitter</th>
+                <td>/ppdelflow</td>
+              </tr>
+              <tr>
+                <th scope='row'>Linkedin</th>
+                <td>/in/lospalotesphD</td>
+              </tr>
+              <tr>
                 <th scope='row'>Category</th>
                 <td>Student</td>
               </tr>
@@ -71,8 +91,7 @@ const Profile = () => {
               </tr>
             </tbody>
           </table>
-
-          <span className='btn btn-primary mb-3 float-end'>Update Information</span>
+          <Link to='/update' ><span className='btn btn-primary mb-3 float-end'>Update Information</span></Link>
         </div>
       </div>
     </div>

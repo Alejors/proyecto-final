@@ -8,12 +8,12 @@ const PrivateHome = () => {
   return (
     <>
       <header className='bg-dark py-3'>
-        <img
+        <Link to='/profile'><img
           style={{ height: 200, width: 200 }}
           className='ms-5 img-thumbnail rounded-circle float-start'
           src={'https://alfabetajuega.com/hero/2020/07/saitama-one.jpg'}
           alt='profile pic'
-        />
+        /></Link>
         <div className='container px-4 px-lg-5 my-5'>
           <div className='text-center text-white'>
             <h1 className='display-4 fw-bolder'>Pepito Lospalotes</h1>
