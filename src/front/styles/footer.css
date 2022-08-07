@@ -1,0 +1,9 @@
+footer {
+    max-height: 100vh;
+    bottom: 0;
+    /* position: absolute; */
+}
+body {
+    background-color: aqua;
+    position:relative;
+}

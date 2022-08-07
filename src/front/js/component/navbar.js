@@ -1,24 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark sticky-top">
+      <nav className="navbar navbar-dark bg-dark sticky-top bg-gradient">
         <div className="container-fluid justify-content-end">
           <Link className="navbar-brand navbar-right" to="/">
             Better&Beyond
           </Link>
-          <ul className="nav navbar-nav navbar-right">
-            <li>
-              <Link to="#" >
-                <span className="user-icon text-light" />????
-              </Link>
-            </li>
+          <ul className="nav navbar-nav navbar-right text-light">
             <li>
               <Link to="/login" >
-                <span className="glyphicon glyphicon-log-in text-light"></span>
+                <span className="user-icon text-light" /><i className="fas fa-user fa-lg me-3 fa-fw"></i>
               </Link>
             </li>
           </ul>
@@ -37,7 +31,7 @@ const Navbar = () => {
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
-            <div className="offcanvas-header">
+            <div className="offcanvas-header bg-gradient">
               <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
                 Menu
               </h5>
@@ -50,6 +44,17 @@ const Navbar = () => {
             </div>
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <form className="d-flex">
+                  <input
+                    className="form-control me-2 bg-transparent text-white"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
                 <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" to="/">
                     Home
@@ -57,10 +62,20 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/private">
-                    My Recommendations
+                    My Classes
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/private">
+                    Activities
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/private">
+                    Messages
+                  </Link>
+                </li>
+                <li className="nav-item dropdown m-3">
                   <Link
                     className="nav-link dropdown-toggle"
                     to="#"
@@ -72,7 +87,7 @@ const Navbar = () => {
                     Settings
                   </Link>
                   <ul
-                    className="dropdown-menu"
+                    className="dropdown-menu bg-info"
                     aria-labelledby="offcanvasNavbarDropdown"
                   >
                     <li>
@@ -81,12 +96,17 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
+                      <Link className="dropdown-item" to="/profile">
+                        Preferences
+                      </Link>
+                    </li>
+                    <li>
                       <Link className="dropdown-item" to="#">
                         Another action
                       </Link>
                     </li>
                     <li>
-                      <hr className="dropdown-divider" />
+                      <hr className="dropdown-divider bg-info" />
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/login">
@@ -96,17 +116,6 @@ const Navbar = () => {
                   </ul>
                 </li>
               </ul>
-              <form className="d-flex">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
             </div>
           </div>
         </div>

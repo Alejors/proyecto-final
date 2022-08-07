@@ -4,94 +4,119 @@ import { Link } from "react-router-dom";
 export default function login() {
   return (
     <>
-      <div className="container">
-        {/* Outer Row */}
-        <div className="row justify-content-center">
-          <div className="col-xl-10 col-lg-12 col-md-9">
-            <div className="card o-hidden border-0 shadow-lg my-5">
-              <div className="card-body p-0">
-                {/* Nested Row within Card Body */}
-                <div className="row">
-                  <div className="col-lg-6 d-none d-lg-block bg-login-image" />
-                  <div className="col-lg-6">
-                    <div className="p-5">
-                      <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+      <>
+        {/* Section: Design Block */}
+        <section className="text-center text-lg-start">
+          {/* Jumbotron */}
+          <div className="container py-4">
+            <div className="row g-0 align-items-center">
+              <div className="col-lg-6 mb-5 mb-lg-0">
+                <div
+                  className="card cascading-right"
+                  style={{
+                    background: "hsla(0, 0%, 100%, 0.55)",
+                    backdropFilter: "blur(30px)"
+                  }}
+                >
+                  <div className="card-body p-5 shadow-5 text-center">
+                    <h2 className="fw-bold mb-5">Sign up now</h2>
+                    <form>
+                      {/* 2 column grid layout with text inputs for the first and last names */}
+                      <div className="row">
+
                       </div>
-                      <form className="user">
-                        <div className="form-group">
-                          <input
-                            type="email"
-                            className="form-control form-control-user my-1"
-                            id="exampleInputEmail"
-                            aria-describedby="emailHelp"
-                            placeholder="Enter Email Address..."
-                          />
-                        </div>
-                        <div className="form-group">
-                          <input
-                            type="password"
-                            className="form-control form-control-user my-1"
-                            id="exampleInputPassword"
-                            placeholder="Password"
-                          />
-                        </div>
-                        <div className="form-group">
-                          <div className="custom-control custom-checkbox small my-1">
-                            <input
-                              type="checkbox"
-                              className="custom-control-input me-1"
-                              id="customCheck"
-                            />
-                            <label
-                              className="custom-control-label"
-                              htmlFor="customCheck"
-                            >
-                              Remember Me
-                            </label>
-                          </div>
-                        </div>
-                        <Link
-                          to="/private"
-                          className="btn btn-primary btn-user btn-block"
-                        >
-                          Login
-                        </Link>
-                        <hr />
-                        <Link
-                          to="index.html"
-                          className="btn btn-google btn-user btn-block"
-                        >
-                          <i className="fab fa-google fa-fw" /> Login with
-                          Google
-                        </Link>
-                        <Link
-                          to="index.html"
-                          className="btn btn-facebook btn-user btn-block"
-                        >
-                          <i className="fab fa-facebook-f fa-fw" /> Login with
-                          Facebook
-                        </Link>
-                      </form>
-                      <hr />
-                      <div className="text-center">
-                        <Link className="small" to="forgot-password.html">
-                          Forgot Password?
-                        </Link>
+                      {/* Email input */}
+                      <div className="form-outline mb-4">
+                        <input
+                          type="email"
+                          id="form3Example3"
+                          className="form-control"
+                        />
+                        <label className="form-label" htmlFor="form3Example3">
+                          Email address
+                        </label>
                       </div>
-                      <div className="text-center">
-                        <Link className="small" to="register.html">
-                          Create an Account!
-                        </Link>
+                      {/* Password input */}
+                      <div className="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="form3Example4"
+                          className="form-control"
+                        />
+                        <label className="form-label" htmlFor="form3Example4">
+                          Password
+                        </label>
                       </div>
-                    </div>
+                      {/* Checkbox */}
+                      <div className="form-check d-flex justify-content-center mb-4">
+                        <input
+                          className="form-check-input me-2"
+                          type="checkbox"
+                          defaultValue=""
+                          id="form2Example33"
+                          defaultChecked=""
+                        />
+                        <label className="form-check-label" htmlFor="form2Example33">
+                          Subscribe to our newsletter
+                        </label>
+                      </div>
+                      {/* Submit button */}
+                      <button
+                        type="submit"
+                        className="btn btn-info btn-block mb-4"
+                      >
+                        Sign up
+                      </button>
+                      {/* Register buttons */}
+                      <div className="text-center">
+                        <p>or sign up with:</p>
+                        <a
+                          role="button"
+                          className="btn btn-link btn-floating mx-1"
+                          href="https://www.facebook.com/login/"
+                        >
+                          <i className="fab fa-facebook-f" />
+                        </a>
+                        <a
+                          role="button"
+                          className="btn btn-link btn-floating mx-1"
+                          href="https://accounts.google.com/login"
+                        >
+                          <i className="fab fa-google" />
+                        </a>
+                        <a
+                          role="button"
+                          className="btn btn-link btn-floating mx-1"
+                          href="https://twitter.com/i/flow/login"
+                        >
+                          <i className="fab fa-twitter" />
+                        </a>
+                        <a
+                          type="button"
+                          className="btn btn-link btn-floating mx-1"
+                          href="https://github.com/login"
+                        >
+                          <i className="fab fa-github" />
+                        </a>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
+              <div className="col-lg-6 mb-5 mb-lg-0">
+                <img
+                  src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
+                  className="w-100 rounded-4 shadow-4"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          {/* Jumbotron */}
+        </section>
+        {/* Section: Design Block */}
+      </>
+
       {/* Bootstrap core JavaScript*/}
       {/* Core plugin JavaScript*/}
       {/* Custom scripts for all pages*/}
