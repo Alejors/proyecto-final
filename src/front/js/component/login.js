@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export default function login() {
+
+  const { store, actions } = useContext(Context)
+
   return (
     <>
       <>
@@ -25,16 +29,64 @@ export default function login() {
                       <div className="row">
 
                       </div>
-                      {/* Email input */}
-                      <div className="form-outline mb-4">
-                        <input
-                          type="email"
-                          id="form3Example3"
-                          className="form-control"
-                        />
-                        <label className="form-label" htmlFor="form3Example3">
-                          Email address
-                        </label>
+                      <form className="user" onSubmit={() => actions.handleLogin()}>
+                        <div className="form-group">
+                          <input
+                            type="email"
+                            className="form-control form-control-user my-1"
+                            id="exampleInputEmail"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter Email Address..."
+                            name='email'
+                            onChange={(e) => actions.handleChange(e, history)} />
+                        </div>
+                        <div className="form-group">
+                          <input
+                            type="password"
+                            className="form-control form-control-user my-1"
+                            id="exampleInputPassword"
+                            placeholder="Password"
+                            name='password'
+                            onChange={(e) => actions.handleChange(e, history)}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <div className="custom-control custom-checkbox small my-1">
+                            <input
+                              type="checkbox"
+                              className="custom-control-input me-1"
+                              id="customCheck"
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="customCheck"
+                            >
+                              Remember Me
+                            </label>
+                          </div>
+                        </div>
+                        <button type='submit' className="btn btn-primary btn-user btn-block">Login!</button>
+                        <hr />
+                        <Link
+                          to="index.html"
+                          className="btn btn-google btn-user btn-block"
+                        >
+                          <i className="fab fa-google fa-fw" /> Login with
+                          Google
+                        </Link>
+                        <Link
+                          to="index.html"
+                          className="btn btn-facebook btn-user btn-block"
+                        >
+                          <i className="fab fa-facebook-f fa-fw" /> Login with
+                          Facebook
+                        </Link>
+                      </form>
+                      <hr />
+                      <div className="text-center">
+                        <Link className="small" to="forgot-password.html">
+                          Forgot Password?
+                        </Link>
                       </div>
                       {/* Password input */}
                       <div className="form-outline mb-4">
