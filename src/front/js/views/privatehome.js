@@ -12,6 +12,11 @@ const PrivateHome = () => {
     actions.loadProfile();
   }, [])
 
+  useEffect(() => {
+    actions.loadProfile();
+    if(store.currentUser == null) history('/login');
+  }, [store.currentUser])
+
   return (
     <>
       <header className='bg-dark py-3'>

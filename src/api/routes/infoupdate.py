@@ -30,4 +30,4 @@ def update_user():
 
     currentUser.update()
 
-    return jsonify({"status": "success", "message": "Information updated", "data": None}), 200
+    return jsonify({"status": "success", "message": "Information updated", "data": currentUser.serialize()}), 200
