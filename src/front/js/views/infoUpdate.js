@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 const InfoUpdate = () => {
     const { store, actions } = useContext(Context);
     const history = useNavigate();
+
+    useEffect(() => {
+        if(store.currentUser == null) history('/login');
+        actions.loadProfile();
+    }, [])
 
     return (
         <form onSubmit={(e) => actions.updateInfo(e, history)}>
@@ -65,7 +70,7 @@ const InfoUpdate = () => {
                     </div>
                     <div className="input-group mb-3 flex-column">
                         <span className="input-group-text">My Topics</span>
-                        <div className="form-check form-switch mt-2">
+                        <div className="form-check form-switch mt-2 ms-2">
                             <input
                                 className="form-check-input"
                                 type="checkbox"
@@ -77,7 +82,7 @@ const InfoUpdate = () => {
                                 Outdoor-living
                             </label>
                         </div>
-                        <div className="form-check form-switch">
+                        <div className="form-check form-switch ms-2">
                             <input
                                 className="form-check-input"
                                 type="checkbox"
@@ -89,7 +94,7 @@ const InfoUpdate = () => {
                                 Gaming
                             </label>
                         </div>
-                        <div className="form-check form-switch">
+                        <div className="form-check form-switch ms-2">
                             <input
                                 className="form-check-input"
                                 type="checkbox"
@@ -101,7 +106,7 @@ const InfoUpdate = () => {
                                 Spirituality
                             </label>
                         </div>
-                        <div className="form-check form-switch">
+                        <div className="form-check form-switch m-2">
                             <input
                                 className="form-check-input"
                                 type="checkbox"

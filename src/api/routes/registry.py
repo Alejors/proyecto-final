@@ -1,20 +1,17 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Rol, Profile
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
-api = Blueprint('api', __name__)
+registry = Blueprint('registry', __name__)
 
-@api.route('/listausers', methods=['GET']) 
+@registry.route('/users', methods=['GET']) 
 def get_users():
     users = User.query.all()
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
 
-@api.route('/users', methods=['POST']) 
+@registry.route('/users', methods=['POST']) 
 def create_users():
     data = request.get_json()
         

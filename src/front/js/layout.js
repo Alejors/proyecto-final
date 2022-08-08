@@ -1,23 +1,23 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import injectContext from "./store/appContext";
-import NotFound from "./pages/NotFound";
+import NotFound from "./views/NotFound";
 import Navbar from "./component/navbar";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
+import Home from "./views/home.jsx";
+import Services from "./views/Services";
 import DetailsServices from "./component/DetailsServices.jsx";
 import DetailsCourses from "./component/DetailsCourses.jsx";
 import DetailsSpirituality from "./component/DetailsSpirituality.jsx";
 import DetailsHealthy from "./component/DetailsHealthy.jsx";
-import Login from "./component/login";
+import Login from "./views/login";
 import Footer from './component/footer'
-import Profile from './pages/profile'
-import PrivateHome from './pages/privatehome'
-import InfoUpdate from "./pages/infoUpdate";
-import OutdoorLiving from "./pages/Outdoor-Living";
-import Gaming from "./pages/Gaming";
-import Spirituality from "./pages/Spirituality";
-import Healthy from "./pages/Healthy";
+import Profile from './views/profile'
+import PrivateHome from './views/privatehome'
+import InfoUpdate from "./views/infoUpdate";
+import OutdoorLiving from "./views/Outdoor-Living";
+import Gaming from "./views/Gaming";
+import Spirituality from "./views/Spirituality";
+import Healthy from "./views/Healthy";
 
 //create your first component
 const Layout = () => {

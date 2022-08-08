@@ -1,6 +1,6 @@
 import React from "react";
-import Image3 from "../../../img/landing/4a.jpg";
-import Image2 from "../../../img/landing/5a.jpg";
+import Image3 from "../../img/landing/4a.jpg";
+import Image2 from "../../img/landing/5a.jpg";
 
 const Info2 = () => {
     return (

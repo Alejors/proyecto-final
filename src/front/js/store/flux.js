@@ -1,3 +1,5 @@
+import { ScrollElement } from "react-scroll";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -12,12 +14,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 			instagram: '',
 			twitter: '',
 			linkedin: '',
-			currentUser: null			
+			rol: '',
+			currentUser: null,
+			show: false	
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			handleSubmit: async (e, history) => {
+				e.preventDefault();
+
+				const { api, email, password } = getStore();
+				const response = await fetch(`${api}/api/users`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'email': email,
+						'password': password
+					})
+				});
+
+				const { status, message, data} = await response.json();
+
+				if(status === 'failed'){
+					window.alert(message)
+				}
+				if(status === 'success'){
+					window.alert(message)
+					one.scrollIntoView()
+					setStore({
+						email: '',
+						password: ''
+					})
+				}
+			},
 			receiveData: async (api) => {
-				const response = await fetch(`${api}/api/listausers`, {
+				const response = await fetch(`${api}/api/users`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
@@ -62,23 +95,63 @@ const getState = ({ getStore, getActions, setStore }) => {
                         password: ''
                     })
 
-                    history.push('/private');
+                    history('/private');
                 }
+            },
+			loadProfile: () => {
+                const { currentUser } = getStore();
+                setStore({
+                    name: currentUser?.user?.profile?.name,
+                    lastname: currentUser?.user?.profile?.lastname,
+                    email: currentUser?.user?.email,
+					phonenumber: currentUser?.user?.profile?.phonenumber,
+					facebook: currentUser?.user?.profile?.facebook,
+					instagram: currentUser?.user?.profile?.instagram,
+					twitter: currentUser?.user?.profile?.twitter,
+					linkedin: currentUser?.user?.profile?.linkedin
+                })
             },
 			updateInfo: async (e, history) => {
 				e.preventDefault();
 
-				const { api, email, name, lastname, password, phonenumber, facebook, instagram, twitter, linkedin } = getStore();
+				const { api, email, name, lastname, password, phonenumber, facebook, instagram, twitter, linkedin, currentUser } = getStore();
 
-				const response = await fetch(`${api}/api/update`, {
+				const response = await fetch(`${api}api/update`, {
 					method: 'PUT',
 					headers: {
 						'Content-Type': 'application/json',
 						'Authorization': `Bearer ${currentUser?.access_token}`
-					}
-				})
-				history('/private');
-				return null;
+					},
+					body: JSON.stringify({
+						'email': email,
+						'name': name,
+						'lastname': lastname,
+						'password': password,
+						'phonenumber': phonenumber,
+						'facebook': facebook,
+						'instagram': instagram,
+						'twitter': twitter,
+						'linkedin': linkedin
+					})
+				});
+
+				const { status, message, data } = await response.json();
+				
+				if(status === 'failed'){
+					window.alert(message);
+				}
+				
+				if(status === 'success'){
+					window.alert(message)
+					sessionStorage.setItem('currentUser', JSON.stringify(data));
+
+					setStore({
+						currentUser: data,
+						password: ''
+					});
+
+					history('/private');
+				}
 			},
 			handleChange: e => {
 				const { name, value } = e.target;
