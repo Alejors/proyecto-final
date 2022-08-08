@@ -12,6 +12,10 @@ const InfoUpdate = () => {
         actions.loadProfile();
     }, [])
 
+    useEffect(() => {
+        actions.loadProfile();
+    }, [store])
+
     return (
         <form onSubmit={(e) => actions.updateInfo(e, history)}>
             <div className="container-fluid d-flex justify-content-center">
