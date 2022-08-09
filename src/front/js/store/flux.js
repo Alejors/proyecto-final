@@ -3,7 +3,7 @@ import { ScrollElement } from "react-scroll";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			api: 'http://127.0.0.1:5000/',
+			api: 'http://localhost:5000/',
 			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 },
 			email: '',
 			password: '',
@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			instagram: '',
 			twitter: '',
 			linkedin: '',
+			picture: null,
 			rol: '',
 			currentUser: null,
 			show: false	
@@ -108,31 +109,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					facebook: currentUser?.user?.profile?.facebook,
 					instagram: currentUser?.user?.profile?.instagram,
 					twitter: currentUser?.user?.profile?.twitter,
-					linkedin: currentUser?.user?.profile?.linkedin
+					linkedin: currentUser?.user?.profile?.linkedin,
+					picture: currentUser?.user?.profile?.picture
                 })
             },
+			checkAuthentication: () => {
+				if(sessionStorage.getItem('currentUser')){
+					setStore({
+						currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
+					})
+				}
+			},
 			updateInfo: async (e, history) => {
 				e.preventDefault();
 
-				const { api, email, name, lastname, password, phonenumber, facebook, instagram, twitter, linkedin, currentUser } = getStore();
+				const { api, email, name, lastname, password, phonenumber, facebook, instagram, twitter, linkedin, picture, currentUser } = getStore();
+
+				let formData = new FormData();
+
+				formData.append('email', email);
+				formData.append('name', name);
+				formData.append('lastname', lastname);
+				formData.append('password', password);
+				formData.append('phonenumber', phonenumber);
+				formData.append('facebook', facebook);
+				formData.append('instagram', instagram);
+				formData.append('twitter', twitter);
+				formData.append('linkedin', linkedin);
+				formData.append('picture', picture);
 
 				const response = await fetch(`${api}api/update`, {
 					method: 'PUT',
 					headers: {
-						'Content-Type': 'application/json',
-						'Authorization': `Bearer ${currentUser?.access_token}`
+						'Authorization': `Bearer ${currentUser?.access_token}`,
 					},
-					body: JSON.stringify({
-						'email': email,
-						'name': name,
-						'lastname': lastname,
-						'password': password,
-						'phonenumber': phonenumber,
-						'facebook': facebook,
-						'instagram': instagram,
-						'twitter': twitter,
-						'linkedin': linkedin
-					})
+					body: formData
 				});
 
 				const { status, message, data } = await response.json();
@@ -159,6 +170,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { name, value } = e.target;
 				setStore({
 					[name]: value
+				});
+			},
+			handlePicture: e => {
+				const { files } = e.target;
+				setStore({
+					'picture': files[0]
 				});
 			},
 			handleLogout: () => {

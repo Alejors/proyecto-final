@@ -41,6 +41,7 @@ class Profile(db.Model):
     instagram = db.Column(db.String(80), default="")
     twitter = db.Column(db.String(80), default="")
     linkedin = db.Column(db.String(80), default="")
+    picture = db.Column(db.String(100), default="")
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def serialize(self):
@@ -52,7 +53,8 @@ class Profile(db.Model):
             "facebook": self.facebook,
             "instagram": self.instagram,
             "twitter": self.twitter,
-            "linkedin": self.linkedin
+            "linkedin": self.linkedin,
+            "picture": self.picture
         }
 
     def save(self):
