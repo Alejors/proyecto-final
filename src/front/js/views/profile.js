@@ -13,7 +13,7 @@ const Profile = () => {
 
   useEffect(() => {
     actions.loadProfile();
-}, [store])
+  }, [store.currentUser])
 
   return (
     <div className='container'>

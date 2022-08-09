@@ -143,10 +143,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 				if(status === 'success'){
 					window.alert(message)
-					sessionStorage.setItem('currentUser', JSON.stringify(data));
-
+					currentUser.user = data,
+					
+					sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+					
 					setStore({
-						currentUser: data,
+						currentUser,
 						password: ''
 					});
 
@@ -159,6 +161,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					[name]: value
 				});
 			},
+			handleLogout: () => {
+				sessionStorage.removeItem('currentUser')
+				setStore({currentUser: null, email: ''})
+			}
 		}
 	}
 };

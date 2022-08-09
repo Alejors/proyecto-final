@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import "../../styles/navbar.css";
+=======
+import { Context } from "../store/appContext";
+>>>>>>> bb68e599bc3aa5d7a3d0620b4a75c0e28defd9a7
 
 const Navbar = () => {
+  const { actions } = useContext(Context);
+
   return (
     <>
       <nav className="navbar navbar-dark bg-dark sticky-top bg-gradient">
@@ -110,9 +116,9 @@ const Navbar = () => {
                       <hr className="dropdown-divider bg-info" />
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/login">
+                      <button className="dropdown-item" onClick={() => actions.handleLogout()}>
                         Logout
-                      </Link>
+                      </button>
                     </li>
                   </ul>
                 </li>
