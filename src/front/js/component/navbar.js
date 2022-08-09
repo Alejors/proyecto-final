@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 <<<<<<< HEAD
 import "../../styles/navbar.css";
-=======
 import { Context } from "../store/appContext";
->>>>>>> bb68e599bc3aa5d7a3d0620b4a75c0e28defd9a7
+=======
 
 const Navbar = () => {
   const { actions } = useContext(Context);
@@ -30,7 +29,7 @@ const Navbar = () => {
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
           >
-            <span className="navbar-toggler-icon" />
+            aria-controls="offcanvasNavbar"
           </button>
           <div
             className="offcanvas offcanvas-start text-light bg-dark"
@@ -116,9 +115,9 @@ const Navbar = () => {
                       <hr className="dropdown-divider bg-info" />
                     </li>
                     <li>
-                      <button className="dropdown-item" onClick={() => actions.handleLogout()}>
+                    </li>
                         Logout
-                      </button>
+                      <Link className="dropdown-item" to="/login">
                     </li>
                   </ul>
                 </li>
