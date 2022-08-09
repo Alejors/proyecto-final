@@ -29,3 +29,5 @@ def update_user():
     currentUser.profile.linkedin = currentUser.profile.linkedin if inputtedLinkedin is None else inputtedLinkedin
 
     currentUser.update()
+
+    return jsonify({"status": "success", "message": "Information updated", "data": None}), 200

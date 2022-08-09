@@ -11,6 +11,10 @@ const Profile = () => {
     actions.loadProfile();
   },[])
 
+  useEffect(() => {
+    actions.loadProfile();
+}, [store])
+
   return (
     <div className='container'>
       <div className='row'>
