@@ -113,10 +113,8 @@ const Navbar = () => {
                     <li>
                       <hr className="dropdown-divider bg-info" />
                     </li>
-                    <li>
-                      <Link className="dropdown-item" to="/login" />
+                    <li className="dropdown-item" onClick={() => actions.handleLogout()}>
                         Logout
-                      
                     </li>
                   </ul>
                 </li>
