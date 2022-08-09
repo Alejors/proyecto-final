@@ -1,21 +1,23 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import "../../styles/login.css";
 
 export default function login() {
 
-  const { store, actions } = useContext(Context)
+  const { store, actions } = useContext(Context);
   const history = useNavigate();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if(store.currentUser !== null) history('/private');
-  },[])
+    if (store.currentUser !== null) history('/private');
+  }, [])
 
   return (
     <>
-      <section className="text-center text-lg-start">
-        <div className="container py-4">
+      <section className="text-center text-lg-start ms-5">
+        <div className="container py-3 ms-5">
           <div className="row g-0 align-items-center">
             <div className="col-lg-6 mb-5 mb-lg-0">
               <div
@@ -25,10 +27,10 @@ export default function login() {
                   backdropFilter: "blur(30px)"
                 }}
               >
-                <div className="card-body p-5 shadow-5 text-center">
+                <div className="card-body p-4 shadow-5 text-center">
                   <h2 className="fw-bold mb-5">Sign in</h2>
                   <form className="user" onSubmit={(e) => actions.handleLogin(e, history)}>
-                    <div className="form-group">
+                    <div className="form-group my-3 mx-3">
                       <input
                         type="email"
                         className="form-control form-control-user my-1"
@@ -38,7 +40,7 @@ export default function login() {
                         name='email'
                         onChange={(e) => actions.handleChange(e, history)} />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group my-3 mx-3">
                       <input
                         type="password"
                         className="form-control form-control-user my-1"
@@ -47,6 +49,13 @@ export default function login() {
                         name='password'
                         onChange={(e) => actions.handleChange(e, history)}
                       />
+                      <span className='btn btn-primary mt-2 ms-1 btn-sm float-end' onClick={() => setShow(!show)}>{
+                        !show ? (
+                          <i class="fas fa-eye"></i>) : (
+                          <i class="fas fa-eye-slash"></i>
+                        )
+                      }
+                      </span>
                     </div>
                     <div className="form-group">
                       <div className="custom-control custom-checkbox small my-1">
@@ -63,7 +72,7 @@ export default function login() {
                         </label>
                       </div>
                     </div>
-                    <button type='submit' className="btn btn-primary btn-user btn-block">Login!</button>
+                    <button type='submit' className="btn btn-info btn-user btn-block">Login!</button>
                     <hr />
                     <Link
                       to="#"
@@ -82,7 +91,7 @@ export default function login() {
                   </form>
                   <hr />
                   <div className="text-center">
-                    <Link className="small" to="#">
+                    <Link className="small" to="/forgot-password">
                       Forgot Password?
                     </Link>
                   </div>
@@ -92,7 +101,7 @@ export default function login() {
             <div className="col-lg-6 mb-5 mb-lg-0">
               <img
                 src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-                className="h-50 rounded-4 shadow-4"
+                className="img-login rounded-4 shadow-4"
                 alt=""
               />
             </div>

@@ -6,7 +6,6 @@ body {
     line-height: 1.5;
     color: #000000;
     text-align: left;
-    background-color: #E100FF;
 }
 
 .btn-info {
@@ -21,3 +20,9 @@ body {
       margin-right: 0;
     }
   }
+
+.img-login {
+  height: 78vh;
+  width: 420px;
+  
+}
