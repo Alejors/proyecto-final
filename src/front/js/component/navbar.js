@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import "../../styles/navbar.css";
 import { Context } from "../store/appContext";
 =======
@@ -115,9 +114,9 @@ const Navbar = () => {
                       <hr className="dropdown-divider bg-info" />
                     </li>
                     <li>
-                    </li>
+                      <Link className="dropdown-item" to="/login" />
                         Logout
-                      <Link className="dropdown-item" to="/login">
+                      
                     </li>
                   </ul>
                 </li>
