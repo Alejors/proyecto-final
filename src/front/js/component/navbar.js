@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import { Context } from "../store/appContext";
-=======
+
 
 const Navbar = () => {
   const { actions } = useContext(Context);
@@ -28,7 +28,7 @@ const Navbar = () => {
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
           >
-            aria-controls="offcanvasNavbar"
+            
           </button>
           <div
             className="offcanvas offcanvas-start text-light bg-dark"
