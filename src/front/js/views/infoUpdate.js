@@ -10,6 +10,7 @@ const InfoUpdate = () => {
     useEffect(() => {
         if (store.currentUser == null) history('/login');
         actions.loadProfile();
+        window.scrollTo(0, 0);
     }, [])
 
     return (
@@ -79,7 +80,7 @@ const InfoUpdate = () => {
                         <li className="list-group-item">Health</li>
                         <li className="list-group-item">Outdoor-living</li>
                     </ul>
-                    <Link to='#'><button className="btn btn-primary">Update preferences</button></Link>
+                    <Link to='/preferences'><button className="btn btn-primary">Update preferences</button></Link>
                 </div>
             </div>
         </div>

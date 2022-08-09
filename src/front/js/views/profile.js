@@ -9,6 +9,7 @@ const Profile = () => {
   useEffect(() => {
     if(store.currentUser == null) history('/login');
     actions.loadProfile();
+    window.scrollTo(0, 0);
   },[])
 
   useEffect(() => {

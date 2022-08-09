@@ -18,6 +18,7 @@ import OutdoorLiving from "./views/Outdoor-Living";
 import Gaming from "./views/Gaming";
 import Spirituality from "./views/Spirituality";
 import Healthy from "./views/Healthy";
+import Preferences from "./views/preferences";
 
 //create your first component
 const Layout = () => {
@@ -26,6 +27,7 @@ const Layout = () => {
             <Navbar />
             <Routes>
                 <Route element={<Home />} exact path='/' />
+                <Route element={<Preferences />} exact path='/preferences' />
                 <Route element={<Profile />} exact path='/profile' />
                 <Route element={<Login />} exact path="/login" />
                 <Route element={<PrivateHome />} exact path='/private' />

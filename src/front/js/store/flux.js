@@ -1,9 +1,49 @@
-import { ScrollElement } from "react-scroll";
-
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			api: 'http://localhost:5000/',
+			topicQuestions: [
+				{
+					'topicname': 'petcare',
+					'title': '¿Tienes o quieres tener mascotas?'
+				},
+				{
+					'topicname': 'outdoor',
+					'title': '¿Te gustan las actividades al aire libre?'
+				},
+				{
+					'topicname': 'gaming',
+					'title': '¿Te gustan los videojuegos?'
+				},
+				{
+					'topicname': 'spirituality',
+					'title': '¿Te interesa cultivar tu mundo interior?'
+				},
+				{
+					'topicname': 'health',
+					'title': '¿Necesitas ideas para cuidar tu salud?'
+				},
+				{
+					'topicname': 'fashion',
+					'title': '¿Te preocupa tu imagen personal?'
+				},
+				{
+					'topicname': 'socialskills',
+					'title': '¿Sientes que te cuesta relacionarte con otros?'
+				},
+				{
+					'topicname': 'sustainability',
+					'title': '¿Te preocupas por el medio ambiente?'
+				},
+				{
+					'topicname': 'hobbies',
+					'title': '¿Te gustaría conocer pasatiempos interesantes?'
+				},
+				{
+					'topicname': 'homecare',
+					'title': '¿Quieres ideas de cómo mantener tu casa ordenada?'
+				}
+			],
 			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 },
 			email: '',
 			password: '',
@@ -16,11 +56,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			linkedin: '',
 			picture: null,
 			rol: '',
-			currentUser: null,
-			show: false	
+			preferences: {
+				'petcare': null,
+				'outdoor': null,
+				'gaming': null,
+				'spirituality': null,
+				'health': null,
+				'fashion': null,
+				'socialskills': null,
+				'sustainability': null,
+				'hobbies': null,
+				'homecare': null
+			},
+			currentUser: null
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
 			handleSubmit: async (e, history) => {
 				e.preventDefault();
 
@@ -43,12 +93,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				if(status === 'success'){
 					window.alert(message)
-					one.scrollIntoView()
 					setStore({
 						email: '',
 						password: ''
 					})
+					history('/preferences');
 				}
+			},
+			handlePreferences: (e) => {
+				const { name, value } = e.target;
+				const { preferences } = getStore();
+				let aux = preferences;
+				aux[name] = value;
+				setStore({
+					preferences: aux
+				});
 			},
 			receiveData: async (api) => {
 				const response = await fetch(`${api}/api/users`, {
