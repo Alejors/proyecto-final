@@ -1,7 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
 
-const Navbar = () => {
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import "../../styles/navbar.css";
+import React, { useContext, useState } from 'react';
+import { Squash as Hamburger } from 'hamburger-react';
+
+export default function navbar() {
+  const [isOpen, setOpen] = useState(false)
+  const { actions } = useContext(Context);
+
   return (
     <>
       <nav className="navbar navbar-dark bg-dark sticky-top bg-gradient">
@@ -12,7 +19,7 @@ const Navbar = () => {
           <ul className="nav navbar-nav navbar-right text-light">
             <li>
               <Link to="/login" >
-                <span className="user-icon text-light" /><i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                <span className="user-icon text-white" /><i className="fas fa-user fa-lg me-3 fa-fw"></i>
               </Link>
             </li>
           </ul>
@@ -23,7 +30,7 @@ const Navbar = () => {
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
           >
-            <span className="navbar-toggler-icon" />
+            <Hamburger toggled={isOpen} toggle={setOpen} size={20} color="#4FD1C5" />
           </button>
           <div
             className="offcanvas offcanvas-start text-light bg-dark"
@@ -122,6 +129,4 @@ const Navbar = () => {
       </nav>
     </>
   );
-};
-
-export default Navbar;
+}
