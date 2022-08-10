@@ -1,10 +1,49 @@
-
-
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			api: 'http://127.0.0.1:5000/',
-			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 },
+			api: 'http://localhost:5000/',
+			topicQuestions: [
+				{
+					'topicname': 'petcare',
+					'title': '¿Tienes o quieres tener mascotas?'
+				},
+				{
+					'topicname': 'outdoor',
+					'title': '¿Te gustan las actividades al aire libre?'
+				},
+				{
+					'topicname': 'gaming',
+					'title': '¿Te gustan los videojuegos?'
+				},
+				{
+					'topicname': 'spirituality',
+					'title': '¿Te interesa cultivar tu mundo interior?'
+				},
+				{
+					'topicname': 'health',
+					'title': '¿Necesitas ideas para cuidar tu salud?'
+				},
+				{
+					'topicname': 'fashion',
+					'title': '¿Te preocupa tu imagen personal?'
+				},
+				{
+					'topicname': 'socialskills',
+					'title': '¿Sientes que te cuesta relacionarte con otros?'
+				},
+				{
+					'topicname': 'sustainability',
+					'title': '¿Te preocupas por el medio ambiente?'
+				},
+				{
+					'topicname': 'hobbies',
+					'title': '¿Te gustaría conocer pasatiempos interesantes?'
+				},
+				{
+					'topicname': 'homecare',
+					'title': '¿Quieres ideas de cómo mantener tu casa ordenada?'
+				}
+			],
 			email: '',
 			password: '',
 			name: '',
@@ -14,13 +53,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			instagram: '',
 			twitter: '',
 			linkedin: '',
+			picture: null,
 			rol: '',
 			currentUser: null,
-			show: false,
-			services: null
+			services: null,
+			preferences: {
+				'petcare': null,
+				'outdoor': null,
+				'gaming': null,
+				'spirituality': null,
+				'health': null,
+				'fashion': null,
+				'socialskills': null,
+				'sustainability': null,
+				'hobbies': null,
+				'homecare': null
+			},
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
 			handleSubmit: async (e, history) => {
 				e.preventDefault();
 
@@ -43,12 +93,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				if (status === 'success') {
 					window.alert(message)
-					one.scrollIntoView()
 					setStore({
 						email: '',
 						password: ''
 					})
+					history('/preferences');
 				}
+			},
+			handlePreferences: (e) => {
+				const { name, value } = e.target;
+				const { preferences } = getStore();
+				let aux = preferences;
+				aux[name] = value;
+				setStore({
+					preferences: aux
+				});
 			},
 			receiveData: async (api) => {
 				const response = await fetch(`${api}/api/users`, {
@@ -109,31 +168,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					facebook: currentUser?.user?.profile?.facebook,
 					instagram: currentUser?.user?.profile?.instagram,
 					twitter: currentUser?.user?.profile?.twitter,
-					linkedin: currentUser?.user?.profile?.linkedin
+					linkedin: currentUser?.user?.profile?.linkedin,
+					picture: currentUser?.user?.profile?.picture
 				})
+			},
+			checkAuthentication: () => {
+				if (sessionStorage.getItem('currentUser')) {
+					setStore({
+						currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
+					})
+				}
 			},
 			updateInfo: async (e, history) => {
 				e.preventDefault();
 
-				const { api, email, name, lastname, password, phonenumber, facebook, instagram, twitter, linkedin, currentUser } = getStore();
+				const { api, email, name, lastname, password, phonenumber, facebook, instagram, twitter, linkedin, picture, currentUser } = getStore();
+
+				let formData = new FormData();
+
+				formData.append('email', email);
+				formData.append('name', name);
+				formData.append('lastname', lastname);
+				formData.append('password', password);
+				formData.append('phonenumber', phonenumber);
+				formData.append('facebook', facebook);
+				formData.append('instagram', instagram);
+				formData.append('twitter', twitter);
+				formData.append('linkedin', linkedin);
+				formData.append('picture', picture);
 
 				const response = await fetch(`${api}api/update`, {
 					method: 'PUT',
 					headers: {
-						'Content-Type': 'application/json',
-						'Authorization': `Bearer ${currentUser?.access_token}`
+						'Authorization': `Bearer ${currentUser?.access_token}`,
 					},
-					body: JSON.stringify({
-						'email': email,
-						'name': name,
-						'lastname': lastname,
-						'password': password,
-						'phonenumber': phonenumber,
-						'facebook': facebook,
-						'instagram': instagram,
-						'twitter': twitter,
-						'linkedin': linkedin
-					})
+					body: formData
 				});
 
 				const { status, message, data } = await response.json();
@@ -144,10 +213,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				if (status === 'success') {
 					window.alert(message)
-					sessionStorage.setItem('currentUser', JSON.stringify(data));
+					currentUser.user = data,
+
+						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 
 					setStore({
-						currentUser: data,
+						currentUser,
 						password: ''
 					});
 
@@ -173,6 +244,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+			handlePicture: e => {
+				const { files } = e.target;
+				setStore({
+					'picture': files[0]
+				});
+			},
+			handleLogout: () => {
+				sessionStorage.removeItem('currentUser')
+				setStore({ currentUser: null, email: '' })
 			}
 		}
 	}

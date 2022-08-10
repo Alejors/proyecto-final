@@ -1,6 +1,16 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Rol, Profile
 from flask_jwt_extended import get_jwt_identity, jwt_required
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name = "alejors",
+    api_key = "273489797331588",
+    api_secret = "zcdYZLz0YkZQmabr69IxUUXdgcU",
+    secure = True
+)
 
 infoupdate = Blueprint('infoupdate', __name__)
 
@@ -10,14 +20,22 @@ def update_user():
     currentId = get_jwt_identity()
     currentUser = User.query.get(currentId)
 
-    inputtedName = request.json.get('name')
-    inputtedLastname = request.json.get('lastname')
-    inputtedEmail = request.json.get('email')
-    inputtedPhonenumber = request.json.get('phonenumber')
-    inputtedFacebook = request.json.get('facebook')
-    inputtedInstagram = request.json.get('instagram')
-    inputtedTwitter = request.json.get('twitter')
-    inputtedLinkedin = request.json.get('linkedin')
+    inputtedName = request.form['name']
+    inputtedLastname = request.form['lastname']
+    inputtedEmail = request.form['email']
+    inputtedPhonenumber = request.form['phonenumber']
+    inputtedFacebook = request.form['facebook']
+    inputtedInstagram = request.form['instagram']
+    inputtedTwitter = request.form['twitter']
+    inputtedLinkedin = request.form['linkedin']
+    if 'picture' in request.files:
+        inputtedPicture = request.files['picture']
+    
+        if inputtedPicture != '':
+        
+            pictureResponse = cloudinary.uploader.upload(inputtedPicture, folder = "proyect-avatars")
+            if not pictureResponse: jsonify({"status": "failed", "message": "Uploading error.", "data": None}), 400
+            currentUser.profile.picture = pictureResponse["secure_url"]
 
     currentUser.profile.name = currentUser.profile.name if inputtedName is None else inputtedName
     currentUser.profile.lastname = currentUser.profile.lastname if inputtedLastname is None else inputtedLastname
@@ -30,4 +48,4 @@ def update_user():
 
     currentUser.update()
 
-    return jsonify({"status": "success", "message": "Information updated", "data": None}), 200
+    return jsonify({"status": "success", "message": "Information updated", "data": currentUser.serialize()}), 200

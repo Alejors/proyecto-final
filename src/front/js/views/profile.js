@@ -9,11 +9,13 @@ const Profile = () => {
   useEffect(() => {
     if(store.currentUser == null) history('/login');
     actions.loadProfile();
+    window.scrollTo(0, 0);
   },[])
 
   useEffect(() => {
     actions.loadProfile();
-}, [store])
+    if(store.currentUser == null) history('/login');
+  }, [store.currentUser])
 
   return (
     <div className='container'>
@@ -22,7 +24,7 @@ const Profile = () => {
           <img
             style={{ height: 200, width: 200 }}
             className='mt-2 mx-5 rounded img-thumbnail'
-            src='https://alfabetajuega.com/hero/2020/07/saitama-one.jpg'
+            src={(store.picture == "") ? 'https://i.pinimg.com/280x280_RS/12/75/75/12757564e7b83387bb5fc7634db783a5.jpg' : store.picture}
             alt='profile pic'
           />
         </div>
