@@ -27,17 +27,10 @@ const Healthy = () => {
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
-                    {!!store.parametros &&
-                        j.filter((index) => index < 5).map((index) => (
-                            <CardHealthy key={index} index={index} />
-                        ))}
-                </div>
-            </div>
-            <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
-                    {!!store.parametros &&
-                        l.filter((index) => index < 9).map((index) => (
-                            <CardHealthy key={index} index={index} />
+                    {!!store.services &&
+                        store.services.length > 0 &&
+                        store.services[1].individuals.map((item, index) => (
+                            <CardHealthy {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>

@@ -6,6 +6,7 @@ from api.models import db
 from api.routes.registry import registry
 from api.routes.infoupdate import infoupdate
 from api.routes.login import login
+from api.routes.servicios import servicios
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -23,6 +24,7 @@ CORS(app)
 app.register_blueprint(registry, url_prefix='/api')
 app.register_blueprint(infoupdate, url_prefix='/api')
 app.register_blueprint(login, url_prefix='/api')
+app.register_blueprint(servicios, url_prefix='/api')
 
 @app.route('/')
 def root():

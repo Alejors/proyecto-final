@@ -10,6 +10,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), default=True, unique=False, nullable=False)
     rol = db.relationship('Rol', backref='users', uselist=False)
     profile = db.relationship('Profile', backref='user', uselist=False)
+    individual = db.relationship('Individual', backref='user')
 
     def serialize(self):
         return {
@@ -17,8 +18,13 @@ class User(db.Model):
             "email": self.email,
             "is_active": self.is_active,
             "rol": self.rol.serialize(),
-            "profile": self.profile.serialize()
+            "profile": self.profile.serialize(),
+            "individual": self.get_individuals()
         }
+
+    def get_individuals(self):
+        return list(map(lambda individual: { "id": individual.id, "name": individual.name, "urlmedia": individual.urlmedia,
+         "description": individual.description, "especification":individual.especification}, self.individual))
 
     def save(self):
         db.session.add(self)
@@ -82,3 +88,73 @@ class Rol(db.Model):
             "admin": self.admin,
             "profesor": self.profesor
         }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+class Service(db.Model):
+    __tablename__='services'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    individuals = db.relationship('Individual', backref='service')
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "individuals": self.get_individuals()
+        }
+
+    def get_individuals(self):
+        return list(map(lambda individual: { "id": individual.id, "name": individual.name, "urlmedia": individual.urlmedia,
+         "description": individual.description, "especification":individual.especification}, self.individuals))
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
+class Individual(db.Model):
+    __tablename__='individuals'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    urlmedia = db.Column(db.String(80))
+    description = db.Column(db.String(500))
+    especification = db.Column(db.String(500))
+    services_id = db.Column(db.Integer, db.ForeignKey('services.id'))
+    users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "urlmedia": self.urlmedia,
+            "description": self.description,
+            "especification": self.especification
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()

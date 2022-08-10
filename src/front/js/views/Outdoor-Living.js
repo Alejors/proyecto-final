@@ -1,10 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
-import CardCourses from '../component/CardCourses.jsx'
-
-
-
+import CardOutdoor from '../component/CardOutdoor.jsx'
 
 const estiloBoton = {
     marginTop: '10px',
@@ -18,8 +15,6 @@ const estiloShow = {
 
 const OutdoorLiving = () => {
     const { store } = useContext(Context);
-    let j = [1, 2, 3, 4,]
-    let l = [5, 6, 7, 8,]
     return (
         <>
             <div className="header-container mb-4 d-flex align-items-center">
@@ -27,17 +22,10 @@ const OutdoorLiving = () => {
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
-                    {!!store.parametros &&
-                        j.filter((index) => index < 5).map((index) => (
-                            <CardCourses key={index} index={index} />
-                        ))}
-                </div>
-            </div>
-            <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
-                    {!!store.parametros &&
-                        l.filter((index) => index < 9).map((index) => (
-                            <CardCourses key={index} index={index} />
+                    {!!store.services &&
+                        store.services.length > 0 &&
+                        store.services[3].individuals.map((item, index) => (
+                            <CardOutdoor {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>

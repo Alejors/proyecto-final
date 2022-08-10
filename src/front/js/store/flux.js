@@ -1,4 +1,4 @@
-import { ScrollElement } from "react-scroll";
+
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			linkedin: '',
 			rol: '',
 			currentUser: null,
-			show: false	
+			show: false,
+			services: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -35,12 +36,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 
-				const { status, message, data} = await response.json();
+				const { status, message, data } = await response.json();
 
-				if(status === 'failed'){
+				if (status === 'failed') {
 					window.alert(message)
 				}
-				if(status === 'success'){
+				if (status === 'success') {
 					window.alert(message)
 					one.scrollIntoView()
 					setStore({
@@ -63,54 +64,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			handleLogin: async (e, history) => {
 
-                e.preventDefault();
+				e.preventDefault();
 
-                const { api, email, password } = getStore();
+				const { api, email, password } = getStore();
 
-                const response = await fetch(`${api}/api/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'email': email,
-                        'password': password
-                    })
-                });
+				const response = await fetch(`${api}/api/login`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'email': email,
+						'password': password
+					})
+				});
 
-                const { status, data, message } = await response.json();
+				const { status, data, message } = await response.json();
 
-                if (status === 'failed') {
+				if (status === 'failed') {
 
-                    window.alert(message);
-                }
+					window.alert(message);
+				}
 
-                if (status === 'success') {
-					
+				if (status === 'success') {
+
 					window.alert(message)
-                    sessionStorage.setItem('currentUser', JSON.stringify(data));
+					sessionStorage.setItem('currentUser', JSON.stringify(data));
 
-                    setStore({
-                        currentUser: data,
-                        password: ''
-                    })
+					setStore({
+						currentUser: data,
+						password: ''
+					})
 
-                    history('/private');
-                }
-            },
+					history('/private');
+				}
+			},
 			loadProfile: () => {
-                const { currentUser } = getStore();
-                setStore({
-                    name: currentUser?.user?.profile?.name,
-                    lastname: currentUser?.user?.profile?.lastname,
-                    email: currentUser?.user?.email,
+				const { currentUser } = getStore();
+				setStore({
+					name: currentUser?.user?.profile?.name,
+					lastname: currentUser?.user?.profile?.lastname,
+					email: currentUser?.user?.email,
 					phonenumber: currentUser?.user?.profile?.phonenumber,
 					facebook: currentUser?.user?.profile?.facebook,
 					instagram: currentUser?.user?.profile?.instagram,
 					twitter: currentUser?.user?.profile?.twitter,
 					linkedin: currentUser?.user?.profile?.linkedin
-                })
-            },
+				})
+			},
 			updateInfo: async (e, history) => {
 				e.preventDefault();
 
@@ -136,12 +137,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				const { status, message, data } = await response.json();
-				
-				if(status === 'failed'){
+
+				if (status === 'failed') {
 					window.alert(message);
 				}
-				
-				if(status === 'success'){
+
+				if (status === 'success') {
 					window.alert(message)
 					sessionStorage.setItem('currentUser', JSON.stringify(data));
 
@@ -159,6 +160,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					[name]: value
 				});
 			},
+			getServicios: async url => {
+				try {
+					const response = await fetch(url, {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					});
+					const data = await response.json();
+					setStore({ services: data });
+				} catch (error) {
+					console.log(error);
+				}
+			}
 		}
 	}
 };
