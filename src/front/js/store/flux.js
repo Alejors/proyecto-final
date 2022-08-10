@@ -254,6 +254,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handleLogout: () => {
 				sessionStorage.removeItem('currentUser')
 				setStore({ currentUser: null, email: '' })
+			},
+			updatePreferences: async (e, history) => {
+				e.preventDefault();
+				const { preferences, api, currentUser } = getStore();
+				
+				let filteredPreferences = [];
+				for (const element in preferences){
+					if(preferences[`${element}`] == 'true'){
+						filteredPreferences.push(element);
+					}
+				}
+				if(filteredPreferences.length == 0) {
+					window.alert('Must pick at least one preference')
+					return null
+				}
+				const response = await fetch(`${api}api/preferences`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${currentUser?.access_token}`
+					},
+					body: JSON.stringify({
+						'services': filteredPreferences
+					})
+				});
+
+				const { status, message } = await response.json();
+
+				if(status === 'failed'){
+					window.alert(message);
+				}
+				if(status === 'success'){
+					window.alert(message)
+					currentUser.user.profile.services = filteredPreferences;
+
+					history('/private')
+				}
 			}
 		}
 	}
