@@ -86,6 +86,7 @@
 		"react-icons": "^4.4.0",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
+		"react-scroll": "^1.8.7",
 		"switch": "^0.0.0"
 	}
 }

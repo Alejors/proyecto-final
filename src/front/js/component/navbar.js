@@ -1,11 +1,11 @@
-
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
 import React, { useContext, useState } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
 
-export default function navbar() {
+const Navbar = () => {
+
   const [isOpen, setOpen] = useState(false)
   const { actions } = useContext(Context);
 
@@ -115,10 +115,8 @@ export default function navbar() {
                     <li>
                       <hr className="dropdown-divider bg-info" />
                     </li>
-                    <li>
-                      <Link className="dropdown-item" to="/login">
-                        Logout
-                      </Link>
+                    <li className="dropdown-item" onClick={() => actions.handleLogout()}>
+                      Logout
                     </li>
                   </ul>
                 </li>
@@ -130,3 +128,4 @@ export default function navbar() {
     </>
   );
 }
+export default Navbar;

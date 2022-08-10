@@ -38,21 +38,21 @@ export default function login() {
                         aria-describedby="emailHelp"
                         placeholder="Enter Email Address..."
                         name='email'
-                        onChange={(e) => actions.handleChange(e, history)} />
+                        onChange={(e) => actions.handleChange(e)} />
                     </div>
-                    <div className="form-group my-3 mx-3">
+                    <div className="d-flex form-group my-3 mx-3">
                       <input
-                        type="password"
+                        type={!show ? "password" : "text"}
                         className="form-control form-control-user my-1"
                         id="exampleInputPassword"
                         placeholder="Password"
                         name='password'
-                        onChange={(e) => actions.handleChange(e, history)}
+                        onChange={(e) => actions.handleChange(e)}
                       />
-                      <span className='btn btn-primary mt-2 ms-1 btn-sm float-end' onClick={() => setShow(!show)}>{
+                      <span className='btn btn-primary my-1 ms-1 btn-sm float-end' onClick={() => setShow(!show)}>{
                         !show ? (
-                          <i class="fas fa-eye"></i>) : (
-                          <i class="fas fa-eye-slash"></i>
+                          <i className="fas fa-eye"></i>) : (
+                          <i className="fas fa-eye-slash"></i>
                         )
                       }
                       </span>
