@@ -19,6 +19,7 @@ import Gaming from "./views/Gaming";
 import Spirituality from "./views/Spirituality";
 import Healthy from "./views/Healthy";
 import Preferences from "./views/preferences";
+import Private_teacher from "./views/private_teacher";
 
 //create your first component
 const Layout = () => {
@@ -41,6 +42,7 @@ const Layout = () => {
                 <Route element={<DetailsCourses />} exact path="/courses/:index" />
                 <Route element={<DetailsSpirituality />} exact path="/spirituality/:index" />
                 <Route element={<DetailsHealthy />} exact path="/healthy/:index" />
+                <Route element={<Private_teacher />} exact path="/private_teacher/:index" />
                 <Route element={<NotFound />} />
             </Routes>
             <Footer />
