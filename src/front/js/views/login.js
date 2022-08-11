@@ -49,7 +49,7 @@ export default function login() {
                         name='password'
                         onChange={(e) => actions.handleChange(e)}
                       />
-                      <span className='btn btn-primary my-1 ms-1 btn-sm float-end' onClick={() => setShow(!show)}>{
+                      <span className='btn btn-light my-1 ms-1 btn-md float' onClick={() => setShow(!show)}>{
                         !show ? (
                           <i className="fas fa-eye"></i>) : (
                           <i className="fas fa-eye-slash"></i>

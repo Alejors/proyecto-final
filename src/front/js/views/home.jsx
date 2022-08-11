@@ -8,6 +8,18 @@ const Home = () => {
 	const { store, actions } = useContext(Context);
 	const history = useNavigate();
 	const [show, setShow] = useState(false);
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [isError, setIsError] = useState("");
+
+	const checkValidation = (e) => {
+		setConfirmPassword(e.target.value);
+		if (password != confirmPassword) {
+			setIsError("La contraseña debe coincidir");
+		} else {
+			setIsError(<i className="fas fa-check"></i>);
+		}
+	};
 	return (
 		<>
 			<div className="card mb-4 bg-transparent mx-3 m-3 my-6 border-0 shadow rounded-4 overflow-hidden">
@@ -127,6 +139,7 @@ const Home = () => {
 														onChange={e => actions.handleChange(e)}
 														value={store.name}
 													/>
+													<span className='col-md-1'></span>
 												</div>
 												<div className="d-flex flex-row align-items-center mb-4">
 													<i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -139,36 +152,56 @@ const Home = () => {
 														onChange={e => actions.handleChange(e)}
 														value={store.email}
 													/>
+													<span className='col-md-1'></span>
 												</div>
 												<div className="d-flex flex-row align-items-center mb-4">
 													<i className="fas fa-lock fa-lg me-3 fa-fw"></i>
 													<input
 														name='password'
 														id="form3Example4cg"
-														className="form-control form-control me-5"
+														className="form-control form-control"
 														placeholder="Password"
 														onChange={e => actions.handleChange(e)}
 														type={!show ? "password" : "text"}
 														value={store.password}
 
 													/>
+													<span className='btn btn-light my-1 ms-1 btn-md float ' onClick={() => setShow(!show)}>{
+														!show ? (
+															<i className="fas fa-eye"></i>) : (
+															<i className="fas fa-eye-slash"></i>
+														)
+													}
+													</span>
+													<span className='col-md-2'></span>
 												</div>
-												<div className="d-flex flex-row align-items-center mb-4 ">
+												<div className="d-flex flex-row align-items-center mb-4"
+													data-validate="Confirm data is required">
 													<i className="fas fa-key fa-lg me-3 fa-fw"></i>
 													<input
-														name='password_confirmation'
+														name='confirmPassword'
 														id="form3Example4cdg"
-														className="form-control form-control me-5"
-														onChange={e => actions.handleChange(e)}
-														type={!show ? "password" : "text"}
-														placeholder="password_confirmation"
-														value={store.password_confirmation}
+														className="form-control form-control"
+														onChange={(e) => checkValidation(e)}
+														type={!show ? "confirmPassword" : "text"}
+														placeholder="Confirm password"
+														value={confirmPassword}
+
 													/>
+
+													<span className='btn btn-light my-1 ms-1 btn-md float' onClick={() => setShow(!show)}>{
+														!show ? (
+															<i className="fas fa-eye"></i>) : (
+															<i className="fas fa-eye-slash"></i>
+														)
+													}
+													</span>
+													<span className='col-md-2'></span>
+													<div id="emailHelp" className="form-text">{isError}</div>
 
 												</div>
 												<div className="form-check d-flex justify-content-center mb-5">
 													<input
-														name='checkbox'
 														className="form-check-input me-2"
 														type="checkbox"
 														defaultValue=""
