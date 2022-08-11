@@ -20,7 +20,7 @@ const estiloContainer2 = {
 }
 
 
-const DetailsServices = () => {
+const DetailsGaming = () => {
     const { store } = useContext(Context);
     const params = useParams();
     return (
@@ -68,4 +68,4 @@ const DetailsServices = () => {
     );
 };
 
-export default DetailsServices;
+export default DetailsGaming;

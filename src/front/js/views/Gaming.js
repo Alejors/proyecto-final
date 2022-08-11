@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
-import CardServices from '../component/CardServices.jsx'
+import CardGaming from '../component/CardGaming.jsx'
 
 
 
@@ -28,7 +28,7 @@ const Gaming = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[0].individuals.map((item, index) => (
-                            <CardServices {...item} key={index} index={index} />
+                            <CardGaming {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>

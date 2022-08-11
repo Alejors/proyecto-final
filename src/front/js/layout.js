@@ -5,7 +5,7 @@ import NotFound from "./views/NotFound";
 import Navbar from "./component/navbar";
 import Home from "./views/home.jsx";
 import Services from "./views/Services";
-import DetailsServices from "./component/DetailsServices.jsx";
+import DetailsGaming from "./component/DetailsGaming.jsx";
 import DetailsOutdoor from "./component/DetailsOutdoor.jsx";
 import DetailsSpirituality from "./component/DetailsSpirituality.jsx";
 import DetailsHealthy from "./component/DetailsHealthy.jsx";
@@ -37,7 +37,7 @@ const Layout = () => {
                 <Route element={<Gaming />} exact path="/gaming" />
                 <Route element={<Spirituality />} exact path="/spirituality" />
                 <Route element={<Healthy />} exact path="/healthy" />
-                <Route element={<DetailsServices />} exact path="/gaming/:index" />
+                <Route element={<DetailsGaming />} exact path="/gaming/:index" />
                 <Route element={<DetailsOutdoor />} exact path="/outdoor/:index" /> #
                 <Route element={<DetailsSpirituality />} exact path="/spirituality/:index" />
                 <Route element={<DetailsHealthy />} exact path="/healthy/:index" />

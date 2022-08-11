@@ -14,7 +14,7 @@ const estiloCard = {
 };
 
 
-const CardServices = ({ index, name, description }) => {
+const CardGaming = ({ index, name, description }) => {
     const { store, actions } = useContext(Context);
     return (
         <>
@@ -35,4 +35,4 @@ const CardServices = ({ index, name, description }) => {
         </>
     );
 };
-export default CardServices;
+export default CardGaming;

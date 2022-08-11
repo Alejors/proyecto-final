@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
-import CardServices from '../component/CardServices.jsx'
-import CardCourses from '../component/CardOutdoor.jsx'
+import CardGaming from '../component/CardGaming.jsx'
+import CardOutdoor from '../component/CardOutdoor.jsx'
 import CardSpirituality from '../component/CardSpirituality.jsx'
 import CardHealthy from '../component/CardHealthy.jsx'
 
@@ -30,7 +30,7 @@ const Services = () => {
                 <div className='row'>
                     {!!store.parametros &&
                         j.filter((index) => index < 5).map((index) => (
-                            <CardServices key={index} index={index} />
+                            <CardGaming key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -42,7 +42,7 @@ const Services = () => {
                 <div className='row'>
                     {!!store.parametros &&
                         j.filter((index) => index < 5).map((index) => (
-                            <CardCourses key={index} index={index} />
+                            <CardOutdoor key={index} index={index} />
                         ))}
                 </div>
             </div>
