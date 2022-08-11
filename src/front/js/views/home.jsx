@@ -13,8 +13,8 @@ const Home = () => {
 	const [isError, setIsError] = useState("");
 
 	const checkValidation = (e) => {
-		setConfirmPassword(e.target.value);
-		if (password != confirmPassword) {
+
+		if (password !== confirmPassword) {
 			setIsError("La contraseña debe coincidir");
 		} else {
 			setIsError(<i className="fas fa-check"></i>);
@@ -161,7 +161,7 @@ const Home = () => {
 														id="form3Example4cg"
 														className="form-control form-control"
 														placeholder="Password"
-														onChange={e => actions.handleChange(e)}
+														onChange={e => { actions.handleChange(e), setPassword(e.target.value) }}
 														type={!show ? "password" : "text"}
 														value={store.password}
 
@@ -182,8 +182,8 @@ const Home = () => {
 														name='confirmPassword'
 														id="form3Example4cdg"
 														className="form-control form-control"
-														onChange={(e) => checkValidation(e)}
-														type={!show ? "confirmPassword" : "text"}
+														onChange={(e) => { setConfirmPassword(e.target.value), checkValidation(e.target.value) }}
+														type={!show ? "password" : "text"}
 														placeholder="Confirm password"
 														value={confirmPassword}
 
