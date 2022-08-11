@@ -14,21 +14,19 @@ const estiloCard = {
 };
 
 
-const CardServices = ({ index }) => {
-    const { store } = useContext(Context);
-
+const CardServices = ({ index, name, description }) => {
+    const { store, actions } = useContext(Context);
     return (
         <>
-            <div className='col-3' key={index} index={index}>
+            <div className='col-3' index={index}>
                 <div className="card" style={estiloCard}>
                     <img src="https://www.adverthia.com/wp-content/uploads/2020/02/Servicios-corporativos_icono2.png" className="card-img-top" alt="..." style={estiloImagen} />
                     <div className="card-body" >
-                        <h5 className="card-title">Card title</h5>
+                        <h5 className="card-title">{name}</h5>
                         <p className="card-text">
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            {description}
                         </p>
-                        <Link to={`/services/${index}`} className="btn btn-primary">
+                        <Link to={`/gaming/${index}`} className="btn btn-primary">
                             Learn More!
                         </Link>
                     </div>

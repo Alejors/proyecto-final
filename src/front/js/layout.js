@@ -6,7 +6,7 @@ import Navbar from "./component/navbar";
 import Home from "./views/home.jsx";
 import Services from "./views/Services";
 import DetailsServices from "./component/DetailsServices.jsx";
-import DetailsCourses from "./component/DetailsCourses.jsx";
+import DetailsOutdoor from "./component/DetailsOutdoor.jsx";
 import DetailsSpirituality from "./component/DetailsSpirituality.jsx";
 import DetailsHealthy from "./component/DetailsHealthy.jsx";
 import Login from "./views/login";
@@ -38,8 +38,8 @@ const Layout = () => {
                 <Route element={<Gaming />} exact path="/gaming" />
                 <Route element={<Spirituality />} exact path="/spirituality" />
                 <Route element={<Healthy />} exact path="/healthy" />
-                <Route element={<DetailsServices />} exact path="/services/:index" />
-                <Route element={<DetailsCourses />} exact path="/courses/:index" />
+                <Route element={<DetailsServices />} exact path="/gaming/:index" />
+                <Route element={<DetailsOutdoor />} exact path="/outdoor/:index" /> #
                 <Route element={<DetailsSpirituality />} exact path="/spirituality/:index" />
                 <Route element={<DetailsHealthy />} exact path="/healthy/:index" />
                 <Route element={<Private_teacher />} exact path="/private_teacher" />

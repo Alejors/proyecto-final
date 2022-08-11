@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import CardServices from '../component/CardServices.jsx'
-import CardCourses from '../component/CardCourses.jsx'
+import CardCourses from '../component/CardOutdoor.jsx'
 import CardSpirituality from '../component/CardSpirituality.jsx'
 import CardHealthy from '../component/CardHealthy.jsx'
 

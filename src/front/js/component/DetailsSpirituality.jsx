@@ -30,86 +30,35 @@ const DetailsSpirituality = () => {
                 <div className="card mb-3" style={estiloDiv}>
                     <div className="row g-0">
                         <div className="col-md-8">
-                            <img
-                                src="https://i1.wp.com/www.mindful.org/content/uploads/focus3.png"
-                                className="img-fluid rounded-start"
-                                alt="..."
-                            ></img>
+                            <iframe
+                                width="850"
+                                height="600"
+                                src={store?.services[2]?.individuals[params.index]?.urlmedia}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title="Embedded youtube"
+                            />
                         </div>
                         <div className="col-md-4">
                             <div className="card-body">
                                 <h5 className="card-title">
-                                    {store?.parametros[params.index]}
+                                    {store?.services[2]?.individuals[params.index]?.name}
                                 </h5>
                                 <p className="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
-                                    velit beatae qui ab nam saepe tempore assumenda in
-                                    necessitatibus tempora quasi voluptates commodi. Eum dolore
-                                    dolorem maxime, veniam molestias maiores!
+                                    {store?.services[2]?.individuals[params.index]?.description}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="container" style={estiloDiv2}>
                         <div className="row" style={estiloDiv2}>
-                            <div className="container-category" style={estiloContainer}>
+                            <div className="container-category">
                                 <div className="col-12">
-                                    <h5>Lorem</h5>
+                                    <h5>Especifications</h5>
                                     <div>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        {store?.services[2]?.individuals[params.index]?.especification}
                                     </div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.<br></br>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row" style={estiloDiv2}>
-                            <div className="container-category" style={estiloContainer2}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer2}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer2}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                                </div>
-                            </div>
-                            <div className="container-category" style={estiloContainer2}>
-                                <div className="col-12">
-                                    <h5>Lorem</h5>
-                                    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
                                 </div>
                             </div>
                         </div>

@@ -14,7 +14,7 @@ const estiloCard = {
 };
 
 
-const CardSpirituality = ({ index }) => {
+const CardSpirituality = ({ index, name, description }) => {
     const { store } = useContext(Context);
 
     return (
@@ -23,10 +23,9 @@ const CardSpirituality = ({ index }) => {
                 <div className="card" style={estiloCard}>
                     <img src="https://is4-ssl.mzstatic.com/image/thumb/Purple114/v4/c7/98/a9/c798a9ac-386b-5c0f-38e8-7a742c96336d/source/256x256bb.jpg" className="card-img-top" alt="..." style={estiloImagen} />
                     <div className="card-body" >
-                        <h5 className="card-title">Card title</h5>
+                        <h5 className="card-title">{name}</h5>
                         <p className="card-text">
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            {description}
                         </p>
                         <Link to={`/spirituality/${index}`} className="btn btn-primary">
                             Learn More!

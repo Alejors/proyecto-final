@@ -18,8 +18,6 @@ const estiloShow = {
 
 const Gaming = () => {
     const { store } = useContext(Context);
-    let j = [1, 2, 3, 4,]
-    let l = [5, 6, 7, 8,]
     return (
         <>
             <div className="header-container mb-4 d-flex align-items-center">
@@ -27,17 +25,10 @@ const Gaming = () => {
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
-                    {!!store.parametros &&
-                        j.filter((index) => index < 5).map((index) => (
-                            <CardServices key={index} index={index} />
-                        ))}
-                </div>
-            </div>
-            <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
-                    {!!store.parametros &&
-                        l.filter((index) => index < 9).map((index) => (
-                            <CardServices key={index} index={index} />
+                    {!!store.services &&
+                        store.services.length > 0 &&
+                        store.services[0].individuals.map((item, index) => (
+                            <CardServices {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
