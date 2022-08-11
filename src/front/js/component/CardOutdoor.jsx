@@ -2,32 +2,43 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
-
-const estiloImagen = {
-    width: '60%',
-    height: '60%',
-    alignSelf: 'center',
-    margin: '8px'
+const estiloBoton = {
+    position: 'absolute',
+    bottom: '4px',
+    marginBottom: '5px'
 }
+
 const estiloCard = {
-    width: '100%',
+    height: '104%',
 };
 
+const estiloVideo = {
+    borderRadius: 'inherit',
+};
 
-const CardOutdoor = ({ index, name, description }) => {
+const CardOutdoor = ({ index, name, description, urlmedia }) => {
     const { store } = useContext(Context);
 
     return (
         <>
             <div className='col-3' key={index} index={index}>
                 <div className="card" style={estiloCard}>
-                    <img src="https://aprenderacrecer.cl/wp-content/uploads/2021/04/online-education.png" className="card-img-top" alt="..." style={estiloImagen} />
+                    <iframe
+                        width="100%"
+                        height="200"
+                        src={urlmedia}
+                        frameBorder="0"
+                        allowFullScreen
+                        pointerEvents="none"
+                        title="Embedded youtube"
+                        style={estiloVideo}
+                    />
                     <div className="card-body" >
                         <h5 className="card-title">{name}</h5>
                         <p className="card-text">
                             {description}
                         </p>
-                        <Link to={`/outdoor/${index}`} className="btn btn-primary">
+                        <Link to={`/outdoor/${index}`} className="btn btn-primary" style={estiloBoton}>
                             Learn More!
                         </Link>
                     </div>

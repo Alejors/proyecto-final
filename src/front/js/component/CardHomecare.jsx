@@ -17,8 +17,7 @@ const estiloVideo = {
     borderRadius: 'inherit',
 };
 
-
-const CardServices = ({ index, name, description, urlmedia }) => {
+const CardHomecare = ({ index, name, description, urlmedia }) => {
     const { store } = useContext(Context);
 
     return (
@@ -40,7 +39,7 @@ const CardServices = ({ index, name, description, urlmedia }) => {
                         <p className="card-text">
                             {description}
                         </p>
-                        <Link to={`/health/${index}`} className="btn btn-primary" style={estiloBoton}>
+                        <Link to={`/homecare/${index}`} className="btn btn-primary" style={estiloBoton}>
                             Learn More!
                         </Link>
                     </div>
@@ -49,4 +48,4 @@ const CardServices = ({ index, name, description, urlmedia }) => {
         </>
     );
 };
-export default CardServices;
+export default CardHomecare;
