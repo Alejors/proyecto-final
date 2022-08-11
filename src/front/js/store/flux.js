@@ -44,7 +44,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'title': '¿Quieres ideas de cómo mantener tu casa ordenada?'
 				}
 			],
-			parametros: { "numero": 1, "numero2": 2, "numero3": 3, "numero4": 4 },
 			email: '',
 			password: '',
 			name: '',
@@ -56,6 +55,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			linkedin: '',
 			picture: null,
 			rol: '',
+			currentUser: null,
+			services: null,
 			preferences: {
 				'petcare': null,
 				'outdoor': null,
@@ -68,7 +69,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				'hobbies': null,
 				'homecare': null
 			},
-			currentUser: null
 		},
 		actions: {
 			handleSubmit: async (e, history) => {
@@ -86,12 +86,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 
-				const { status, message, data} = await response.json();
+				const { status, message, data } = await response.json();
 
-				if(status === 'failed'){
+				if (status === 'failed') {
 					window.alert(message)
 				}
-				if(status === 'success'){
+				if (status === 'success') {
 					window.alert(message)
 					setStore({
 						email: '',
@@ -123,57 +123,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			handleLogin: async (e, history) => {
 
-                e.preventDefault();
+				e.preventDefault();
 
-                const { api, email, password } = getStore();
+				const { api, email, password } = getStore();
 
-                const response = await fetch(`${api}/api/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'email': email,
-                        'password': password
-                    })
-                });
+				const response = await fetch(`${api}/api/login`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'email': email,
+						'password': password
+					})
+				});
 
-                const { status, data, message } = await response.json();
+				const { status, data, message } = await response.json();
 
-                if (status === 'failed') {
+				if (status === 'failed') {
 
-                    window.alert(message);
-                }
+					window.alert(message);
+				}
 
-                if (status === 'success') {
-					
+				if (status === 'success') {
+
 					window.alert(message)
-                    sessionStorage.setItem('currentUser', JSON.stringify(data));
+					sessionStorage.setItem('currentUser', JSON.stringify(data));
 
-                    setStore({
-                        currentUser: data,
-                        password: ''
-                    })
+					setStore({
+						currentUser: data,
+						password: ''
+					})
 
-                    history('/private');
-                }
-            },
+					history('/private');
+				}
+			},
 			loadProfile: () => {
-                const { currentUser } = getStore();
-                setStore({
-                    name: currentUser?.user?.profile?.name,
-                    lastname: currentUser?.user?.profile?.lastname,
-                    email: currentUser?.user?.email,
+				const { currentUser } = getStore();
+				setStore({
+					name: currentUser?.user?.profile?.name,
+					lastname: currentUser?.user?.profile?.lastname,
+					email: currentUser?.user?.email,
 					phonenumber: currentUser?.user?.profile?.phonenumber,
 					facebook: currentUser?.user?.profile?.facebook,
 					instagram: currentUser?.user?.profile?.instagram,
 					twitter: currentUser?.user?.profile?.twitter,
 					linkedin: currentUser?.user?.profile?.linkedin,
 					picture: currentUser?.user?.profile?.picture
-                })
-            },
+				})
+			},
 			checkAuthentication: () => {
-				if(sessionStorage.getItem('currentUser')){
+				if (sessionStorage.getItem('currentUser')) {
 					setStore({
 						currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
 					})
@@ -206,17 +206,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				const { status, message, data } = await response.json();
-				
-				if(status === 'failed'){
+
+				if (status === 'failed') {
 					window.alert(message);
 				}
-				
-				if(status === 'success'){
+
+				if (status === 'success') {
 					window.alert(message)
 					currentUser.user = data,
-					
-					sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-					
+
+						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+
 					setStore({
 						currentUser,
 						password: ''
@@ -231,6 +231,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					[name]: value
 				});
 			},
+			getServicios: async url => {
+				try {
+					const response = await fetch(url, {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					});
+					const data = await response.json();
+					setStore({ services: data });
+				} catch (error) {
+					console.log(error);
+				}
+			},
 			handlePicture: e => {
 				const { files } = e.target;
 				setStore({
@@ -239,7 +253,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			handleLogout: () => {
 				sessionStorage.removeItem('currentUser')
-				setStore({currentUser: null, email: ''})
+				setStore({ currentUser: null, email: '' })
+			},
+			updatePreferences: async (e, history) => {
+				e.preventDefault();
+				const { preferences, api, currentUser } = getStore();
+				
+				let filteredPreferences = [];
+				for (const element in preferences){
+					if(preferences[`${element}`] == 'true'){
+						filteredPreferences.push(element);
+					}
+				}
+				if(filteredPreferences.length == 0) {
+					window.alert('Must pick at least one preference')
+					return null
+				}
+				const response = await fetch(`${api}api/preferences`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${currentUser?.access_token}`
+					},
+					body: JSON.stringify({
+						'services': filteredPreferences
+					})
+				});
+
+				const { status, message } = await response.json();
+
+				if(status === 'failed'){
+					window.alert(message);
+				}
+				if(status === 'success'){
+					window.alert(message)
+					currentUser.user.profile.services = filteredPreferences;
+
+					history('/private')
+				}
 			}
 		}
 	}

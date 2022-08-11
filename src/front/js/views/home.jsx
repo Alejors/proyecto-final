@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../store/appContext';
 import { useNavigate } from 'react-router-dom';
 import "../../styles/home.css";
+import Register from "../component/register";
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
 		}
 	};
 	return (
+
 		<>
 			<div className="card mb-4 bg-transparent mx-3 m-3 my-6 border-0 shadow rounded-4 overflow-hidden">
 				<div className="row g-0">

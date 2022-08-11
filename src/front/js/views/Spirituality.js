@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import CardSpirituality from '../component/CardSpirituality.jsx'
 
-
-
-
 const estiloBoton = {
     marginTop: '10px',
     padding: 'none',
@@ -27,17 +24,10 @@ const Spirituality = () => {
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
-                    {!!store.parametros &&
-                        j.filter((index) => index < 5).map((index) => (
-                            <CardSpirituality key={index} index={index} />
-                        ))}
-                </div>
-            </div>
-            <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
-                    {!!store.parametros &&
-                        l.filter((index) => index < 9).map((index) => (
-                            <CardSpirituality key={index} index={index} />
+                    {!!store.services &&
+                        store.services.length > 0 &&
+                        store.services[2].individuals.map((item, index) => (
+                            <CardSpirituality {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>

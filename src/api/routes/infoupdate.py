@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, request, jsonify, Blueprint
 from api.models import db, User, Rol, Profile
 from flask_jwt_extended import get_jwt_identity, jwt_required
 import cloudinary
