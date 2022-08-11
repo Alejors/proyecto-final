@@ -262,7 +262,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			handleLogout: () => {
 				sessionStorage.removeItem('currentUser')
-				setStore({ currentUser: null, email: '' })
+				setStore({ 
+					currentUser: null, 
+					email: '',
+					name: ''
+				})
 			},
 			updatePreferences: async (e, history) => {
 				e.preventDefault();
@@ -300,6 +304,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					history('/private')
 				}
+			},
+			switchCategory: async () => {
+				const { currentUser, rol, api } = getStore();
+				const { loadProfile } = getActions();
+				
+				if(rol == 'Student'){
+					const response = await fetch(`${api}api/category`, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${currentUser?.access_token}`
+						},
+						body: JSON.stringify({
+							'profesor': true,
+							'cliente': false
+						})
+					});
+
+					const {status, message, data } = await response.json();
+
+					if (status == 'failed'){
+						window.alert(message)
+					}
+					if (status == 'success'){
+						window.alert(message)
+						currentUser.user.rol = data
+						loadProfile();
+					}
+
+				}else if(rol == 'Profesor'){
+					const response = await fetch(`${api}api/category`, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${currentUser?.access_token}`
+						},
+						body: JSON.stringify({
+							'profesor': false,
+							'cliente': true
+						})
+					});
+
+					const {status, message, data } = await response.json();
+
+					if (status == 'failed'){
+						window.alert(message)
+					}
+					if (status == 'success'){
+						window.alert(message)
+						currentUser.user.rol = data
+						loadProfile();
+					}
+				}
+
 			}
 		}
 	}

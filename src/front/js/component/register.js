@@ -7,13 +7,12 @@ const Register = () => {
     const history = useNavigate();
     const [show, setShow] = useState(false);
 
-    const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isError, setIsError] = useState("");
 
     const checkValidation = (e) => {
-
-        if (password !== confirmPassword) {
+        console.log(confirmPassword);
+        if (store.password !== confirmPassword) {
             setIsError("La contraseña debe coincidir");
         } else {
             setIsError(<i className="fas fa-check"></i>);
@@ -31,7 +30,7 @@ const Register = () => {
                                         Create an account
                                     </h2>
                                     <div className='form-register'>
-                                        <form onSubmit={e => actions.handleSubmit(e, history)}>
+                                        <form onSubmit={e => {actions.handleSubmit(e, history)}}>
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                 <input
@@ -43,7 +42,6 @@ const Register = () => {
                                                     onChange={e => actions.handleChange(e)}
                                                     value={store.name}
                                                 />
-                                                <span className='col-md-1'></span>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -56,7 +54,6 @@ const Register = () => {
                                                     onChange={e => actions.handleChange(e)}
                                                     value={store.email}
                                                 />
-                                                <span className='col-md-1'></span>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
@@ -65,44 +62,34 @@ const Register = () => {
                                                     id="form3Example4cg"
                                                     className="form-control form-control"
                                                     placeholder="Password"
-                                                    onChange={e => { actions.handleChange(e), setPassword(e.target.value) }}
+                                                    onChange={e => { actions.handleChange(e)}}
+                                                    onKeyUp={() => checkValidation()}
                                                     type={!show ? "password" : "text"}
                                                     value={store.password}
 
                                                 />
-                                                <span className='btn btn-light my-1 ms-1 btn-md float ' onClick={() => setShow(!show)}>{
+                                                 <span className='btn btn-light my-1 ms-1 btn-md float me-1' onClick={() => setShow(!show)}>{
                                                     !show ? (
                                                         <i className="fas fa-eye"></i>) : (
                                                         <i className="fas fa-eye-slash"></i>
                                                     )
                                                 }
                                                 </span>
-                                                <span className='col-md-2'></span>
                                             </div>
-                                            <div className="d-flex flex-row align-items-center mb-4"
+                                            <div className="d-flex flex-row align-items-center mb-3"
                                                 data-validate="Confirm data is required">
                                                 <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                                 <input
                                                     name='confirmPassword'
                                                     id="form3Example4cdg"
                                                     className="form-control form-control"
-                                                    onChange={(e) => { setConfirmPassword(e.target.value), checkValidation(e.target.value) }}
+                                                    onChange={(e) => { setConfirmPassword(e.target.value)}}
+                                                    onKeyUp={() => checkValidation()}
                                                     type={!show ? "password" : "text"}
                                                     placeholder="Confirm password"
-                                                    value={confirmPassword}
 
                                                 />
-
-                                                <span className='btn btn-light my-1 ms-1 btn-md float' onClick={() => setShow(!show)}>{
-                                                    !show ? (
-                                                        <i className="fas fa-eye"></i>) : (
-                                                        <i className="fas fa-eye-slash"></i>
-                                                    )
-                                                }
-                                                </span>
-                                                <span className='col-md-2'></span>
-                                                <div id="emailHelp" className="form-text">{isError}</div>
-
+                                                <span className='ms-2 me-5'>{isError}</span>  
                                             </div>
                                             <div className="form-check d-flex justify-content-center mb-5">
                                                 <input
@@ -113,10 +100,10 @@ const Register = () => {
                                                 />
                                                 <label
                                                     className="form-check-label"
-                                                    htmlFor="form2Example3g"
+                                                    htmlFor="form2Example3cg"
                                                 >
                                                     I agree all statements in{" "}
-                                                    <a href="#!" className="text-body">
+                                                    <a href="#" className="text-body">
                                                         <u>Terms of service</u>
                                                     </a>
                                                 </label>
