@@ -8,7 +8,7 @@ import Register from "../component/register";
 const Home = () => {
 	const { store, actions } = useContext(Context);
 	const history = useNavigate();
-	
+
 	return (
 
 		<>
@@ -23,7 +23,7 @@ const Home = () => {
 					</div>
 					<div className="col-md-8">
 						<div className="card-body text-center">
-							<h1><strong>Better & Beyond</strong></h1>
+							<div className='bg-transparent shadow overflow-hidden'><h1><strong>Better & Beyond</strong></h1></div>
 							<h5 className="card-title ms-1 mt-5">
 								Aprovecha tu tiempo al maximo junto a la plataforma mas flexible
 								de la web
@@ -33,15 +33,15 @@ const Home = () => {
 								miles de profesores en línea de todo el mundo y recibe clases
 								orientadas a tu objetivo. When an unknown printer took a gallery of type and scrambled it to make a type specimen book.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'
 							</p>
-							{!store.currentUser && 
+							{!store.currentUser &&
 								(<p className="card-text">
-								<a
-									className="btn btn-dark border-0 shadow rounded-3 overflow-hidden"
-									href="#register_here"
-								>
-									Register here
-								</a>
-							</p>)
+									<a
+										className="btn btn-dark border-0 shadow rounded-3 overflow-hidden"
+										href="#register_here"
+									>
+										Register here
+									</a>
+								</p>)
 							}
 						</div>
 					</div>
@@ -78,7 +78,7 @@ const Home = () => {
 				</div>
 
 				<div
-					className="card mb-3 ms-5"
+					className="card mb-3 ms-5 rounded"
 					style={{ maxWidth: 540 }}
 				>
 					<div className="row card-group justify-content-between">

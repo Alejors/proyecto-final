@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import "../../styles/private_teacher.css";
 
 export default function () {
     return (
@@ -30,7 +31,7 @@ export default function () {
                             </div>
                         </aside>
                         <nav className="list-group">
-                            <a className="list-group-item" href="#">
+                            <a className="list-group-item" href="/profile">
                                 <i className="fa fa-map" />
                                 Datos personales
                             </a>
@@ -56,6 +57,9 @@ export default function () {
                         </nav>
                     </div>
                     <div className="col-lg-8">
+                        <div className="container">
+                            <h1>Agrega una clase a tu perfil</h1>
+                        </div>
                         <div className="padding-top-2x mt-2 hidden-lg-up" />
                         <div className="comment">
                             <div className="comment-author-ava">
@@ -130,6 +134,29 @@ export default function () {
                                 />
                             </div>
                         </div>
+                        <div className="container">
+                            <h1>Selecciona una categoria</h1>
+                        </div>
+                        <div className="form-floating">
+                            <select
+                                className="form-select mb-4"
+                                id="floatingSelect"
+                                aria-label="Floating label select example"
+                            >
+                                <option selected>Abre para ver las categorias</option>
+                                <option value="1">Espiritualidad</option>
+                                <option value="2">Gamming</option>
+                                <option value="3">Salud y autocuidado</option>
+                                <option value="1">Outdoor</option>
+                                <option value="2">Beauty & Fashion</option>
+                                <option value="3">Habilidades sociales</option>
+                                <option value="1">Cuidado de mascotas</option>
+                                <option value="2">Cuidado del hogar</option>
+                                <option value="3">Hobbies</option>
+                                <option value="3">Sustentabilidad</option>
+                            </select>
+                            <label for="floatingSelect">Selecciona un servicio</label>
+                        </div>
                         <div className="comment">
                             <div className="comment-author-ava">
                                 <img
@@ -145,29 +172,7 @@ export default function () {
                         </div>
                         {/* Reply Form*/}
                         <form>
-                            <div className="container">
-                                <h1>Selecciona una categoria</h1>
-                            </div>
-                            <div className="form-floating">
-                                <select
-                                    className="form-select mb-4"
-                                    id="floatingSelect"
-                                    aria-label="Floating label select example"
-                                >
-                                    <option selected>Abre para ver las categorias</option>
-                                    <option value="1">Espiritualidad</option>
-                                    <option value="2">Gamming</option>
-                                    <option value="3">Salud y autocuidado</option>
-                                    <option value="1">Outdoor</option>
-                                    <option value="2">Beauty & Fashion</option>
-                                    <option value="3">Habilidades sociales</option>
-                                    <option value="1">Cuidado de mascotas</option>
-                                    <option value="2">Cuidado del hogar</option>
-                                    <option value="3">Hobbies</option>
-                                    <option value="3">Sustentabilidad</option>
-                                </select>
-                                <label for="floatingSelect">Selecciona un servicio</label>
-                            </div>
+
 
                             <button type="submit" className="btn btn-primary">
                                 Submit
