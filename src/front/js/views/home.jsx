@@ -8,19 +8,7 @@ import Register from "../component/register";
 const Home = () => {
 	const { store, actions } = useContext(Context);
 	const history = useNavigate();
-	const [show, setShow] = useState(false);
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-	const [isError, setIsError] = useState("");
-
-	const checkValidation = (e) => {
-
-		if (password !== confirmPassword) {
-			setIsError("La contraseña debe coincidir");
-		} else {
-			setIsError(<i className="fas fa-check"></i>);
-		}
-	};
+	
 	return (
 
 		<>
@@ -44,14 +32,16 @@ const Home = () => {
 								miles de profesores en línea de todo el mundo y recibe clases
 								orientadas a tu objetivo. When an unknown printer took a gallery of type and scrambled it to make a type specimen book.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'
 							</p>
-							<p className="card-text">
+							{!store.currentUser && 
+								(<p className="card-text">
 								<a
 									className="btn btn-dark border-0 shadow rounded-3 overflow-hidden"
 									href="#register_here"
 								>
 									Register here
 								</a>
-							</p>
+							</p>)
+							}
 						</div>
 					</div>
 				</div>
@@ -118,131 +108,10 @@ const Home = () => {
 			</div>
 
 			{/* register */}
-			<div onSubmit={e => actions.handleSubmit(e, history)}>
-				<section className="vh-100 bg-transparent my-5 p-3" id="register_here">
-					<div className="mask d-flex align-items-center h-70 gradient-custom-3">
-						<div className="container h-70">
-							<div className="row d-flex justify-content-center align-items-center h-70">
-								<div className="col-12 col-md-6 col-md-6 col-md-4">
-									<div className="card" style={{ borderRadius: 15 }}>
-										<div className="card-body p-3">
-											<h2 className="text-uppercase text-center mb-4">
-												Create an account
-											</h2>
-											<div className='form-register'>
-												<div className="d-flex flex-row align-items-center mb-4">
-													<i className="fas fa-user fa-lg me-3 fa-fw"></i>
-													<input
-														name='name'
-														type="text"
-														id="form3Example1cg"
-														className="form-control form-control me-5"
-														placeholder="Your Name"
-														onChange={e => actions.handleChange(e)}
-														value={store.name}
-													/>
-													<span className='col-md-1'></span>
-												</div>
-												<div className="d-flex flex-row align-items-center mb-4">
-													<i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-													<input
-														name='email'
-														type="email"
-														id="form3Example3cg"
-														className="form-control form-control me-5"
-														placeholder="E-mail"
-														onChange={e => actions.handleChange(e)}
-														value={store.email}
-													/>
-													<span className='col-md-1'></span>
-												</div>
-												<div className="d-flex flex-row align-items-center mb-4">
-													<i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-													<input
-														name='password'
-														id="form3Example4cg"
-														className="form-control form-control"
-														placeholder="Password"
-														onChange={e => { actions.handleChange(e), setPassword(e.target.value) }}
-														type={!show ? "password" : "text"}
-														value={store.password}
-
-													/>
-													<span className='btn btn-light my-1 ms-1 btn-md float ' onClick={() => setShow(!show)}>{
-														!show ? (
-															<i className="fas fa-eye"></i>) : (
-															<i className="fas fa-eye-slash"></i>
-														)
-													}
-													</span>
-													<span className='col-md-2'></span>
-												</div>
-												<div className="d-flex flex-row align-items-center mb-4"
-													data-validate="Confirm data is required">
-													<i className="fas fa-key fa-lg me-3 fa-fw"></i>
-													<input
-														name='confirmPassword'
-														id="form3Example4cdg"
-														className="form-control form-control"
-														onChange={(e) => { setConfirmPassword(e.target.value), checkValidation(e.target.value) }}
-														type={!show ? "password" : "text"}
-														placeholder="Confirm password"
-														value={confirmPassword}
-
-													/>
-
-													<span className='btn btn-light my-1 ms-1 btn-md float' onClick={() => setShow(!show)}>{
-														!show ? (
-															<i className="fas fa-eye"></i>) : (
-															<i className="fas fa-eye-slash"></i>
-														)
-													}
-													</span>
-													<span className='col-md-2'></span>
-													<div id="emailHelp" className="form-text">{isError}</div>
-
-												</div>
-												<div className="form-check d-flex justify-content-center mb-5">
-													<input
-														className="form-check-input me-2"
-														type="checkbox"
-														defaultValue=""
-														id="form2Example3cg"
-													/>
-													<label
-														className="form-check-label"
-														htmlFor="form2Example3g"
-													>
-														I agree all statements in{" "}
-														<a href="#!" className="text-body">
-															<u>Terms of service</u>
-														</a>
-													</label>
-												</div>
-												<div className="d-flex justify-content-center">
-													<button
-														type="button"
-														className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-													>
-														Register
-													</button>
-												</div>
-												<p className="text-center text-muted mt-5 mb-0">
-													Have already an account?{" "}
-													<a href="/login" className="fw-bold text-body">
-														<u>Login here</u>
-													</a>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-
+			{
+				!store.currentUser &&
+				<Register />
+			}
 		</>
 	);
 };

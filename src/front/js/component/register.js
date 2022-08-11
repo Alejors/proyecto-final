@@ -7,54 +7,143 @@ const Register = () => {
     const history = useNavigate();
     const [show, setShow] = useState(false);
 
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [isError, setIsError] = useState("");
+
+    const checkValidation = (e) => {
+
+        if (password !== confirmPassword) {
+            setIsError("La contraseña debe coincidir");
+        } else {
+            setIsError(<i className="fas fa-check"></i>);
+        }
+    };
     return (
-        <form onSubmit={e => actions.handleSubmit(e, history)}>
-            <div className="Head" id="FirstHead">
-                <div className="form" id='Reg'>
-                    <input
-                        name='email'
-                        className="form-control form-control-sm mt-2"
-                        onChange={e => actions.handleChange(e)}
-                        type="email"
-                        placeholder="Email"
-                        value={store.email}
-                    />
-                    <div className='d-flex'>
-                        <input
-                            name='password'
-                            className="form-control form-control-sm mt-2"
-                            onChange={e => actions.handleChange(e)}
-                            type={!show ? "password" : "text"}
-                            placeholder="password"
-                            value={store.password}
-                        />
-                        <span className='btn btn-primary mt-2 ms-1 btn-sm' onClick={() => setShow(!show)}>
-                            {
-                                !show ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
-                                        <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
-                                        <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
-                                        <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
-                                    </svg>) : (
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye" viewBox="0 0 16 16">
-                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                    </svg>
-                                )
-                            }
-                        </span>
+        <section className="vh-100 bg-transparent my-5 p-3" id="register_here">
+            <div className="mask d-flex align-items-center h-70 gradient-custom-3">
+                <div className="container h-70">
+                    <div className="row d-flex justify-content-center align-items-center h-70">
+                        <div className="col-12 col-md-6 col-md-6 col-md-4">
+                            <div className="card" style={{ borderRadius: 15 }}>
+                                <div className="card-body p-3">
+                                    <h2 className="text-uppercase text-center mb-4">
+                                        Create an account
+                                    </h2>
+                                    <div className='form-register'>
+                                        <form onSubmit={e => actions.handleSubmit(e, history)}>
+                                            <div className="d-flex flex-row align-items-center mb-4">
+                                                <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                                                <input
+                                                    name='name'
+                                                    type="text"
+                                                    id="form3Example1cg"
+                                                    className="form-control form-control me-5"
+                                                    placeholder="Your Name"
+                                                    onChange={e => actions.handleChange(e)}
+                                                    value={store.name}
+                                                />
+                                                <span className='col-md-1'></span>
+                                            </div>
+                                            <div className="d-flex flex-row align-items-center mb-4">
+                                                <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                                <input
+                                                    name='email'
+                                                    type="email"
+                                                    id="form3Example3cg"
+                                                    className="form-control form-control me-5"
+                                                    placeholder="E-mail"
+                                                    onChange={e => actions.handleChange(e)}
+                                                    value={store.email}
+                                                />
+                                                <span className='col-md-1'></span>
+                                            </div>
+                                            <div className="d-flex flex-row align-items-center mb-4">
+                                                <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                                <input
+                                                    name='password'
+                                                    id="form3Example4cg"
+                                                    className="form-control form-control"
+                                                    placeholder="Password"
+                                                    onChange={e => { actions.handleChange(e), setPassword(e.target.value) }}
+                                                    type={!show ? "password" : "text"}
+                                                    value={store.password}
+
+                                                />
+                                                <span className='btn btn-light my-1 ms-1 btn-md float ' onClick={() => setShow(!show)}>{
+                                                    !show ? (
+                                                        <i className="fas fa-eye"></i>) : (
+                                                        <i className="fas fa-eye-slash"></i>
+                                                    )
+                                                }
+                                                </span>
+                                                <span className='col-md-2'></span>
+                                            </div>
+                                            <div className="d-flex flex-row align-items-center mb-4"
+                                                data-validate="Confirm data is required">
+                                                <i className="fas fa-key fa-lg me-3 fa-fw"></i>
+                                                <input
+                                                    name='confirmPassword'
+                                                    id="form3Example4cdg"
+                                                    className="form-control form-control"
+                                                    onChange={(e) => { setConfirmPassword(e.target.value), checkValidation(e.target.value) }}
+                                                    type={!show ? "password" : "text"}
+                                                    placeholder="Confirm password"
+                                                    value={confirmPassword}
+
+                                                />
+
+                                                <span className='btn btn-light my-1 ms-1 btn-md float' onClick={() => setShow(!show)}>{
+                                                    !show ? (
+                                                        <i className="fas fa-eye"></i>) : (
+                                                        <i className="fas fa-eye-slash"></i>
+                                                    )
+                                                }
+                                                </span>
+                                                <span className='col-md-2'></span>
+                                                <div id="emailHelp" className="form-text">{isError}</div>
+
+                                            </div>
+                                            <div className="form-check d-flex justify-content-center mb-5">
+                                                <input
+                                                    className="form-check-input me-2"
+                                                    type="checkbox"
+                                                    defaultValue=""
+                                                    id="form2Example3cg"
+                                                />
+                                                <label
+                                                    className="form-check-label"
+                                                    htmlFor="form2Example3g"
+                                                >
+                                                    I agree all statements in{" "}
+                                                    <a href="#!" className="text-body">
+                                                        <u>Terms of service</u>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div className="d-flex justify-content-center">
+                                                <button
+                                                    type="submit"
+                                                    className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                                                >
+                                                    Register
+                                                </button>
+                                            </div>
+                                            <p className="text-center text-muted mt-5 mb-0">
+                                                Have already an account?{" "}
+                                                <a href="/login" className="fw-bold text-body">
+                                                    <u>Login here</u>
+                                                </a>
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                </div>
-
-                <div className="button">
-                    <button type='submit' className="btn btn-dark" offset={-200} duration={500}>
-                        Register
-                    </button>
                 </div>
             </div>
-        </form>
-
+        </section>
     )
 }
 

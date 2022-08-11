@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handleSubmit: async (e, history) => {
 				e.preventDefault();
 
-				const { api, email, password } = getStore();
+				const { api, email, password, name } = getStore();
 				const response = await fetch(`${api}/api/users`, {
 					method: 'POST',
 					headers: {
@@ -82,7 +82,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						'email': email,
-						'password': password
+						'password': password,
+						'name': name
 					})
 				});
 
@@ -95,7 +96,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					window.alert(message)
 					setStore({
 						email: '',
-						password: ''
+						password: '',
+						name:''
 					})
 					history('/login');
 				}
