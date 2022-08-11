@@ -97,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						email: '',
 						password: ''
 					})
-					history('/preferences');
+					history('/login');
 				}
 			},
 			handlePreferences: (e) => {
@@ -160,6 +160,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadProfile: () => {
 				const { currentUser } = getStore();
+
+				let rol =""
+				if (currentUser?.user?.rol?.cliente == true){rol = "Student";}
+				else if (currentUser?.user?.rol?.profesor == true){rol = "Profesor";}
+				else{rol = "Admin";}
+
 				setStore({
 					name: currentUser?.user?.profile?.name,
 					lastname: currentUser?.user?.profile?.lastname,
@@ -169,7 +175,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					instagram: currentUser?.user?.profile?.instagram,
 					twitter: currentUser?.user?.profile?.twitter,
 					linkedin: currentUser?.user?.profile?.linkedin,
-					picture: currentUser?.user?.profile?.picture
+					picture: currentUser?.user?.profile?.picture,
+					rol: rol
 				})
 			},
 			checkAuthentication: () => {

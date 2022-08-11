@@ -11,6 +11,7 @@ const PrivateHome = () => {
     if(store.currentUser == null) history('/login');
     actions.loadProfile();
     window.scrollTo(0, 0);
+    if(store.currentUser?.user?.profile?.services?.length == 0) history('/preferences');
   }, [])
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const PrivateHome = () => {
         <div className='container px-4 px-lg-5 my-5'>
           <div className='text-center text-white'>
             <h1 className='display-4 fw-bolder'>{store.name} {store.lastname}</h1>
-            <p className='lead fw-normal text-white-50 mb-0'>Student</p>
+            <p className='lead fw-normal text-white-50 mb-0'>{store.rol}</p>
           </div>
         </div>
       </header>

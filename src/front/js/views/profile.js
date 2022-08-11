@@ -70,7 +70,7 @@ const Profile = () => {
               </tr>
               <tr>
                 <th scope='row'>Category</th>
-                <td>Student</td>
+                <td>{store.rol}</td>
               </tr>
               <tr>
                 <th scope='row'>Favorite topics</th>
