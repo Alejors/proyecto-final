@@ -7,14 +7,14 @@ const Profile = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    if(store.currentUser == null) history('/login');
+    if (store.currentUser == null) history('/login');
     actions.loadProfile();
     window.scrollTo(0, 0);
-  },[])
+  }, [])
 
   useEffect(() => {
     actions.loadProfile();
-    if(store.currentUser == null) history('/login');
+    if (store.currentUser == null) history('/login');
   }, [store.currentUser])
 
   return (
