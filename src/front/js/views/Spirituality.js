@@ -29,8 +29,6 @@ const Spirituality = () => {
         if (store.currentUser == null) history('/login');
     }, [])
     const { store } = useContext(Context);
-    let j = [1, 2, 3, 4,]
-    let l = [5, 6, 7, 8,]
     return (
         <>
             <div className="header-container mb-4 d-flex" style={estiloDiv}>
@@ -42,7 +40,7 @@ const Spirituality = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[2].individuals.map((item, index) => (
-                            <CardGeneral {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[2].name} key={index} index={index} />
                         ))}
                 </div>
             </div>

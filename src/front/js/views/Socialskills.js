@@ -40,7 +40,7 @@ const Socialskills = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[5].individuals.map((item, index) => (
-                            <CardGeneral {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[5].name} key={index} index={index} />
                         ))}
                 </div>
             </div>

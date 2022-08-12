@@ -18,9 +18,9 @@ const estiloVideo = {
 };
 
 
-const CardGeneral = ({ index, name, description, urlmedia }) => {
+const CardGeneral = ({ index, name, description, urlmedia, nombre }) => {
     const { store } = useContext(Context);
-
+    console.log(nombre)
     return (
         <>
             <div className='col-3' key={index} index={index}>
@@ -40,7 +40,7 @@ const CardGeneral = ({ index, name, description, urlmedia }) => {
                         <p className="card-text">
                             {description}
                         </p>
-                        <Link to={`/${name}/${index}`} className="btn btn-primary" style={estiloBoton}>
+                        <Link to={`/${nombre}/${index}`} className="btn btn-primary" style={estiloBoton}>
                             Learn More!
                         </Link>
                     </div>

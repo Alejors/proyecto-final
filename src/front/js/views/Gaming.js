@@ -41,7 +41,7 @@ const Gaming = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[0].individuals.map((item, index) => (
-                            <CardGeneral {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[0].name} key={index} index={index} />
                         ))}
                 </div>
             </div>

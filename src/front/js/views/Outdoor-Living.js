@@ -40,7 +40,7 @@ const OutdoorLiving = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[3].individuals.map((item, index) => (
-                            <CardGeneral {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[3].name} key={index} index={index} />
                         ))}
                 </div>
             </div>

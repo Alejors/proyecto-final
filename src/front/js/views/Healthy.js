@@ -40,7 +40,7 @@ const Healthy = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[1].individuals.map((item, index) => (
-                            <CardGeneral {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[1].name} key={index} index={index} />
                         ))}
                 </div>
             </div>

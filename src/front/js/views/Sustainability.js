@@ -40,7 +40,7 @@ const Sustainability = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[6].individuals.map((item, index) => (
-                            <CardGeneral {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[6].name} key={index} index={index} />
                         ))}
                 </div>
             </div>
