@@ -37,7 +37,7 @@ const Gaming = () => {
                 <Link to="/private" className="btn btn-primary" style={estiloLink}>Back</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
+                <div className='row row-cols-1 row-cols-md-4 g-4'>
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[0].individuals.map((item, index) => (

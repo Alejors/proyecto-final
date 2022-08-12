@@ -86,6 +86,7 @@ const InfoUpdate = () => {
                     }
                     </ul>
                     <Link to='/preferences'><button className="btn btn-primary mt-3">Update preferences</button></Link>
+                    <Link to='/profile'><button className="btn btn-danger mt-3">Cancel</button></Link>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ const Card = ({ content }) => {
   let imgSrc = topicFound['img']
 
   return (
-    <div className='col mb-5'>
+    <div className='col mb-3'>
       <div className='card h-100'>
         <img
           className='card-img-top'

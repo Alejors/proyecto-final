@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import "../../styles/private_teacher.css";
+import { Context } from '../store/appContext';
 
 const Private_teacher = () => {
+    const { store } = useContext(Context);
+
     return (
         <>
             <div className="container padding-bottom-3x mb-2">
@@ -21,12 +24,12 @@ const Private_teacher = () => {
                                 <div className="user-avatar">
                                     <a className="edit-avatar" href="#" />
                                     <img
-                                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                        src={(store.picture == "") ? "https://bootdey.com/img/Content/avatar/avatar1.png" : store.picture}
                                         alt="User"
                                     />
                                 </div>
                                 <div className="user-data">
-                                    <h4>Daniel Adams</h4>
+                                    <h4>{store.name} {store.lastname}</h4>
                                     <span>Joined February 06, 2017</span>
                                 </div>
                             </div>
