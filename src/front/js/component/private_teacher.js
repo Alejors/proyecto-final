@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 import "../../styles/private_teacher.css";
 
 export default function () {
@@ -36,8 +37,8 @@ export default function () {
                                 Datos personales
                             </a>
                             <a className="list-group-item with-badge" href="!#">
-                                <i class="fas fa-glasses"></i>
-                                Feed-back{" "}
+                                <i className="fas fa-glasses"></i>
+                                Feed-back
                                 <span className="badge badge-primary badge-pill">4</span>
                             </a>
                             <a className="list-group-item with-badge" href="#">
@@ -50,7 +51,7 @@ export default function () {
                                 Agregar/Eliminar clase
                             </a>
                             <a className="list-group-item with-badge" href="#!">
-                                <i class="fa fa-dollar-sign"></i>
+                                <i className="fa fa-dollar-sign"></i>
                                 Mis ganancias
                                 <span className="badge badge-primary badge-pill">4</span>
                             </a>
@@ -94,7 +95,7 @@ export default function () {
                                         className="form-control"
                                         id="exampleFormControlTextarea1"
                                         rows={3}
-                                        defaultValue={""}
+                                        defaultValue=""
                                     />
                                 </div>
                             </>
@@ -137,25 +138,21 @@ export default function () {
                         <div className="container">
                             <h1>Selecciona una categoria</h1>
                         </div>
-                        <div className="form-floating">
-                            <select
-                                className="form-select mb-4"
-                                id="floatingSelect"
-                                aria-label="Floating label select example"
-                            >
-                                <option selected>Abre para ver las categorias</option>
+                        <div className="form-floating my-4 ">
+                            <Form.Select aria-label="Default select example">
+                                <option>Abre para ver las opciones</option>
                                 <option value="1">Espiritualidad</option>
                                 <option value="2">Gamming</option>
                                 <option value="3">Salud y autocuidado</option>
-                                <option value="1">Outdoor</option>
-                                <option value="2">Beauty & Fashion</option>
-                                <option value="3">Habilidades sociales</option>
-                                <option value="1">Cuidado de mascotas</option>
-                                <option value="2">Cuidado del hogar</option>
-                                <option value="3">Hobbies</option>
-                                <option value="3">Sustentabilidad</option>
-                            </select>
-                            <label for="floatingSelect">Selecciona un servicio</label>
+                                <option value="4">Outdoor</option>
+                                <option value="5">Beauty & Fashion</option>
+                                <option value="6">Habilidades sociales</option>
+                                <option value="7">Cuidado de mascotas</option>
+                                <option value="8">Cuidado del hogar</option>
+                                <option value="9">Hobbies</option>
+                                <option value="10">Sustentabilidad</option>
+                            </Form.Select>
+                            <label htmlFor="floatingSelect">Selecciona un servicio</label>
                         </div>
                         <div className="comment">
                             <div className="comment-author-ava">
@@ -167,10 +164,9 @@ export default function () {
                             <div className="comment-body">
                                 <p className="comment-text">Yoga (principiantes)</p>
                                 <p className="comment-text">Hikking (senderismo preparado)</p>
-                                <p className="comment-text">Meditacion ()</p>
+                                <p className="comment-text">Meditacion (respiracion equilibrada)</p>
                             </div>
                         </div>
-                        {/* Reply Form*/}
                         <form>
 
 
