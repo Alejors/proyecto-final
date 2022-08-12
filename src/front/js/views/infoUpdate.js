@@ -77,10 +77,13 @@ const InfoUpdate = () => {
                 <div className="input-group my-3 flex-column">
                     <span className="input-group-text">My Topics</span>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Gaming</li>
-                        <li className="list-group-item">Spirituality</li>
-                        <li className="list-group-item">Health</li>
-                        <li className="list-group-item">Outdoor-living</li>
+                        {
+                      !!store.currentUser &&
+                      store.currentUser?.user?.profile?.services.length > 0 &&
+                      store.currentUser.user.profile.services.map((ele, i) => {
+                        return <li key={i} className="list-group-item" style={{'textTransform': 'capitalize'}}>{ele}</li>
+                      })
+                    }
                     </ul>
                     <Link to='/preferences'><button className="btn btn-primary mt-3">Update preferences</button></Link>
                 </div>

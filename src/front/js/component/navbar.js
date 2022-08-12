@@ -19,7 +19,7 @@ const Navbar = () => {
           <ul className="nav navbar-nav navbar-right text-light">
             <li>
               <Link to="/login" >
-                <span className="user-icon text-white" /><i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                <span className="user-icon icon-info" /><i className="fas fa-user fa-lg me-3 fa-fw"></i>
               </Link>
             </li>
           </ul>
@@ -39,9 +39,6 @@ const Navbar = () => {
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="offcanvas-header bg-gradient">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                Menu
-              </h5>
               <button
                 type="button"
                 className="btn-close btn-close-white"
@@ -58,7 +55,7 @@ const Navbar = () => {
                     placeholder="Search"
                     aria-label="Search"
                   />
-                  <button className="btn btn-outline-success" type="submit">
+                  <button className="btn btn-outline-info" type="submit">
                     Search
                   </button>
                 </form>
@@ -75,11 +72,6 @@ const Navbar = () => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/private">
                     Activities
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/private_teacher">
-                    Ingresa como profesor
                   </Link>
                 </li>
                 <li className="nav-item dropdown m-3">
@@ -103,13 +95,13 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/profile">
+                      <Link className="dropdown-item" to="/preferences">
                         Preferences
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="#">
-                        Another action
+                      <Link className="dropdown-item" to="/update">
+                        Update profile
                       </Link>
                     </li>
                     <li>
