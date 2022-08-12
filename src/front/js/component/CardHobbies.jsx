@@ -13,17 +13,21 @@ const estiloCard = {
     height: '104%',
 };
 
+const estiloDiv = {
+    marginBottom: '30px',
+};
+
 const estiloVideo = {
     borderRadius: 'inherit',
 };
 
 
-const CardServices = ({ index, name, description, urlmedia }) => {
+const CardHobbies = ({ index, name, description, urlmedia }) => {
     const { store } = useContext(Context);
 
     return (
         <>
-            <div className='col-3' key={index} index={index}>
+            <div className='col-3' key={index} index={index} style={estiloDiv}>
                 <div className="card" style={estiloCard}>
                     <iframe
                         width="100%"
@@ -40,7 +44,7 @@ const CardServices = ({ index, name, description, urlmedia }) => {
                         <p className="card-text">
                             {description}
                         </p>
-                        <Link to={`/health/${index}`} className="btn btn-primary" style={estiloBoton}>
+                        <Link to={`/hobbies/${index}`} className="btn btn-primary" style={estiloBoton}>
                             Learn More!
                         </Link>
                     </div>
@@ -49,4 +53,4 @@ const CardServices = ({ index, name, description, urlmedia }) => {
         </>
     );
 };
-export default CardServices;
+export default CardHobbies;
