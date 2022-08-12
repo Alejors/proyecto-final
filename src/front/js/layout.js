@@ -65,8 +65,8 @@ const Layout = () => {
                 <Route element={<DetailsSustainability />} exact path="/sustainability/:index" />
                 <Route element={<DetailsPetcare />} exact path="/petcare/:index" />
                 <Route element={<DetailsHomecare />} exact path="/homecare/:index" />
-                <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />                
-                <Route element={<NotFound />} />
+                <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />
+                <Route element={<NotFound />} path="*" />
             </Routes>
             <Footer />
         </BrowserRouter>

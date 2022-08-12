@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import CardGeneral from '../component/CardGeneral.jsx'
@@ -22,6 +22,10 @@ const estiloShow2 = {
 
 const Services = () => {
     const { store } = useContext(Context);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if (store.currentUser == null) history('/login');
+    }, [])
     return (
         <>
             <div className="header-container mb-4 d-flex align-items-center">

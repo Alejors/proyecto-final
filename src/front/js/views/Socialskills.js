@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import CardGeneral from '../component/CardGeneral.jsx'
@@ -24,6 +24,10 @@ const estiloDiv = {
 }
 
 const Socialskills = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if (store.currentUser == null) history('/login');
+    }, [])
     const { store } = useContext(Context);
     return (
         <>
