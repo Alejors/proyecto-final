@@ -78,10 +78,10 @@ const Profile = () => {
                 <td>
                   <ul>
                     {
-                      !!store.currentUser?.user?.profile?.services &&
+                      !!store.currentUser &&
                       store.currentUser?.user?.profile?.services.length > 0 &&
                       store.currentUser.user.profile.services.map((ele, i) => {
-                        return <ServiceLink key={i} content={ele.name} />
+                        return <ServiceLink key={i} content={ele} />
                       })
                     }
                   </ul>

@@ -29,7 +29,7 @@ const Fashion = () => {
         <>
             <div className="header-container mb-4 d-flex" style={estiloDiv}>
                 <h1 className="category-title" style={estiloShow}>Fashion</h1>
-                <Link to="/services" className="btn btn-primary" style={estiloLink}>Back</Link>
+                <Link to="/private" className="btn btn-primary" style={estiloLink}>Back</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>

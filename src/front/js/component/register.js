@@ -11,7 +11,6 @@ const Register = () => {
     const [isError, setIsError] = useState("");
 
     const checkValidation = (e) => {
-        console.log(confirmPassword);
         if (store.password !== confirmPassword) {
             setIsError("La contraseña debe coincidir");
         } else {

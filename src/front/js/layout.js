@@ -46,6 +46,7 @@ const Layout = () => {
                 <Route element={<PrivateHome />} exact path='/private' />
                 <Route element={<InfoUpdate />} exact path='/update' />
                 <Route element={<Services />} exact path="/services" />
+                
                 <Route element={<Gaming />} exact path="/gaming" />
                 <Route element={<Healthy />} exact path="/health" />
                 <Route element={<Spirituality />} exact path="/spirituality" />
@@ -66,6 +67,7 @@ const Layout = () => {
                 <Route element={<DetailsPetcare />} exact path="/petcare/:index" />
                 <Route element={<DetailsHomecare />} exact path="/homecare/:index" />
                 <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />
+                
                 <Route element={<Private_teacher />} exact path="/private_teacher" />
                 <Route element={<NotFound />} />
             </Routes>

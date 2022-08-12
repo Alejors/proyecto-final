@@ -177,7 +177,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (currentUser?.user?.rol?.cliente == true){rol = "Student";}
 				else if (currentUser?.user?.rol?.profesor == true){rol = "Profesor";}
 				else{rol = "Admin";}
-
+				
 				setStore({
 					name: currentUser?.user?.profile?.name,
 					lastname: currentUser?.user?.profile?.lastname,
@@ -311,7 +311,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if(status === 'success'){
 					window.alert(message)
 					currentUser.user.profile.services = filteredPreferences;
-
+					sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 					history('/private')
 				}
 			},
