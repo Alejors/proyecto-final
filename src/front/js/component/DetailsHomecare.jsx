@@ -29,7 +29,7 @@ const estiloText2 = {
 
 
 
-const DetailsOutdoor = () => {
+const DetailsHomecare = () => {
     const { store } = useContext(Context);
     const params = useParams();
     return (
@@ -39,7 +39,7 @@ const DetailsOutdoor = () => {
                     <div className="col-md-12">
                         <div className="card-body">
                             <h2 className="card-title">
-                                {store?.services[3]?.individuals[params.index]?.name}
+                                {store?.services[8]?.individuals[params.index]?.name}
                             </h2>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ const DetailsOutdoor = () => {
                             <iframe
                                 width="90%"
                                 height="450"
-                                src={store?.services[3]?.individuals[params.index]?.urlmedia}
+                                src={store?.services[8]?.individuals[params.index]?.urlmedia}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
@@ -59,7 +59,7 @@ const DetailsOutdoor = () => {
                     <div className="col-md-12" style={estiloDiv4}>
                         <div className="card-body">
                             <p className="card-text" style={estiloText}>
-                                {store?.services[3]?.individuals[params.index]?.description}
+                                {store?.services[8]?.individuals[params.index]?.description}
                             </p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ const DetailsOutdoor = () => {
                                 <div className="col-12">
                                     <h2>Especifications</h2>
                                     <div style={estiloText2}>
-                                        {store?.services[3]?.individuals[params.index]?.especification}
+                                        {store?.services[8]?.individuals[params.index]?.especification}
                                     </div>
                                 </div>
                             </div>
@@ -81,4 +81,4 @@ const DetailsOutdoor = () => {
     );
 };
 
-export default DetailsOutdoor;
+export default DetailsHomecare;

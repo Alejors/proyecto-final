@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
-import CardSpirituality from '../component/CardSpirituality.jsx'
+import CardSocialskills from '../component/CardSocialskills.jsx'
 
 const estiloBoton = {
     marginTop: '10px',
@@ -23,22 +23,20 @@ const estiloDiv = {
     marginTop: '30px'
 }
 
-const Spirituality = () => {
+const Socialskills = () => {
     const { store } = useContext(Context);
-    let j = [1, 2, 3, 4,]
-    let l = [5, 6, 7, 8,]
     return (
         <>
             <div className="header-container mb-4 d-flex" style={estiloDiv}>
-                <h1 className="category-title" style={estiloShow}>Spirituality</h1>
+                <h1 className="category-title" style={estiloShow}>Social Skills</h1>
                 <Link to="/services" className="btn btn-primary" style={estiloLink}>Back</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
                     {!!store.services &&
                         store.services.length > 0 &&
-                        store.services[2].individuals.map((item, index) => (
-                            <CardSpirituality {...item} key={index} index={index} />
+                        store.services[5].individuals.map((item, index) => (
+                            <CardSocialskills {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -46,4 +44,4 @@ const Spirituality = () => {
     )
 };
 
-export default Spirituality;
+export default Socialskills;
