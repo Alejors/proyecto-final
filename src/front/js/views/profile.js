@@ -8,14 +8,14 @@ const Profile = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    if (store.currentUser == null) history('/login');
-    actions.loadProfile();
     window.scrollTo(0, 0);
+    actions.loadProfile();
+    if (store.currentUser == null) history('/login');
   }, [])
 
   useEffect(() => {
-    actions.loadProfile();
     if (store.currentUser == null) history('/login');
+    actions.loadProfile();
   }, [store.currentUser])
 
   return (

@@ -340,6 +340,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (status == 'success'){
 						window.alert(message)
 						currentUser.user.rol = data
+						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
 					}
 
@@ -364,6 +365,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (status == 'success'){
 						window.alert(message)
 						currentUser.user.rol = data
+						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
 					}
 				}

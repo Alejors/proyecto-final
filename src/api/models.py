@@ -77,7 +77,7 @@ class Profile(db.Model):
         db.session.commit()
 
     def get_services(self):
-        return list(map(lambda service: { "name": service.name }, self.services))
+        return list(map(lambda service: service.name, self.services))
         
 
 class Rol(db.Model):

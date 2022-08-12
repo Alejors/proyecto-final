@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import "../../styles/private_teacher.css";
 
-export default function () {
+const Private_teacher = () => {
     return (
         <>
             <div className="container padding-bottom-3x mb-2">
@@ -32,10 +32,10 @@ export default function () {
                             </div>
                         </aside>
                         <nav className="list-group">
-                            <a className="list-group-item" href="/profile">
+                            <Link className="list-group-item" to="/profile">
                                 <i className="fa fa-map" />
                                 Datos personales
-                            </a>
+                            </Link>
                             <a className="list-group-item with-badge" href="!#">
                                 <i className="fas fa-glasses"></i>
                                 Feed-back
@@ -169,7 +169,6 @@ export default function () {
                         </div>
                         <form>
 
-
                             <button type="submit" className="btn btn-primary">
                                 Submit
                             </button>
@@ -180,3 +179,4 @@ export default function () {
         </>
     )
 }
+export default Private_teacher;

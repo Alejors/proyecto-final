@@ -25,7 +25,6 @@ import Gaming from "./views/Gaming";
 import Spirituality from "./views/Spirituality";
 import Healthy from "./views/Healthy";
 import Preferences from "./views/preferences";
-import Private_teacher from "./component/private_teacher";
 import Fashion from "./views/Fashion";
 import Socialskills from "./views/Socialskills";
 import Sustainability from "./views/Sustainability";
@@ -46,7 +45,6 @@ const Layout = () => {
                 <Route element={<PrivateHome />} exact path='/private' />
                 <Route element={<InfoUpdate />} exact path='/update' />
                 <Route element={<Services />} exact path="/services" />
-                
                 <Route element={<Gaming />} exact path="/gaming" />
                 <Route element={<Healthy />} exact path="/health" />
                 <Route element={<Spirituality />} exact path="/spirituality" />
@@ -67,9 +65,7 @@ const Layout = () => {
                 <Route element={<DetailsSustainability />} exact path="/sustainability/:index" />
                 <Route element={<DetailsPetcare />} exact path="/petcare/:index" />
                 <Route element={<DetailsHomecare />} exact path="/homecare/:index" />
-                <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />
-                
-                <Route element={<Private_teacher />} exact path="/private_teacher" />
+                <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />                
                 <Route element={<NotFound />} />
             </Routes>
             <Footer />

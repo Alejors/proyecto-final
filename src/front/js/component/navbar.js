@@ -74,11 +74,6 @@ const Navbar = () => {
                     Activities
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/private_teacher">
-                    Ingresa como profesor
-                  </Link>
-                </li>
                 <li className="nav-item dropdown m-3">
                   <Link
                     className="nav-link dropdown-toggle"
@@ -100,13 +95,13 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/profile">
+                      <Link className="dropdown-item" to="/preferences">
                         Preferences
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="#">
-                        Another action
+                      <Link className="dropdown-item" to="/update">
+                        Update profile
                       </Link>
                     </li>
                     <li>
