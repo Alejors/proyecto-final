@@ -107,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({
 						email: '',
 						password: '',
-						name:''
+						name: ''
 					})
 					history('/login');
 				}
@@ -173,10 +173,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadProfile: () => {
 				const { currentUser } = getStore();
 
-				let rol =""
-				if (currentUser?.user?.rol?.cliente == true){rol = "Student";}
-				else if (currentUser?.user?.rol?.profesor == true){rol = "Profesor";}
-				else{rol = "Admin";}
+				let rol = ""
+				if (currentUser?.user?.rol?.cliente == true) { rol = "Student"; }
+				else if (currentUser?.user?.rol?.profesor == true) { rol = "Profesor"; }
+				else { rol = "Admin"; }
 
 				setStore({
 					name: currentUser?.user?.profile?.name,
@@ -188,7 +188,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					twitter: currentUser?.user?.profile?.twitter,
 					linkedin: currentUser?.user?.profile?.linkedin,
 					picture: currentUser?.user?.profile?.picture,
-					rol: rol
+					rol: rol,
+
 				})
 			},
 			checkAuthentication: () => {
@@ -272,8 +273,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			handleLogout: () => {
 				sessionStorage.removeItem('currentUser')
-				setStore({ 
-					currentUser: null, 
+				setStore({
+					currentUser: null,
 					email: '',
 					name: ''
 				})
@@ -281,14 +282,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			updatePreferences: async (e, history) => {
 				e.preventDefault();
 				const { preferences, api, currentUser } = getStore();
-				
+
 				let filteredPreferences = [];
-				for (const element in preferences){
-					if(preferences[`${element}`] == 'true'){
+				for (const element in preferences) {
+					if (preferences[`${element}`] == 'true') {
 						filteredPreferences.push(element);
 					}
 				}
-				if(filteredPreferences.length == 0) {
+				if (filteredPreferences.length == 0) {
 					window.alert('Must pick at least one preference')
 					return null
 				}
@@ -305,10 +306,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const { status, message } = await response.json();
 
-				if(status === 'failed'){
+				if (status === 'failed') {
 					window.alert(message);
 				}
-				if(status === 'success'){
+				if (status === 'success') {
 					window.alert(message)
 					currentUser.user.profile.services = filteredPreferences;
 
@@ -318,8 +319,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			switchCategory: async () => {
 				const { currentUser, rol, api } = getStore();
 				const { loadProfile } = getActions();
-				
-				if(rol == 'Student'){
+
+				if (rol == 'Student') {
 					const response = await fetch(`${api}api/category`, {
 						method: 'PUT',
 						headers: {
@@ -332,18 +333,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						})
 					});
 
-					const {status, message, data } = await response.json();
+					const { status, message, data } = await response.json();
 
-					if (status == 'failed'){
+					if (status == 'failed') {
 						window.alert(message)
 					}
-					if (status == 'success'){
+					if (status == 'success') {
 						window.alert(message)
 						currentUser.user.rol = data
 						loadProfile();
 					}
 
-				}else if(rol == 'Profesor'){
+				} else if (rol == 'Profesor') {
 					const response = await fetch(`${api}api/category`, {
 						method: 'PUT',
 						headers: {
@@ -356,12 +357,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						})
 					});
 
-					const {status, message, data } = await response.json();
+					const { status, message, data } = await response.json();
 
-					if (status == 'failed'){
+					if (status == 'failed') {
 						window.alert(message)
 					}
-					if (status == 'success'){
+					if (status == 'success') {
 						window.alert(message)
 						currentUser.user.rol = data
 						loadProfile();

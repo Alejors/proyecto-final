@@ -11,7 +11,6 @@ const Register = () => {
     const [isError, setIsError] = useState("");
 
     const checkValidation = (e) => {
-        console.log(confirmPassword);
         if (store.password !== confirmPassword) {
             setIsError("La contraseña debe coincidir");
         } else {
@@ -30,7 +29,7 @@ const Register = () => {
                                         Create an account
                                     </h2>
                                     <div className='form-register'>
-                                        <form onSubmit={e => {actions.handleSubmit(e, history)}}>
+                                        <form onSubmit={e => { actions.handleSubmit(e, history) }}>
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                 <input
@@ -62,13 +61,13 @@ const Register = () => {
                                                     id="form3Example4cg"
                                                     className="form-control form-control"
                                                     placeholder="Password"
-                                                    onChange={e => { actions.handleChange(e)}}
+                                                    onChange={e => { actions.handleChange(e) }}
                                                     onKeyUp={() => checkValidation()}
                                                     type={!show ? "password" : "text"}
                                                     value={store.password}
 
                                                 />
-                                                 <span className='btn btn-light my-1 ms-1 btn-md float me-1' onClick={() => setShow(!show)}>{
+                                                <span className='btn btn-light my-1 ms-1 btn-md float me-1' onClick={() => setShow(!show)}>{
                                                     !show ? (
                                                         <i className="fas fa-eye"></i>) : (
                                                         <i className="fas fa-eye-slash"></i>
@@ -83,13 +82,13 @@ const Register = () => {
                                                     name='confirmPassword'
                                                     id="form3Example4cdg"
                                                     className="form-control form-control"
-                                                    onChange={(e) => { setConfirmPassword(e.target.value)}}
+                                                    onChange={(e) => { setConfirmPassword(e.target.value) }}
                                                     onKeyUp={() => checkValidation()}
                                                     type={!show ? "password" : "text"}
                                                     placeholder="Confirm password"
 
                                                 />
-                                                <span className='ms-2 me-5'>{isError}</span>  
+                                                <span className='ms-2 me-5'>{isError}</span>
                                             </div>
                                             <div className="form-check d-flex justify-content-center mb-5">
                                                 <input

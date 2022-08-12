@@ -40,10 +40,10 @@ const PrivateHome = () => {
         <div className='container px-4 px-lg-5 mt-5'>
           <div className='row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center'>
             {
-              !!store.currentUser?.user?.profile?.services &&
-              store.currentUser?.user?.profile?.services.length > 0 &&
-              store.currentUser.user.profile.services.map((ele, i) => {
-                return <Card key={i} content={ele.name}/>
+              !!store?.currentUser &&
+              store?.currentUser?.user?.profile?.services?.length > 0 &&
+              store?.currentUser?.user?.profile?.services?.map((ele, i) => {
+                return <Card key={i} content={ele} />
               })
             }
           </div>

@@ -18,7 +18,7 @@ const estiloVideo = {
 };
 
 
-const CardFashion = ({ index, name, description, urlmedia }) => {
+const CardGeneral = ({ index, name, description, urlmedia }) => {
     const { store } = useContext(Context);
 
     return (
@@ -40,7 +40,7 @@ const CardFashion = ({ index, name, description, urlmedia }) => {
                         <p className="card-text">
                             {description}
                         </p>
-                        <Link to={`/fashion/${index}`} className="btn btn-primary" style={estiloBoton}>
+                        <Link to={`/${name}/${index}`} className="btn btn-primary" style={estiloBoton}>
                             Learn More!
                         </Link>
                     </div>
@@ -49,4 +49,4 @@ const CardFashion = ({ index, name, description, urlmedia }) => {
         </>
     );
 };
-export default CardFashion;
+export default CardGeneral;

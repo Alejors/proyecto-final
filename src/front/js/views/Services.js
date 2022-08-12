@@ -1,18 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
-import CardGaming from '../component/CardGaming.jsx'
-import CardOutdoor from '../component/CardOutdoor.jsx'
-import CardSpirituality from '../component/CardSpirituality.jsx'
-import CardHealthy from '../component/CardHealthy.jsx'
-import CardFashion from '../component/CardFashion.jsx';
-import CardSocialskills from '../component/CardSocialskills.jsx';
-import CardSustainability from '../component/CardSustainability.jsx';
-import CardPetcare from '../component/CardPetcare.jsx';
-import CardHomecare from '../component/CardHomecare.jsx';
-import CardHobbies from '../component/CardHobbies.jsx';
-
-
+import CardGeneral from '../component/CardGeneral.jsx'
 
 
 const estiloBoton = {
@@ -29,7 +18,7 @@ const estiloShow2 = {
     marginLeft: '10px',
     marginTop: '15px'
 }
- 
+
 
 const Services = () => {
     const { store } = useContext(Context);
@@ -44,7 +33,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[0].individuals.map((item, index) => (
-                            <CardGaming {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -57,7 +46,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[1].individuals.map((item, index) => (
-                            <CardHealthy {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -70,7 +59,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[2].individuals.map((item, index) => (
-                            <CardSpirituality {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -83,7 +72,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[3].individuals.map((item, index) => (
-                            <CardOutdoor {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -96,7 +85,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[4].individuals.map((item, index) => (
-                            <CardFashion {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -109,7 +98,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[5].individuals.map((item, index) => (
-                            <CardSocialskills {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -122,7 +111,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[6].individuals.map((item, index) => (
-                            <CardSustainability {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -135,7 +124,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[7].individuals.map((item, index) => (
-                            <CardPetcare {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -148,7 +137,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[8].individuals.map((item, index) => (
-                            <CardHomecare {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
@@ -161,7 +150,7 @@ const Services = () => {
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[9].individuals.map((item, index) => (
-                            <CardHobbies {...item} key={index} index={index} />
+                            <CardGeneral {...item} key={index} index={index} />
                         ))}
                 </div>
             </div>
