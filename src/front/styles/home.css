@@ -17,21 +17,14 @@ body {
     background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
 }
 
+.container-title{
+  text-shadow: 5px 5px 5px rgb(70, 63, 63);
+}
+
 .img-card {
     object-fit: contain;
     
 }
-
-/* .cascading-left {
-    margin-left: -50px;
-  }
-
-  @media (max-width: 991.98px) {
-    .cascading-right {
-      margin-right: 0;
-    }
-  } */
-
 
 .img-fluid {
     border-radius: 50%;

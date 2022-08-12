@@ -23,7 +23,7 @@ const Home = () => {
 					</div>
 					<div className="col-md-8">
 						<div className="card-body text-center">
-							<div className='bg-transparent shadow overflow-hidden'><h1><strong>Better & Beyond</strong></h1></div>
+							<div className='container-title bg-transparent'><h1><strong>Better & Beyond</strong></h1></div>
 							<h5 className="card-title ms-1 mt-5">
 								Aprovecha tu tiempo al maximo junto a la plataforma mas flexible
 								de la web
