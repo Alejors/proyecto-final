@@ -5,43 +5,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 			topicQuestions: [
 				{
 					'topicname': 'petcare',
-					'title': '¿Tienes o quieres tener mascotas?'
+					'title': '¿Tienes o quieres tener mascotas?',
+					'img': 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80'
 				},
 				{
 					'topicname': 'outdoor',
-					'title': '¿Te gustan las actividades al aire libre?'
+					'title': '¿Te gustan las actividades al aire libre?',
+					'img': 'https://images.unsplash.com/photo-1470246973918-29a93221c455?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80'
 				},
 				{
 					'topicname': 'gaming',
-					'title': '¿Te gustan los videojuegos?'
+					'title': '¿Te gustan los videojuegos?',
+					'img': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
 				},
 				{
 					'topicname': 'spirituality',
-					'title': '¿Te interesa cultivar tu mundo interior?'
+					'title': '¿Te interesa cultivar tu mundo interior?',
+					'img': 'https://images.unsplash.com/photo-1602192509154-0b900ee1f851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
 				},
 				{
 					'topicname': 'health',
-					'title': '¿Necesitas ideas para cuidar tu salud?'
+					'title': '¿Necesitas ideas para cuidar tu salud?',
+					'img': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
 				},
 				{
 					'topicname': 'fashion',
-					'title': '¿Te preocupa tu imagen personal?'
+					'title': '¿Te preocupa tu imagen personal?',
+					'img': 'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
 				},
 				{
 					'topicname': 'socialskills',
-					'title': '¿Sientes que te cuesta relacionarte con otros?'
+					'title': '¿Sientes que te cuesta relacionarte con otros?',
+					'img': 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
 				},
 				{
 					'topicname': 'sustainability',
-					'title': '¿Te preocupas por el medio ambiente?'
+					'title': '¿Te preocupas por el medio ambiente?',
+					'img': 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1013&q=80'
 				},
 				{
 					'topicname': 'hobbies',
-					'title': '¿Te gustaría conocer pasatiempos interesantes?'
+					'title': '¿Te gustaría conocer pasatiempos interesantes?',
+					'img': 'https://images.unsplash.com/photo-1522410818928-5522dacd5066?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
 				},
 				{
 					'topicname': 'homecare',
-					'title': '¿Quieres ideas de cómo mantener tu casa ordenada?'
+					'title': '¿Quieres ideas de cómo mantener tu casa ordenada?',
+					'img': 'https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
 				}
 			],
 			email: '',
@@ -74,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handleSubmit: async (e, history) => {
 				e.preventDefault();
 
-				const { api, email, password } = getStore();
+				const { api, email, password, name } = getStore();
 				const response = await fetch(`${api}/api/users`, {
 					method: 'POST',
 					headers: {
@@ -82,7 +92,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						'email': email,
-						'password': password
+						'password': password,
+						'name': name
 					})
 				});
 
@@ -95,9 +106,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					window.alert(message)
 					setStore({
 						email: '',
-						password: ''
+						password: '',
+						name:''
 					})
-					history('/preferences');
+					history('/login');
 				}
 			},
 			handlePreferences: (e) => {
@@ -160,6 +172,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadProfile: () => {
 				const { currentUser } = getStore();
+
+				let rol =""
+				if (currentUser?.user?.rol?.cliente == true){rol = "Student";}
+				else if (currentUser?.user?.rol?.profesor == true){rol = "Profesor";}
+				else{rol = "Admin";}
+
 				setStore({
 					name: currentUser?.user?.profile?.name,
 					lastname: currentUser?.user?.profile?.lastname,
@@ -169,7 +187,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					instagram: currentUser?.user?.profile?.instagram,
 					twitter: currentUser?.user?.profile?.twitter,
 					linkedin: currentUser?.user?.profile?.linkedin,
-					picture: currentUser?.user?.profile?.picture
+					picture: currentUser?.user?.profile?.picture,
+					rol: rol
 				})
 			},
 			checkAuthentication: () => {
@@ -253,7 +272,102 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			handleLogout: () => {
 				sessionStorage.removeItem('currentUser')
-				setStore({ currentUser: null, email: '' })
+				setStore({ 
+					currentUser: null, 
+					email: '',
+					name: ''
+				})
+			},
+			updatePreferences: async (e, history) => {
+				e.preventDefault();
+				const { preferences, api, currentUser } = getStore();
+				
+				let filteredPreferences = [];
+				for (const element in preferences){
+					if(preferences[`${element}`] == 'true'){
+						filteredPreferences.push(element);
+					}
+				}
+				if(filteredPreferences.length == 0) {
+					window.alert('Must pick at least one preference')
+					return null
+				}
+				const response = await fetch(`${api}api/preferences`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${currentUser?.access_token}`
+					},
+					body: JSON.stringify({
+						'services': filteredPreferences
+					})
+				});
+
+				const { status, message } = await response.json();
+
+				if(status === 'failed'){
+					window.alert(message);
+				}
+				if(status === 'success'){
+					window.alert(message)
+					currentUser.user.profile.services = filteredPreferences;
+
+					history('/private')
+				}
+			},
+			switchCategory: async () => {
+				const { currentUser, rol, api } = getStore();
+				const { loadProfile } = getActions();
+				
+				if(rol == 'Student'){
+					const response = await fetch(`${api}api/category`, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${currentUser?.access_token}`
+						},
+						body: JSON.stringify({
+							'profesor': true,
+							'cliente': false
+						})
+					});
+
+					const {status, message, data } = await response.json();
+
+					if (status == 'failed'){
+						window.alert(message)
+					}
+					if (status == 'success'){
+						window.alert(message)
+						currentUser.user.rol = data
+						loadProfile();
+					}
+
+				}else if(rol == 'Profesor'){
+					const response = await fetch(`${api}api/category`, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${currentUser?.access_token}`
+						},
+						body: JSON.stringify({
+							'profesor': false,
+							'cliente': true
+						})
+					});
+
+					const {status, message, data } = await response.json();
+
+					if (status == 'failed'){
+						window.alert(message)
+					}
+					if (status == 'success'){
+						window.alert(message)
+						currentUser.user.rol = data
+						loadProfile();
+					}
+				}
+
 			}
 		}
 	}

@@ -31,7 +31,7 @@ import Sustainability from "./views/Sustainability";
 import Petcare from "./views/Petcare";
 import Homecare from "./views/Homecare";
 import Hobbies from "./views/Hobbies";
-
+import Private_teacher from "./views/private_teacher";
 
 //create your first component
 const Layout = () => {
@@ -66,6 +66,7 @@ const Layout = () => {
                 <Route element={<DetailsPetcare />} exact path="/petcare/:index" />
                 <Route element={<DetailsHomecare />} exact path="/homecare/:index" />
                 <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />
+                <Route element={<Private_teacher />} exact path="/private_teacher" />
                 <Route element={<NotFound />} />
             </Routes>
             <Footer />

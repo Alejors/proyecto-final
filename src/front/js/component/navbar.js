@@ -78,8 +78,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/private">
-                    Messages
+                  <Link className="nav-link" to="/private_teacher">
+                    Ingresa como profesor
                   </Link>
                 </li>
                 <li className="nav-item dropdown m-3">

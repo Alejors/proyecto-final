@@ -14,7 +14,8 @@ def get_users():
 @registry.route('/users', methods=['POST']) 
 def create_users():
     data = request.get_json()
-        
+    
+    if not data['name']: return jsonify({"status": "failed", "message": "We need your first name", "data": None}), 400
     if not data['email']: return jsonify({"status": "failed", "message": "You need an email", "data": None}), 400
     if not data['password']: return jsonify({"status": "failed", "message": "You need a password", "data": None}), 400
 
@@ -33,6 +34,7 @@ def create_users():
     user.rol = rol
     
     profile = Profile()
+    profile.name = data['name']
     user.profile = profile
     
     user.save()

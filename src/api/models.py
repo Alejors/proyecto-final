@@ -48,6 +48,7 @@ class Profile(db.Model):
     twitter = db.Column(db.String(80), default="")
     linkedin = db.Column(db.String(80), default="")
     picture = db.Column(db.String(100), default="")
+    services = db.relationship('Service', secondary='preferences')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def serialize(self):
@@ -60,7 +61,8 @@ class Profile(db.Model):
             "instagram": self.instagram,
             "twitter": self.twitter,
             "linkedin": self.linkedin,
-            "picture": self.picture
+            "picture": self.picture,
+            "services": self.get_services()
         }
 
     def save(self):
@@ -73,6 +75,9 @@ class Profile(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    def get_services(self):
+        return list(map(lambda service: { "name": service.name }, self.services))
         
 
 class Rol(db.Model):
@@ -107,6 +112,7 @@ class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     individuals = db.relationship('Individual', backref='service')
+    profile = db.relationship('Profile', secondary='preferences')
 
     def serialize(self):
         return {
@@ -160,3 +166,8 @@ class Individual(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+class Preference(db.Model):
+    __tablename__ = 'preferences'
+    user_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), primary_key=True)
+    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), primary_key=True)

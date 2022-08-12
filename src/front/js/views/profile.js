@@ -1,20 +1,21 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Context } from '../store/appContext'
+import ServiceLink from '../component/servicelink'
 
 const Profile = () => {
   const { store, actions } = useContext(Context);
   const history = useNavigate();
 
   useEffect(() => {
-    if(store.currentUser == null) history('/login');
+    if (store.currentUser == null) history('/login');
     actions.loadProfile();
     window.scrollTo(0, 0);
-  },[])
+  }, [])
 
   useEffect(() => {
     actions.loadProfile();
-    if(store.currentUser == null) history('/login');
+    if (store.currentUser == null) history('/login');
   }, [store.currentUser])
 
   return (
@@ -70,24 +71,19 @@ const Profile = () => {
               </tr>
               <tr>
                 <th scope='row'>Category</th>
-                <td>Student</td>
+                <td className='d-flex'>{store.rol}</td>
               </tr>
               <tr>
                 <th scope='row'>Favorite topics</th>
                 <td>
                   <ul>
-                    <li>
-                      <Link to='/outdoor'>Outdoor-Living</Link>
-                    </li>
-                    <li>
-                      <Link to='/gaming'>Gaming</Link>
-                    </li>
-                    <li>
-                      <Link to='/spirituality'>Spirituality</Link>
-                    </li>
-                    <li>
-                      <Link to='/healthy'>Health</Link>
-                    </li>
+                    {
+                      !!store.currentUser?.user?.profile?.services &&
+                      store.currentUser?.user?.profile?.services.length > 0 &&
+                      store.currentUser.user.profile.services.map((ele, i) => {
+                        return <ServiceLink key={i} content={ele.name} />
+                      })
+                    }
                   </ul>
                 </td>
               </tr>

@@ -7,6 +7,8 @@ from api.routes.registry import registry
 from api.routes.infoupdate import infoupdate
 from api.routes.login import login
 from api.routes.servicios import servicios
+from api.routes.preferenceupdate import preferenceupdate
+from api.routes.changecategory import changecategory
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -25,6 +27,8 @@ app.register_blueprint(registry, url_prefix='/api')
 app.register_blueprint(infoupdate, url_prefix='/api')
 app.register_blueprint(login, url_prefix='/api')
 app.register_blueprint(servicios, url_prefix='/api')
+app.register_blueprint(preferenceupdate, url_prefix='/api')
+app.register_blueprint(changecategory, url_prefix='/api')
 
 @app.route('/')
 def root():

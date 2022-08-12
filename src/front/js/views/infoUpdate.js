@@ -72,6 +72,8 @@ const InfoUpdate = () => {
                     </div>
                     <input type={'submit'} className="btn btn-primary" value="submit" />
                 </form>
+                <h3 className="mt-3">Category: <strong>{store.rol}</strong></h3>
+                <span className='btn btn-primary mt-3' onClick={actions.switchCategory}> Cambiar categoría de usuario</span>
                 <div className="input-group my-3 flex-column">
                     <span className="input-group-text">My Topics</span>
                     <ul className="list-group list-group-flush">
@@ -80,7 +82,7 @@ const InfoUpdate = () => {
                         <li className="list-group-item">Health</li>
                         <li className="list-group-item">Outdoor-living</li>
                     </ul>
-                    <Link to='/preferences'><button className="btn btn-primary">Update preferences</button></Link>
+                    <Link to='/preferences'><button className="btn btn-primary mt-3">Update preferences</button></Link>
                 </div>
             </div>
         </div>

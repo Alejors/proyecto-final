@@ -19,7 +19,7 @@ const Preferences = () => {
         <div className="container-fluid">
             <h2 className="mt-3">Con las siguientes preguntas podremos personalizar tus preferencias:</h2>
             <div className="row d-flex flex-column text-center">
-                <form onSubmit={e => actions.handlePreferences(e, history)}>
+                <form onSubmit={e => actions.updatePreferences(e, history)}>
                     {allQuestions}
                     <br/>
                     <input type='submit' className="btn btn-success mb-3" value='Guardar preferencias'/>
