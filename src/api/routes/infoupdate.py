@@ -4,6 +4,11 @@ from flask_jwt_extended import get_jwt_identity, jwt_required
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import random
+from werkzeug.security import generate_password_hash
+from smtplib import SMTP 
+with SMTP('gmail.com') as smtp:
+    smtp.noop()
 
 cloudinary.config(
     cloud_name = "alejors",
@@ -49,3 +54,17 @@ def update_user():
     currentUser.update()
 
     return jsonify({"status": "success", "message": "Information updated", "data": currentUser.serialize()}), 200
+
+@infoupdate.route('/reset', methods=['POST'])
+def reset_password():
+    sent_email = request.json.get('email')
+    currentUser = User.query.filter_by(email= sent_email).first()
+    if currentUser:
+        password = random.randint(1000, 9999)
+        currentUser.password = generate_password_hash(password)
+        msg = 'Temporary password is ' + password
+        SMTP.sendmail(self, 'info@betterandbeyond.org', sent_email, msg)
+        return jsonify({"status": "success", "message": "Password reset. Check email.", "data": None}), 200
+
+    else: return jsonify({"status": "failed", "message":"Failed reseting password. Confirm emails is correct.", "data": None}), 418
+    
