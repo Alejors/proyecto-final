@@ -7,8 +7,6 @@ import cloudinary.api
 import random
 from werkzeug.security import generate_password_hash
 from smtplib import SMTP 
-with SMTP('gmail.com') as smtp:
-    smtp.noop()
 
 cloudinary.config(
     cloud_name = "alejors",
@@ -61,7 +59,7 @@ def reset_password():
     currentUser = User.query.filter_by(email= sent_email).first()
     if currentUser:
         password = random.randint(1000, 9999)
-        currentUser.password = generate_password_hash(password)
+        # currentUser.password = generate_password_hash(password)
         msg = 'Temporary password is ' + password
         SMTP.sendmail(self, 'info@betterandbeyond.org', sent_email, msg)
         return jsonify({"status": "success", "message": "Password reset. Check email.", "data": None}), 200

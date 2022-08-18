@@ -1,3 +1,5 @@
+import Notiflix, { Notify } from "notiflix";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -100,10 +102,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { status, message, data } = await response.json();
 
 				if (status === 'failed') {
-					window.alert(message)
+					Notify.failure(message)
 				}
 				if (status === 'success') {
-					window.alert(message)
+					Notify.success(message)
 					setStore({
 						email: '',
 						password: '',
@@ -131,7 +133,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				});
 				data = setStore({ email: email, password: password })
-				console.log(data)
 			},
 			handleLogin: async (e, history) => {
 
@@ -154,12 +155,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				if (status === 'failed') {
 
-					window.alert(message);
+					Notify.failure(message);
 				}
 
 				if (status === 'success') {
 
-					window.alert(message)
+					Notify.success(message)
 					sessionStorage.setItem('currentUser', JSON.stringify(data));
 
 					setStore({
@@ -226,11 +227,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { status, message, data } = await response.json();
 
 				if (status === 'failed') {
-					window.alert(message);
+					Notify.failure(message);
 				}
 
 				if (status === 'success') {
-					window.alert(message)
+					Notify.info(message)
 					currentUser.user = data,
 
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -276,6 +277,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					email: '',
 					name: ''
 				})
+				Notify.warning('Logged out!')
 			},
 			updatePreferences: async (e, history) => {
 				e.preventDefault();
@@ -288,7 +290,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 				if (filteredPreferences.length == 0) {
-					window.alert('Must pick at least one preference')
+					Notify.warning('Must pick at least one preference')
 					return null
 				}
 				const response = await fetch(`${api}api/preferences`, {
@@ -305,10 +307,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { status, message } = await response.json();
 
 				if (status === 'failed') {
-					window.alert(message);
+					Notify.failure(message);
 				}
 				if (status === 'success') {
-					window.alert(message)
+					Notify.info(message)
 					currentUser.user.profile.services = filteredPreferences;
 					sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 					history('/private')
@@ -334,10 +336,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const { status, message, data } = await response.json();
 
 					if (status == 'failed') {
-						window.alert(message)
+						Notify.failure(message)
 					}
 					if (status == 'success') {
-						window.alert(message)
+						Notify.info(message)
 						currentUser.user.rol = data
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
@@ -359,16 +361,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const { status, message, data } = await response.json();
 
 					if (status == 'failed') {
-						window.alert(message)
+						Notify.failure(message)
 					}
 					if (status == 'success') {
-						window.alert(message)
+						Notify.info(message)
 						currentUser.user.rol = data
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
 					}
 				}
 
+			},
+			sendEmail: async (e) => {
+				e.preventDefault();
+
+				const { api, email } = getStore();
+				const response = await fetch(`${api}/api/reset`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'email': email,
+						'password': password,
+						'name': name
+					})
+				});
 			}
 		}
 	}
