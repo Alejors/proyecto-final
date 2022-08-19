@@ -60,8 +60,8 @@ def reset_password():
     if currentUser:
         password = random.randint(1000, 9999)
         # currentUser.password = generate_password_hash(password)
-        msg = 'Temporary password is ' + password
-        SMTP.sendmail(self, 'info@betterandbeyond.org', sent_email, msg)
+        msg = 'Temporary password is ' + str(password)
+        SMTP.sendmail('admin', 'info@betterandbeyond.org', sent_email, msg)
         return jsonify({"status": "success", "message": "Password reset. Check email.", "data": None}), 200
 
     else: return jsonify({"status": "failed", "message":"Failed reseting password. Confirm emails is correct.", "data": None}), 418

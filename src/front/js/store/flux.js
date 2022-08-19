@@ -376,15 +376,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				e.preventDefault();
 
 				const { api, email } = getStore();
-				const response = await fetch(`${api}/api/reset`, {
+				const response = await fetch(`${api}api/reset`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-						'email': email,
-						'password': password,
-						'name': name
+						'email': email
 					})
 				});
 			}
