@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
 import React, { useContext, useState } from 'react';
@@ -8,6 +8,8 @@ const Navbar = () => {
 
   const [isOpen, setOpen] = useState(false)
   const { actions } = useContext(Context);
+
+  const history = useNavigate();
 
   return (
     <>
@@ -107,7 +109,7 @@ const Navbar = () => {
                     <li>
                       <hr className="dropdown-divider bg-info" />
                     </li>
-                    <li className="dropdown-item" onClick={() => actions.handleLogout()}>
+                    <li className="dropdown-item" onClick={() => actions.handleLogout(history)}>
                       Logout
                     </li>
                   </ul>

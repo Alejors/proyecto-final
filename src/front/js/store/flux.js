@@ -270,7 +270,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'picture': files[0]
 				});
 			},
-			handleLogout: () => {
+			handleLogout: (history) => {
 				sessionStorage.removeItem('currentUser')
 				setStore({
 					currentUser: null,
@@ -278,6 +278,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: ''
 				})
 				Notify.warning('Logged out!')
+				history('/');
 			},
 			updatePreferences: async (e, history) => {
 				e.preventDefault();
@@ -372,7 +373,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-			sendEmail: async (e) => {
+			sendEmail: async (e, history) => {
 				e.preventDefault();
 
 				const { api, email } = getStore();
@@ -385,6 +386,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 						'email': email
 					})
 				});
+
+				const { status, data } = await response.json();
+
+				if (status == 'success'){
+					Email.send({
+						SecureToken : "b72215c9-47d6-4a21-b24a-2a0a5f0dc017",
+						To : `${email}`,
+						From : "alejoatria@gmail.com",
+						Subject : "Password reset",
+						Body : data
+					}).then(
+					message => Notify.success(message)
+					).then(
+						Notify.warning('Remember to check Spam')
+					).then(
+						history('/login')
+					)
+					
+				}
+				if (status == 'failed'){
+					Notify.failure(message)
+				}
 			}
 		}
 	}

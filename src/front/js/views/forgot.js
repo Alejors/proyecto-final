@@ -19,9 +19,9 @@ const Forgot = () => {
                         name='email'
                         onChange={(e) => actions.handleChange(e)} />
                 </div>
-                <button type='submit' className="btn btn-info btn-user btn-block">Reset password</button>
+                <button type='submit' className="btn btn-info btn-user btn-block ms-3">Reset password</button>
             </form>
-            <Link to='/login'><span className='btn btn-danger'>Cancel</span></Link>
+            <Link to='/login'><span className='btn btn-danger ms-3 my-3'>Cancel</span></Link>
         </>
     )
 }

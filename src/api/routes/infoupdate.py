@@ -6,7 +6,6 @@ import cloudinary.uploader
 import cloudinary.api
 import random
 from werkzeug.security import generate_password_hash
-from smtplib import SMTP 
 
 cloudinary.config(
     cloud_name = "alejors",
@@ -31,6 +30,7 @@ def update_user():
     inputtedInstagram = request.form['instagram']
     inputtedTwitter = request.form['twitter']
     inputtedLinkedin = request.form['linkedin']
+    inputtedPassword = request.form['password']
     if 'picture' in request.files:
         inputtedPicture = request.files['picture']
     
@@ -48,6 +48,7 @@ def update_user():
     currentUser.profile.instagram = currentUser.profile.instagram if inputtedInstagram is None else inputtedInstagram
     currentUser.profile.twitter = currentUser.profile.twitter if inputtedTwitter is None else inputtedTwitter
     currentUser.profile.linkedin = currentUser.profile.linkedin if inputtedLinkedin is None else inputtedLinkedin
+    currentUser.password = currentUser.password if inputtedPassword is None else generate_password_hash(inputtedPassword)
 
     currentUser.update()
 
@@ -59,10 +60,12 @@ def reset_password():
     currentUser = User.query.filter_by(email= sent_email).first()
     if currentUser:
         password = random.randint(1000, 9999)
-        # currentUser.password = generate_password_hash(password)
+        currentUser.password = generate_password_hash(str(password))
+
+        currentUser.update()
+
         msg = 'Temporary password is ' + str(password)
-        SMTP.sendmail('admin', 'info@betterandbeyond.org', sent_email, msg)
-        return jsonify({"status": "success", "message": "Password reset. Check email.", "data": None}), 200
+        return jsonify({"status": "success", "message": "Password reset. Check email.", "data": msg}), 200
 
     else: return jsonify({"status": "failed", "message":"Failed reseting password. Confirm emails is correct.", "data": None}), 418
     
