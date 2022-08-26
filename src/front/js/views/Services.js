@@ -11,7 +11,7 @@ const estiloBoton = {
 
 const estiloShow = {
     marginLeft: '10px',
-    marginTop: '40px'
+    marginTop: '60px'
 }
 
 const estiloShow2 = {
@@ -24,7 +24,6 @@ const Services = () => {
     const { store } = useContext(Context);
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (store.currentUser == null) history('/login');
     }, [])
     return (
         <>
