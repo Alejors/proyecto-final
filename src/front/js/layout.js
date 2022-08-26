@@ -31,6 +31,7 @@ import Sustainability from "./views/Sustainability";
 import Petcare from "./views/Petcare";
 import Homecare from "./views/Homecare";
 import Hobbies from "./views/Hobbies";
+import Forgot from "./views/forgot";
 
 //create your first component
 const Layout = () => {
@@ -66,6 +67,7 @@ const Layout = () => {
                 <Route element={<DetailsPetcare />} exact path="/petcare/:index" />
                 <Route element={<DetailsHomecare />} exact path="/homecare/:index" />
                 <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />
+                <Route element={<Forgot />} exact path='/forgot' />
                 <Route element={<NotFound />} path="*" />
             </Routes>
             <Footer />

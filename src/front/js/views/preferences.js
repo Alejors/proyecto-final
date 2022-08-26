@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import Questions from "../component/questions";
 import { Context } from "../store/appContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Preferences = () => {
     const { store, actions } = useContext(Context);
@@ -22,7 +22,10 @@ const Preferences = () => {
                 <form onSubmit={e => actions.updatePreferences(e, history)}>
                     {allQuestions}
                     <br/>
-                    <input type='submit' className="btn btn-success mb-3" value='Guardar preferencias'/>
+                    <div>
+                        <Link to='/update'><button className="btn btn-danger mb-3 me-2">Cancel</button></Link>
+                        <input type='submit' className="btn btn-success mb-3" value='Guardar preferencias'/>
+                    </div>
                 </form>
             </div>
         </div>

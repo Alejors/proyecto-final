@@ -89,7 +89,10 @@ const Profile = () => {
               </tr>
             </tbody>
           </table>
-          <Link to='/update' ><span className='btn btn-primary mb-3 float-end'>Update Information</span></Link>
+          <div className='row d-flex'>
+            <div className='col-md-2 mb-2 float-start'><span className='btn btn-danger' onClick={() => history('/private')}>Back</span></div>
+            <div className='col-md-3 mb-2 ms-auto'><span className='btn btn-primary' onClick={() => history('/update')}>Update Information</span></div>
+          </div>
         </div>
       </div>
     </div>

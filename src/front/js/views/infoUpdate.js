@@ -70,6 +70,12 @@ const InfoUpdate = () => {
                         </span>
                         <input type="text" className="form-control" name='linkedin' id="basic-url" value={store.linkedin} onChange={actions.handleChange} />
                     </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" id="basic-addon3">
+                            Password
+                        </span>
+                        <input type="password" placeholder="xxxxxx" className="form-control" name='password' id="basic-url" value={store.password} onChange={actions.handleChange} />
+                    </div>
                     <input type={'submit'} className="btn btn-primary" value="submit" />
                 </form>
                 <h3 className="mt-3">Category: <strong>{store.rol}</strong></h3>
@@ -86,6 +92,7 @@ const InfoUpdate = () => {
                     }
                     </ul>
                     <Link to='/preferences'><button className="btn btn-primary mt-3">Update preferences</button></Link>
+                    <Link to='/profile'><button className="btn btn-danger mt-3">Cancel</button></Link>
                 </div>
             </div>
         </div>

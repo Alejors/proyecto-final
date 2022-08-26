@@ -1,3 +1,5 @@
+import Notiflix, { Notify } from "notiflix";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -100,10 +102,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { status, message, data } = await response.json();
 
 				if (status === 'failed') {
-					window.alert(message)
+					Notify.failure(message)
 				}
 				if (status === 'success') {
-					window.alert(message)
+					Notify.success(message)
 					setStore({
 						email: '',
 						password: '',
@@ -131,7 +133,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				});
 				data = setStore({ email: email, password: password })
-				console.log(data)
 			},
 			handleLogin: async (e, history) => {
 
@@ -154,12 +155,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				if (status === 'failed') {
 
-					window.alert(message);
+					Notify.failure(message);
 				}
 
 				if (status === 'success') {
 
-					window.alert(message)
+					Notify.success(message)
 					sessionStorage.setItem('currentUser', JSON.stringify(data));
 
 					setStore({
@@ -226,11 +227,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { status, message, data } = await response.json();
 
 				if (status === 'failed') {
-					window.alert(message);
+					Notify.failure(message);
 				}
 
 				if (status === 'success') {
-					window.alert(message)
+					Notify.info(message)
 					currentUser.user = data,
 
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -269,13 +270,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'picture': files[0]
 				});
 			},
-			handleLogout: () => {
+			handleLogout: (history) => {
 				sessionStorage.removeItem('currentUser')
 				setStore({
 					currentUser: null,
 					email: '',
 					name: ''
 				})
+				Notify.warning('Logged out!')
+				history('/');
 			},
 			updatePreferences: async (e, history) => {
 				e.preventDefault();
@@ -288,7 +291,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 				if (filteredPreferences.length == 0) {
-					window.alert('Must pick at least one preference')
+					Notify.warning('Must pick at least one preference')
 					return null
 				}
 				const response = await fetch(`${api}api/preferences`, {
@@ -305,10 +308,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { status, message } = await response.json();
 
 				if (status === 'failed') {
-					window.alert(message);
+					Notify.failure(message);
 				}
 				if (status === 'success') {
-					window.alert(message)
+					Notify.info(message)
 					currentUser.user.profile.services = filteredPreferences;
 					sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 					history('/private')
@@ -334,10 +337,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const { status, message, data } = await response.json();
 
 					if (status == 'failed') {
-						window.alert(message)
+						Notify.failure(message)
 					}
 					if (status == 'success') {
-						window.alert(message)
+						Notify.info(message)
 						currentUser.user.rol = data
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
@@ -359,16 +362,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const { status, message, data } = await response.json();
 
 					if (status == 'failed') {
-						window.alert(message)
+						Notify.failure(message)
 					}
 					if (status == 'success') {
-						window.alert(message)
+						Notify.info(message)
 						currentUser.user.rol = data
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
 					}
 				}
 
+			},
+			sendEmail: async (e, history) => {
+				e.preventDefault();
+
+				const { api, email } = getStore();
+				const response = await fetch(`${api}api/reset`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'email': email
+					})
+				});
+
+				const { status, data } = await response.json();
+
+				if (status == 'success'){
+					Email.send({
+						SecureToken : "b72215c9-47d6-4a21-b24a-2a0a5f0dc017",
+						To : `${email}`,
+						From : "alejoatria@gmail.com",
+						Subject : "Password reset",
+						Body : data
+					}).then(
+					message => Notify.success(message)
+					).then(
+						Notify.warning('Remember to check Spam')
+					).then(
+						history('/login')
+					)
+					
+				}
+				if (status == 'failed'){
+					Notify.failure(message)
+				}
 			}
 		}
 	}

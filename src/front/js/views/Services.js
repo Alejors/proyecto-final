@@ -58,7 +58,7 @@ const Services = () => {
                 <Link className="btn btn-primary" to="/spirituality" role="button" style={estiloShow}>Show all!</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
+                <div className='row row-cols-1 row-cols-md-4 g-4'>
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[2].individuals.map((item, index) => (

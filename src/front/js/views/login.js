@@ -91,7 +91,7 @@ export default function login() {
                   </form>
                   <hr />
                   <div className="text-center">
-                    <Link className="small" to="/forgot-password">
+                    <Link className="small" to="/forgot">
                       Forgot Password?
                     </Link>
                   </div>
