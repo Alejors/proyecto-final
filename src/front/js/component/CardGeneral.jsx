@@ -18,12 +18,11 @@ const estiloVideo = {
 };
 
 
-const CardFashion = ({ index, name, description, urlmedia }) => {
+const CardGeneral = ({ index, name, description, urlmedia, nombre }) => {
     const { store } = useContext(Context);
-
     return (
         <>
-            <div className='col-3' key={index} index={index}>
+            <div className='col' key={index} index={index}>
                 <div className="card" style={estiloCard}>
                     <iframe
                         width="100%"
@@ -36,11 +35,11 @@ const CardFashion = ({ index, name, description, urlmedia }) => {
                         style={estiloVideo}
                     />
                     <div className="card-body" >
-                        <h5 className="card-title">{name}</h5>
-                        <p className="card-text">
+                        <h5 className="card-title m-4"><strong>{name}</strong></h5>
+                        {/* <p className="card-text">
                             {description}
-                        </p>
-                        <Link to={`/fashion/${index}`} className="btn btn-primary" style={estiloBoton}>
+                        </p> */}
+                        <Link to={`/${nombre}/${index}`} className="btn btn-primary" style={estiloBoton}>
                             Learn More!
                         </Link>
                     </div>
@@ -49,4 +48,4 @@ const CardFashion = ({ index, name, description, urlmedia }) => {
         </>
     );
 };
-export default CardFashion;
+export default CardGeneral;

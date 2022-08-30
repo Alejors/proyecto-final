@@ -8,14 +8,14 @@ const Profile = () => {
   const history = useNavigate();
 
   useEffect(() => {
-    if (store.currentUser == null) history('/login');
-    actions.loadProfile();
     window.scrollTo(0, 0);
+    actions.loadProfile();
+    if (store.currentUser == null) history('/login');
   }, [])
 
   useEffect(() => {
-    actions.loadProfile();
     if (store.currentUser == null) history('/login');
+    actions.loadProfile();
   }, [store.currentUser])
 
   return (
@@ -78,10 +78,10 @@ const Profile = () => {
                 <td>
                   <ul>
                     {
-                      !!store.currentUser?.user?.profile?.services &&
+                      !!store.currentUser &&
                       store.currentUser?.user?.profile?.services.length > 0 &&
                       store.currentUser.user.profile.services.map((ele, i) => {
-                        return <ServiceLink key={i} content={ele.name} />
+                        return <ServiceLink key={i} content={ele} />
                       })
                     }
                   </ul>
@@ -89,7 +89,10 @@ const Profile = () => {
               </tr>
             </tbody>
           </table>
-          <Link to='/update' ><span className='btn btn-primary mb-3 float-end'>Update Information</span></Link>
+          <div className='row d-flex'>
+            <div className='col-md-2 mb-2 float-start'><span className='btn btn-danger' onClick={() => history('/private')}>Back</span></div>
+            <div className='col-md-3 mb-2 ms-auto'><span className='btn btn-primary' onClick={() => history('/update')}>Update Information</span></div>
+          </div>
         </div>
       </div>
     </div>

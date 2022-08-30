@@ -25,13 +25,13 @@ import Gaming from "./views/Gaming";
 import Spirituality from "./views/Spirituality";
 import Healthy from "./views/Healthy";
 import Preferences from "./views/preferences";
-import Private_teacher from "./component/private_teacher";
 import Fashion from "./views/Fashion";
 import Socialskills from "./views/Socialskills";
 import Sustainability from "./views/Sustainability";
 import Petcare from "./views/Petcare";
 import Homecare from "./views/Homecare";
 import Hobbies from "./views/Hobbies";
+import Forgot from "./views/forgot";
 
 
 //create your first component
@@ -68,8 +68,8 @@ const Layout = () => {
                 <Route element={<DetailsPetcare />} exact path="/petcare/:index" />
                 <Route element={<DetailsHomecare />} exact path="/homecare/:index" />
                 <Route element={<DetailsHobbies />} exact path="/hobbies/:index" />
-                <Route element={<Private_teacher />} exact path="/private_teacher" />
-                <Route element={<NotFound />} />
+                <Route element={<Forgot />} exact path='/forgot' />
+                <Route element={<NotFound />} path="*" />
             </Routes>
             <Footer />
         </BrowserRouter>

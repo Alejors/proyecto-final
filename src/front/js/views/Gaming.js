@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
-import CardGaming from '../component/CardGaming.jsx'
+import CardGeneral from '../component/CardGeneral.jsx'
 
 const estiloBoton = {
     marginTop: '10px',
@@ -24,19 +24,24 @@ const estiloDiv = {
 }
 
 const Gaming = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if (store.currentUser == null) history('/login');
+    }, [])
     const { store } = useContext(Context);
     return (
         <>
             <div className="header-container mb-4 d-flex align-items-center" style={estiloDiv}>
                 <h1 className="category-title" style={estiloShow}>Gaming</h1>
-                <Link to="/services" className="btn btn-primary" style={estiloLink}>Back</Link>
+                <Link to="/private" className="btn btn-primary" style={estiloLink}>Back</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
-                <div className='row'>
+                <div className='row row-cols-1 row-cols-md-4 g-4'>
                     {!!store.services &&
                         store.services.length > 0 &&
                         store.services[0].individuals.map((item, index) => (
-                            <CardGaming {...item} key={index} index={index} />
+                            <CardGeneral {...item} nombre={store.services[0].name} key={index} index={index} />
                         ))}
                 </div>
             </div>

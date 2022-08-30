@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
 const estiloDiv = {
@@ -27,10 +27,19 @@ const estiloText2 = {
     marginTop: '5px'
 }
 
+const estiloLink = {
+    marginRight: '20px'
+}
+
+
 
 
 const DetailsSustainability = () => {
     const { store } = useContext(Context);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if (store.currentUser == null) history('/login');
+    }, [])
     const params = useParams();
     return (
         <>
@@ -74,6 +83,9 @@ const DetailsSustainability = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="header-container mb-4 d-flex" style={estiloDiv}>
+                        <Link to="/sustainability" className="btn btn-primary" style={estiloLink}>Back</Link>
                     </div>
                 </div>
             </div>

@@ -70,6 +70,12 @@ const InfoUpdate = () => {
                         </span>
                         <input type="text" className="form-control" name='linkedin' id="basic-url" value={store.linkedin} onChange={actions.handleChange} />
                     </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" id="basic-addon3">
+                            Password
+                        </span>
+                        <input type="password" placeholder="xxxxxx" className="form-control" name='password' id="basic-url" value={store.password} onChange={actions.handleChange} />
+                    </div>
                     <input type={'submit'} className="btn btn-primary" value="submit" />
                 </form>
                 <h3 className="mt-3">Category: <strong>{store.rol}</strong></h3>
@@ -77,12 +83,16 @@ const InfoUpdate = () => {
                 <div className="input-group my-3 flex-column">
                     <span className="input-group-text">My Topics</span>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Gaming</li>
-                        <li className="list-group-item">Spirituality</li>
-                        <li className="list-group-item">Health</li>
-                        <li className="list-group-item">Outdoor-living</li>
+                        {
+                      !!store.currentUser &&
+                      store.currentUser?.user?.profile?.services.length > 0 &&
+                      store.currentUser.user.profile.services.map((ele, i) => {
+                        return <li key={i} className="list-group-item" style={{'textTransform': 'capitalize'}}>{ele}</li>
+                      })
+                    }
                     </ul>
                     <Link to='/preferences'><button className="btn btn-primary mt-3">Update preferences</button></Link>
+                    <Link to='/profile'><button className="btn btn-danger mt-3">Cancel</button></Link>
                 </div>
             </div>
         </div>
