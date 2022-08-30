@@ -32,7 +32,7 @@ import Sustainability from "./views/Sustainability";
 import Petcare from "./views/Petcare";
 import Homecare from "./views/Homecare";
 import Hobbies from "./views/Hobbies";
-import Private_teacher from "./views/private_teacher";
+
 
 //create your first component
 const Layout = () => {

@@ -19,7 +19,7 @@ export default function () {
                             ></div>
                             <div className="user-info">
                                 <div className="user-avatar">
-                                    <a className="edit-avatar" href="#" />
+                                    <Link className="edit-avatar" to="#" />
                                     <img
                                         src="https://bootdey.com/img/Content/avatar/avatar1.png"
                                         alt="User"
@@ -32,29 +32,29 @@ export default function () {
                             </div>
                         </aside>
                         <nav className="list-group">
-                            <a className="list-group-item" href="/profile">
+                            <Link className="list-group-item" to="/profile">
                                 <i className="fa fa-map" />
                                 Datos personales
-                            </a>
-                            <a className="list-group-item with-badge" href="!#">
+                            </Link>
+                            <Link className="list-group-item with-badge" to="!#">
                                 <i className="fas fa-glasses"></i>
                                 Feed-back
                                 <span className="badge badge-primary badge-pill">4</span>
-                            </a>
-                            <a className="list-group-item with-badge" href="#">
+                            </Link>
+                            <Link className="list-group-item with-badge" to="#">
                                 <i className="fas fa-graduation-cap"></i>
                                 Estudiantes
                                 <span className="badge badge-primary badge-pill">43</span>
-                            </a>
-                            <a className="list-group-item" href="#">
+                            </Link>
+                            <Link className="list-group-item" to="#">
                                 <i className="fa fa-map" />
                                 Agregar/Eliminar clase
-                            </a>
-                            <a className="list-group-item with-badge" href="#!">
+                            </Link>
+                            <Link className="list-group-item with-badge" to="#!">
                                 <i className="fa fa-dollar-sign"></i>
                                 Mis ganancias
                                 <span className="badge badge-primary badge-pill">4</span>
-                            </a>
+                            </Link>
                         </nav>
                     </div>
                     <div className="col-lg-8">
