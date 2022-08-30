@@ -1,12 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 
 export default function Navbar() {
   const { actions } = useContext(Context);
   const history = useNavigate();
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = '0px';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = '0px';
+    };
+  }, [show]);
 
   return (
     <>
@@ -27,7 +38,7 @@ export default function Navbar() {
         </span>
         <input
           type="checkbox"
-          className="openSidebarMenu"
+          className="openSidebarMenu" onClick={() => setShow(!show)}
           id="openSidebarMenu"
         />
         <label htmlFor="openSidebarMenu" className="sidebarIconToggle">

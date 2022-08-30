@@ -58,10 +58,10 @@ export default function login() {
                       </span>
                     </div>
                     <div className="form-group">
-                      <div className="custom-control custom-checkbox small my-1">
+                      <div className="custom-control custom-checkbox my-1">
                         <input
                           type="checkbox"
-                          className="custom-control-input me-1"
+                          className="form-check-input me-1"
                           id="customCheck"
                           style={{ display: "inline-block", }}
                         />
