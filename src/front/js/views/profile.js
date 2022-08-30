@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Context } from '../store/appContext'
-import ServiceLink from '../component/servicelink'
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Context } from '../store/appContext';
+import ServiceLink from '../component/servicelink';
+import { FaInstagram, FaFacebook, FaTwitterSquare, FaLinkedin, FaPhone, FaEnvelope, FaUser, FaUserEdit, FaStar, FaListUl } from 'react-icons/fa';
 
 const Profile = () => {
   const { store, actions } = useContext(Context);
@@ -19,62 +20,64 @@ const Profile = () => {
   }, [store.currentUser])
 
   return (
-    <div className='container'>
+    <div className='container mt-4'>
       <div className='row'>
-        <div className='col-md-3'>
+        <div className='col-lg-4'>
           <img
             style={{ height: 200, width: 200 }}
-            className='mt-2 mx-5 rounded img-thumbnail'
+            className='img mt-5 mx-5 img-thumbnail'
             src={(store.picture == "") ? 'https://i.pinimg.com/280x280_RS/12/75/75/12757564e7b83387bb5fc7634db783a5.jpg' : store.picture}
             alt='profile pic'
+            id="img-profile"
           />
         </div>
-        <div className='col-md-6'>
-          <table className='table table-striped'>
+        <div className='col-lg-7 ms-5 p-3'
+          style={{ textAlign: "center" }}>
+          <table className='table p-3'>
             <thead>
               <tr>
-                <th scope='col'>Information</th>
+                <th scope='col'><h1 className='col mb-4'>Informacion Personal</h1></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope='row'>Name</th>
+                <th scope='row'><FaUser /> &nbsp; Nombre</th>
                 <td>{store.name}</td>
               </tr>
               <tr>
-                <th scope='row'>Lastname</th>
+                <th scope='row'><FaUserEdit /> &nbsp; Apellido</th>
                 <td>{store.lastname}</td>
               </tr>
               <tr>
-                <th scope='row'>Email</th>
+                <th scope='row'><FaEnvelope /> &nbsp; Email</th>
                 <td>{store.email}</td>
               </tr>
               <tr>
-                <th scope='row'>Phonenumber</th>
+                <th scope='row'><FaPhone /> &nbsp;Numero de telefono</th>
                 <td>{store.phonenumber}</td>
               </tr>
               <tr>
-                <th scope='row'>Facebook</th>
+                <th scope='row'><FaFacebook /> &nbsp; Facebook</th>
                 <td>{store.facebook}</td>
               </tr>
               <tr>
-                <th scope='row'>Instagram</th>
+                <th scope='row'><FaInstagram /> &nbsp; Instagram</th>
                 <td>{store.instagram}</td>
               </tr>
               <tr>
-                <th scope='row'>Twitter</th>
+                <th scope='row'><FaTwitterSquare /> &nbsp; Twitter</th>
                 <td>{store.twitter}</td>
               </tr>
               <tr>
-                <th scope='row'>Linkedin</th>
+                <th scope='row'><FaLinkedin /> &nbsp; Linkedin</th>
                 <td>{store.linkedin}</td>
               </tr>
               <tr>
-                <th scope='row'>Category</th>
+                <th scope='row'><FaListUl /> &nbsp; Categoria</th>
                 <td className='d-flex'>{store.rol}</td>
               </tr>
               <tr>
-                <th scope='row'>Favorite topics</th>
+                <th scope='row'><FaStar /> &nbsp; Topicos favoritos</th>
                 <td>
                   <ul>
                     {
@@ -89,9 +92,9 @@ const Profile = () => {
               </tr>
             </tbody>
           </table>
-          <div className='row d-flex'>
-            <div className='col-md-2 mb-2 float-start'><span className='btn btn-danger' onClick={() => history('/private')}>Back</span></div>
-            <div className='col-md-3 mb-2 ms-auto'><span className='btn btn-primary' onClick={() => history('/update')}>Update Information</span></div>
+          <div className='row d-flex pt-4'>
+            <div className='col-md-2 mb-2 pt-3 float-start'><span className='btn btn-danger' onClick={() => history('/private')}>Back</span></div>
+            <div className='col-md-3 mb-2 pt-3 ms-auto'><span className='btn btn-info' onClick={() => history('/update')}>Update Information</span></div>
           </div>
         </div>
       </div>

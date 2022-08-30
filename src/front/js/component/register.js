@@ -120,6 +120,9 @@ const Register = () => {
                                                     type="checkbox"
                                                     defaultValue=""
                                                     id="form2Example3cg"
+                                                    style={{ display: "inline-block", }}
+                                                    required
+
                                                 />
                                                 <label
                                                     className="form-check-label"
@@ -138,21 +141,21 @@ const Register = () => {
                                                         <h2><strong>Terms of Service</strong></h2>
                                                         <div>
                                                             <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. <br />
-                                                            Sed ullamcorper tempus turpis ac consequat. Proin pharetra eu ligula quis tincidunt.<br/>
-                                                            Donec eu leo ipsum. Curabitur lacinia est nisi, vel laoreet odio consectetur ut.<br/>
-                                                            Duis sed sem et nibh tempor pretium ut fermentum libero. Curabitur lobortis lobortis leo,<br/>
-                                                            sit amet posuere est ullamcorper sit amet.<br/> 
-                                                            <br/>
-                                                            <strong>Fusce in erat dignissim</strong>, consectetur neque id, dictum metus. <br/>
-                                                            Donec sodales neque nec metus semper, sed euismod leo elementum. Sed mauris odio,<br/>
-                                                            bibendum id aliquet a, iaculis quis dui. In consectetur orci purus, sit amet mattis<br/>
-                                                            diam viverra eget. Morbi lacus nunc, auctor in lacus nec, fermentum congue elit.<br/>
-                                                            Suspendisse ipsum orci, venenatis non eros molestie, finibus porta quam.<br/>
-                                                            <br/>
-                                                            <strong>Sed quam justo, scelerisque vitae molestie vel, sagittis eu ex.</strong><br/>
-                                                            Nunc vel faucibus ex. Donec ut augue pretium, vulputate felis at, maximus enim.<br/>
-                                                            Quisque maximus eu justo nec fermentum. Duis interdum quam non nunc sodales pellentesque.<br/>
-                                                            Duis suscipit tempus ex. Donec diam nulla, consectetur non sapien sed, pretium ullamcorper<br/> 
+                                                            Sed ullamcorper tempus turpis ac consequat. Proin pharetra eu ligula quis tincidunt.<br />
+                                                            Donec eu leo ipsum. Curabitur lacinia est nisi, vel laoreet odio consectetur ut.<br />
+                                                            Duis sed sem et nibh tempor pretium ut fermentum libero. Curabitur lobortis lobortis leo,<br />
+                                                            sit amet posuere est ullamcorper sit amet.<br />
+                                                            <br />
+                                                            <strong>Fusce in erat dignissim</strong>, consectetur neque id, dictum metus. <br />
+                                                            Donec sodales neque nec metus semper, sed euismod leo elementum. Sed mauris odio,<br />
+                                                            bibendum id aliquet a, iaculis quis dui. In consectetur orci purus, sit amet mattis<br />
+                                                            diam viverra eget. Morbi lacus nunc, auctor in lacus nec, fermentum congue elit.<br />
+                                                            Suspendisse ipsum orci, venenatis non eros molestie, finibus porta quam.<br />
+                                                            <br />
+                                                            <strong>Sed quam justo, scelerisque vitae molestie vel, sagittis eu ex.</strong><br />
+                                                            Nunc vel faucibus ex. Donec ut augue pretium, vulputate felis at, maximus enim.<br />
+                                                            Quisque maximus eu justo nec fermentum. Duis interdum quam non nunc sodales pellentesque.<br />
+                                                            Duis suscipit tempus ex. Donec diam nulla, consectetur non sapien sed, pretium ullamcorper<br />
                                                             ex. Sed sem justo, mattis non pellentesque sit amet, semper auctor purus.
                                                         </div>
                                                         <button className='btn btn-outline-danger mt-2' onClick={closeModal}>close</button>

@@ -63,6 +63,7 @@ export default function login() {
                           type="checkbox"
                           className="custom-control-input me-1"
                           id="customCheck"
+                          style={{ display: "inline-block", }}
                         />
                         <label
                           className="custom-control-label"

@@ -22,7 +22,6 @@ const Private_teacher = () => {
                             ></div>
                             <div className="user-info">
                                 <div className="user-avatar">
-                                    <Link className="edit-avatar" to="#" />
                                     <img
                                         src={(store.picture == "") ? "https://bootdey.com/img/Content/avatar/avatar1.png" : store.picture}
                                         alt="User"
@@ -30,7 +29,6 @@ const Private_teacher = () => {
                                 </div>
                                 <div className="user-data">
                                     <h4>{store.name} {store.lastname}</h4>
-                                    <span>Joined February 06, 2017</span>
                                 </div>
                             </div>
                         </aside>
