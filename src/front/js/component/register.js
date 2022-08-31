@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import Modal from 'react-modal';
+import PasswordRequisito from './PasswordRequisito';
+import "../../styles/register.css";
 
 const customStyles = {
     content: {
@@ -21,7 +23,22 @@ const Register = () => {
     const { store, actions } = useContext(Context);
     const history = useNavigate();
     const [show, setShow] = useState(false);
-    const [modalIsOpen, setIsOpen] = useState(false)
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [passRequisito, setPassRequisito] = useState(false);
+    const [revisar, setRevisar] = useState({
+        checkMayus: false,
+        checkNumero: false,
+        checkLargo: false,
+        checkCaracterEspecial: false,
+    })
+
+    const handleOnFocus = () => {
+        setPassRequisito(true);
+    }
+
+    const handleOnBlur = () => {
+        setPassRequisito(false);
+    }
 
     let setOpen = () => {
         setIsOpen(true);
@@ -34,7 +51,17 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isError, setIsError] = useState("");
 
-    const checkValidation = (e) => {
+    const checkValidation = () => {
+        const checkMayus = /[A-Z]/.test(store.password);
+        const checkNumero = /[0-9]/.test(store.password);
+        const checkLargo = store.password.length >= 8;
+        const checkCaracterEspecial = /[!@#$%&?¡*°]/.test(store.password);
+        setRevisar({
+            checkMayus,
+            checkNumero,
+            checkLargo,
+            checkCaracterEspecial
+        })
         if (store.password !== confirmPassword) {
             setIsError("La contraseña debe coincidir");
         } else {
@@ -86,10 +113,12 @@ const Register = () => {
                                                     className="form-control form-control"
                                                     placeholder="Password"
                                                     onChange={e => { actions.handleChange(e) }}
+                                                    onFocus={handleOnFocus}
+                                                    onBlur={handleOnBlur}
                                                     onKeyUp={() => checkValidation()}
                                                     type={!show ? "password" : "text"}
                                                     value={store.password}
-
+                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?¡*°]).{8,}"
                                                 />
                                                 <span className='btn btn-light my-1 ms-1 btn-md float me-1' onClick={() => setShow(!show)}>{
                                                     !show ? (
@@ -98,7 +127,15 @@ const Register = () => {
                                                     )
                                                 }
                                                 </span>
+
                                             </div>
+                                            {passRequisito ? (
+                                                <PasswordRequisito
+                                                    checkMayus={revisar.checkMayus ? "valid" : "invalid"}
+                                                    checkNumero={revisar.checkNumero ? "valid" : "invalid"}
+                                                    checkLargo={revisar.checkLargo ? "valid" : "invalid"}
+                                                    checkCaracterEspecial={revisar.checkCaracterEspecial ? "valid" : "invalid"} />
+                                            ) : null}
                                             <div className="d-flex flex-row align-items-center mb-3"
                                                 data-validate="Confirm data is required">
                                                 <i className="fas fa-key fa-lg me-3 fa-fw"></i>
