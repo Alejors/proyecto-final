@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 
 export default function Navbar() {
@@ -40,6 +40,7 @@ export default function Navbar() {
           type="checkbox"
           className="openSidebarMenu" onClick={() => setShow(!show)}
           id="openSidebarMenu"
+
         />
         <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
           <div className="spinner diagonal part-1" />
@@ -74,7 +75,7 @@ export default function Navbar() {
                 Actividades
               </Link>
             </li>
-            <li className="nav-item dropdown m-3">
+            <li className="nav-dropDwn btn-md dropdown m-3">
               <Link
                 className="nav-link dropdown-toggle"
                 to="#"
@@ -86,8 +87,10 @@ export default function Navbar() {
                 Herramientas
               </Link>
               <ul
-                className="dropdown-menu bg-info"
+                className="dropdown-menu bg-dark"
                 aria-labelledby="offcanvasNavbarDropdown"
+                style={{ padding: "1px", fontSize: "12px", }}
+                data-popper-placement="bottom"
               >
                 <li>
                   <Link className="dropdown-item" to="/profile">
@@ -103,9 +106,6 @@ export default function Navbar() {
                   <Link className="dropdown-item" to="/update">
                     Actualizar perfil
                   </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider bg-info" />
                 </li>
                 <li
                   className="dropdown-item"
