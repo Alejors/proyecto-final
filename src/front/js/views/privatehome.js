@@ -25,7 +25,7 @@ const PrivateHome = () => {
   return (
     <>
       {
-        store.rol === 'Student' ? (
+        store.rol === 'Estudiante' ? (
           <StudentHome />
         )
           :

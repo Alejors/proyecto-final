@@ -28,7 +28,7 @@ export default function login() {
                 }}
               >
                 <div className="card-body p-4 shadow-5 text-center">
-                  <h2 className="fw-bold mb-5">Sign in</h2>
+                  <h2 className="fw-bold mb-5">Ingresar</h2>
                   <form className="user" onSubmit={(e) => actions.handleLogin(e, history)}>
                     <div className="form-group my-3 mx-3">
                       <input
@@ -69,31 +69,31 @@ export default function login() {
                           className="custom-control-label"
                           htmlFor="customCheck"
                         >
-                          Remember Me
+                          Recuérdame
                         </label>
                       </div>
                     </div>
-                    <button type='submit' className="btn btn-info btn-user btn-block">Login!</button>
+                    <button type='submit' className="btn btn-info btn-user btn-block">Ingresa!</button>
                     <hr />
                     <Link
                       to="#"
                       className="btn btn-google btn-user btn-block"
                     >
-                      <i className="fab fa-google fa-fw" /> Login with
+                      <i className="fab fa-google fa-fw" /> Ingresa con
                       Google
                     </Link>
                     <Link
                       to="#"
                       className="btn btn-facebook btn-user btn-block"
                     >
-                      <i className="fab fa-facebook-f fa-fw" /> Login with
+                      <i className="fab fa-facebook-f fa-fw" /> Ingresa con
                       Facebook
                     </Link>
                   </form>
                   <hr />
                   <div className="text-center">
                     <Link className="small" to="/forgot">
-                      Forgot Password?
+                      ¿Olvidaste tu Contraseña?
                     </Link>
                   </div>
                 </div>

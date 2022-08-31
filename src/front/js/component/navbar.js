@@ -53,26 +53,21 @@ export default function Navbar() {
               <input
                 className="form-control me-2 bg-transparent text-light"
                 type="search"
-                placeholder="Search"
+                placeholder="Buscar"
                 aria-label="Search"
               />
               <button className="btn btn-outline-light" type="submit">
-                Search
+                Buscar
               </button>
             </form>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
-                Pagina principal
+                Página Principal
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/private">
                 Mis clases
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/private">
-                Actividades
               </Link>
             </li>
             <li className="nav-dropDwn btn-md dropdown m-3">
@@ -84,7 +79,7 @@ export default function Navbar() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Herramientas
+                Ajustes
               </Link>
               <ul
                 className="dropdown-menu bg-dark"
@@ -92,18 +87,18 @@ export default function Navbar() {
                 style={{ padding: "1px", fontSize: "12px", }}
                 data-popper-placement="bottom"
               >
-                <li>
-                  <Link className="dropdown-item" to="/profile">
+                <li className="dropdown-item">
+                  <Link to="/profile">
                     Perfil
                   </Link>
                 </li>
-                <li>
-                  <Link className="dropdown-item" to="/preferences">
+                <li className="dropdown-item">
+                  <Link to="/preferences">
                     Preferencias
                   </Link>
                 </li>
-                <li>
-                  <Link className="dropdown-item" to="/update">
+                <li className="dropdown-item">
+                  <Link to="/update">
                     Actualizar perfil
                   </Link>
                 </li>
@@ -111,7 +106,7 @@ export default function Navbar() {
                   className="dropdown-item"
                   onClick={() => actions.handleLogout(history)}
                 >
-                  Logout
+                  Cerrar Sesión
                 </li>
               </ul>
             </li>

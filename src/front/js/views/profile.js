@@ -32,11 +32,11 @@ const Profile = () => {
           />
         </div>
         <div className='col-lg-7 ms-5 p-3'
-          style={{ textAlign: "center" }}>
+          >
           <table className='table p-3'>
             <thead>
               <tr>
-                <th scope='col'><h1 className='col mb-4'>Informacion Personal</h1></th>
+                <th scope='col'><h1 className='col mb-4'>Información Personal</h1></th>
               </tr>
             </thead>
             <tbody>
@@ -49,11 +49,11 @@ const Profile = () => {
                 <td>{store.lastname}</td>
               </tr>
               <tr>
-                <th scope='row'><FaEnvelope /> &nbsp; Email</th>
+                <th scope='row'><FaEnvelope /> &nbsp; Correo Electrónico</th>
                 <td>{store.email}</td>
               </tr>
               <tr>
-                <th scope='row'><FaPhone /> &nbsp;Numero de telefono</th>
+                <th scope='row'><FaPhone /> &nbsp;Número de teléfono</th>
                 <td>{store.phonenumber}</td>
               </tr>
               <tr>
@@ -69,15 +69,15 @@ const Profile = () => {
                 <td>{store.twitter}</td>
               </tr>
               <tr>
-                <th scope='row'><FaLinkedin /> &nbsp; Linkedin</th>
+                <th scope='row'><FaLinkedin /> &nbsp; LinkedIn</th>
                 <td>{store.linkedin}</td>
               </tr>
               <tr>
-                <th scope='row'><FaListUl /> &nbsp; Categoria</th>
+                <th scope='row'><FaListUl /> &nbsp; Categoría</th>
                 <td className='d-flex'>{store.rol}</td>
               </tr>
               <tr>
-                <th scope='row'><FaStar /> &nbsp; Topicos favoritos</th>
+                <th scope='row'><FaStar /> &nbsp; Mis Temas</th>
                 <td>
                   <ul>
                     {
@@ -93,8 +93,8 @@ const Profile = () => {
             </tbody>
           </table>
           <div className='row d-flex pt-4'>
-            <div className='col-md-2 mb-2 pt-3 float-start'><span className='btn btn-danger' onClick={() => history('/private')}>Back</span></div>
-            <div className='col-md-3 mb-2 pt-3 ms-auto'><span className='btn btn-info' onClick={() => history('/update')}>Update Information</span></div>
+            <div className='col-md-2 mb-2 pt-3 float-start'><span className='btn btn-danger' onClick={() => history('/private')}>Atrás</span></div>
+            <div className='col-md-3 mb-2 pt-3 ms-auto'><span className='btn btn-info' onClick={() => history('/update')}>Actualizar Información</span></div>
           </div>
         </div>
       </div>
