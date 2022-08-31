@@ -44,7 +44,7 @@ const InfoUpdate = () => {
                     </div>
                     <div className="input-group mb-3">
                         <input type="file" className="form-control" name='picture' id="inputGroupFile02" onChange={e => actions.handlePicture(e)}/>
-                        <label className="input-group-text" htmlFor="inputGroupFile02">Profile picture</label>
+                        <label className="input-group-text" htmlFor="inputGroupFile02">Foto de Perfil</label>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text">
