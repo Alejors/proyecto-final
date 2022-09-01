@@ -33,6 +33,7 @@ import Homecare from "./views/Homecare";
 import Hobbies from "./views/Hobbies";
 import Forgot from "./views/forgot";
 
+
 //create your first component
 const Layout = () => {
     return (

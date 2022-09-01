@@ -179,7 +179,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadProfile: () => {
 				const { currentUser } = getStore();
 				let rol = ""
-				if (currentUser?.user?.rol?.cliente == true) { rol = "Student"; }
+				if (currentUser?.user?.rol?.cliente == true) { rol = "Estudiante"; }
 				else if (currentUser?.user?.rol?.profesor == true) { rol = "Profesor"; }
 				else { rol = "Admin"; }
 				setStore({
@@ -322,11 +322,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					history('/private')
 				}
 			},
-			switchCategory: async () => {
+			switchCategory: async (history) => {
 				const { currentUser, rol, api } = getStore();
 				const { loadProfile } = getActions();
 
-				if (rol == 'Student') {
+				if (rol == 'Estudiante') {
 					const response = await fetch(`${api}api/category`, {
 						method: 'PUT',
 						headers: {
@@ -349,6 +349,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						currentUser.user.rol = data
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
+						history('/profile');
 					}
 
 				} else if (rol == 'Profesor') {
@@ -374,6 +375,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						currentUser.user.rol = data
 						sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 						loadProfile();
+						history('/profile');
 					}
 				}
 

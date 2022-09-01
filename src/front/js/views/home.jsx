@@ -39,7 +39,7 @@ const Home = () => {
 										className="btn btn-dark border-0 shadow rounded-3 overflow-hidden"
 										href="#register_here"
 									>
-										Register here
+										Regístrate Aquí
 									</a>
 								</p>)
 							}

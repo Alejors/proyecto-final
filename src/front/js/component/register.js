@@ -77,7 +77,7 @@ const Register = () => {
                             <div className="card" style={{ borderRadius: 15 }}>
                                 <div className="card-body p-3">
                                     <h2 className="text-uppercase text-center mb-4">
-                                        Create an account
+                                        Crea una Cuenta
                                     </h2>
                                     <div className='form-register'>
                                         <form onSubmit={e => { actions.handleSubmit(e, history) }}>
@@ -88,7 +88,7 @@ const Register = () => {
                                                     type="text"
                                                     id="form3Example1cg"
                                                     className="form-control form-control me-5"
-                                                    placeholder="Your Name"
+                                                    placeholder="Nombre"
                                                     onChange={e => actions.handleChange(e)}
                                                     value={store.name}
                                                 />
@@ -100,7 +100,7 @@ const Register = () => {
                                                     type="email"
                                                     id="form3Example3cg"
                                                     className="form-control form-control me-5"
-                                                    placeholder="E-mail"
+                                                    placeholder="Correo Electrónico"
                                                     onChange={e => actions.handleChange(e)}
                                                     value={store.email}
                                                 />
@@ -111,7 +111,7 @@ const Register = () => {
                                                     name='password'
                                                     id="form3Example4cg"
                                                     className="form-control form-control"
-                                                    placeholder="Password"
+                                                    placeholder="Contraseña"
                                                     onChange={e => { actions.handleChange(e) }}
                                                     onFocus={handleOnFocus}
                                                     onBlur={handleOnBlur}
@@ -146,7 +146,7 @@ const Register = () => {
                                                     onChange={(e) => { setConfirmPassword(e.target.value) }}
                                                     onKeyUp={() => checkValidation()}
                                                     type={!show ? "password" : "text"}
-                                                    placeholder="Confirm password"
+                                                    placeholder="Confirma Contraseña"
 
                                                 />
                                                 <span className='ms-2 me-5'>{isError}</span>
@@ -157,14 +157,16 @@ const Register = () => {
                                                     type="checkbox"
                                                     defaultValue=""
                                                     id="form2Example3cg"
+                                                    style={{ display: "inline-block", }}
+                                                    required
                                                 />
                                                 <label
                                                     className="form-check-label"
                                                     htmlFor="form2Example3cg"
                                                 >
-                                                    I agree all statements in{" "}
+                                                    Estoy de acuerdo con los{" "}
                                                     <Link to="/#" className="text-body link-info" onClick={setOpen}>
-                                                        <u>Terms of service</u>
+                                                        <u>Términos de Servicio</u>
                                                     </Link>
                                                     <Modal
                                                         isOpen={modalIsOpen}
@@ -172,7 +174,7 @@ const Register = () => {
                                                         style={customStyles}
                                                         contentLabel="Example Modal"
                                                     >
-                                                        <h2><strong>Terms of Service</strong></h2>
+                                                        <h2><strong>Términos de Servicio</strong></h2>
                                                         <div>
                                                             <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. <br />
                                                             Sed ullamcorper tempus turpis ac consequat. Proin pharetra eu ligula quis tincidunt.<br />
@@ -192,7 +194,7 @@ const Register = () => {
                                                             Duis suscipit tempus ex. Donec diam nulla, consectetur non sapien sed, pretium ullamcorper<br />
                                                             ex. Sed sem justo, mattis non pellentesque sit amet, semper auctor purus.
                                                         </div>
-                                                        <button className='btn btn-outline-danger mt-2' onClick={closeModal}>close</button>
+                                                        <button className='btn btn-outline-danger mt-2' onClick={closeModal}>Cerrar</button>
                                                     </Modal>
                                                 </label>
                                             </div>
@@ -201,13 +203,13 @@ const Register = () => {
                                                     type="submit"
                                                     className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                                                 >
-                                                    Register
+                                                    Registrarse
                                                 </button>
                                             </div>
                                             <p className="text-center text-muted mt-5 mb-0">
-                                                Have already an account?{" "}
+                                                ¿Ya tienes una cuenta?{" "}
                                                 <a href="/login" className="fw-bold text-body">
-                                                    <u>Login here</u>
+                                                    <u>Ingresa aquí</u>
                                                 </a>
                                             </p>
                                         </form>

@@ -23,7 +23,12 @@ const Preferences = () => {
                     {allQuestions}
                     <br/>
                     <div>
-                        <Link to='/update'><button className="btn btn-danger mb-3 me-2">Cancel</button></Link>
+                        {
+                            store.currentUser?.user?.profile?.services &&
+                            store.currentUser.user.profile.services.length > 0 &&
+                            <Link to='/update'><button className="btn btn-danger mb-3 me-2">Cancelar</button></Link>
+                        }
+                        
                         <input type='submit' className="btn btn-success mb-3" value='Guardar preferencias'/>
                     </div>
                 </form>
