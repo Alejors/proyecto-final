@@ -40,7 +40,7 @@ const CardGeneral = ({ index, name, description, urlmedia, nombre }) => {
                             {description}
                         </p> */}
                         <Link to={`/${nombre}/${index}`} className="btn btn-primary" style={estiloBoton}>
-                            Learn More!
+                            Entrar a la clase
                         </Link>
                     </div>
                 </div>

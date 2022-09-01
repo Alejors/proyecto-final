@@ -75,7 +75,7 @@ const DetailsHomecare = () => {
                         <div className="row" style={estiloDiv2}>
                             <div className="container-category">
                                 <div className="col-12">
-                                    <h2>Especifications</h2>
+                                    <h2>Detalles de la clase</h2>
                                     <div style={estiloText2}>
                                         {store?.services[8]?.individuals[params.index]?.especification}
                                     </div>
@@ -84,7 +84,7 @@ const DetailsHomecare = () => {
                         </div>
                     </div>
                     <div className="header-container mb-4 d-flex" style={estiloDiv}>
-                        <Link to="/homecare" className="btn btn-primary" style={estiloLink}>Back</Link>
+                        <Link to="/homecare" className="btn btn-primary" style={estiloLink}>Volver</Link>
                     </div>
                 </div>
             </div>

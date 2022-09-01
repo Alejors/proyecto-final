@@ -30,7 +30,7 @@ const Services = () => {
         <>
             <div className="header-container mb-4 d-flex align-items-center">
                 <h1 className="category-title" style={estiloShow2}>Gaming!</h1>
-                <Link className="btn btn-primary" to="/gaming" role="button" style={estiloShow2}>Show all!</Link>
+                <Link className="btn btn-primary" to="/gaming" role="button" style={estiloShow2}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -42,8 +42,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Health</h1>
-                <Link className="btn btn-primary" to="/health" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Salud y autocuidado</h1>
+                <Link className="btn btn-primary" to="/health" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -55,8 +55,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Spirituality</h1>
-                <Link className="btn btn-primary" to="/spirituality" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Espiritualidad</h1>
+                <Link className="btn btn-primary" to="/spirituality" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row row-cols-1 row-cols-md-4 g-4'>
@@ -68,8 +68,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Outdoor</h1>
-                <Link className="btn btn-primary" to="/outdoor" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Vida al aire libre</h1>
+                <Link className="btn btn-primary" to="/outdoor" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -81,8 +81,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Fashion</h1>
-                <Link className="btn btn-primary" to="/fashion" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Belleza & Moda</h1>
+                <Link className="btn btn-primary" to="/fashion" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -94,8 +94,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Social Skills</h1>
-                <Link className="btn btn-primary" to="/socialskills" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Habilidades sociales</h1>
+                <Link className="btn btn-primary" to="/socialskills" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -107,8 +107,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Sustainability</h1>
-                <Link className="btn btn-primary" to="/sustainability" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Sustentabilidad</h1>
+                <Link className="btn btn-primary" to="/sustainability" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -120,8 +120,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Pet Care</h1>
-                <Link className="btn btn-primary" to="/petcare" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Cuidado de mascotas</h1>
+                <Link className="btn btn-primary" to="/petcare" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -133,8 +133,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
-                <h1 className="category-title" style={estiloShow}>Home Care</h1>
-                <Link className="btn btn-primary" to="/homecare" role="button" style={estiloShow}>Show all!</Link>
+                <h1 className="category-title" style={estiloShow}>Cuidado del hogar</h1>
+                <Link className="btn btn-primary" to="/homecare" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>
@@ -147,7 +147,7 @@ const Services = () => {
             </div>
             <div className="header-container mb-4 d-flex align-items-center">
                 <h1 className="category-title" style={estiloShow}>Hobbies</h1>
-                <Link className="btn btn-primary" to="/hobbies" role="button" style={estiloShow}>Show all!</Link>
+                <Link className="btn btn-primary" to="/hobbies" role="button" style={estiloShow}>Mostrar todas las clases</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row'>

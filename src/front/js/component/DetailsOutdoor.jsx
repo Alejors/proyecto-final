@@ -74,7 +74,7 @@ const DetailsOutdoor = () => {
                         <div className="row" style={estiloDiv2}>
                             <div className="container-category">
                                 <div className="col-12">
-                                    <h2>Especifications</h2>
+                                    <h2>Detalles de la clase</h2>
                                     <div style={estiloText2}>
                                         {store?.services[3]?.individuals[params.index]?.especification}
                                     </div>
@@ -83,7 +83,7 @@ const DetailsOutdoor = () => {
                         </div>
                     </div>
                     <div className="header-container mb-4 d-flex" style={estiloDiv}>
-                        <Link to="/outdoor" className="btn btn-primary" style={estiloLink}>Back</Link>
+                        <Link to="/outdoor" className="btn btn-primary" style={estiloLink}>Volver</Link>
                     </div>
                 </div>
             </div>

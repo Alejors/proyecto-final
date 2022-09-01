@@ -33,8 +33,8 @@ const OutdoorLiving = () => {
     return (
         <>
             <div className="header-container mb-4 d-flex" style={estiloDiv}>
-                <h1 className="category-title" style={estiloShow}>Outdoor</h1>
-                <Link to="/private" className="btn btn-primary" style={estiloLink}>Back</Link>
+                <h1 className="category-title" style={estiloShow}>Vida al aire libre</h1>
+                <Link to="/private" className="btn btn-primary" style={estiloLink}>Volver</Link>
             </div>
             <div className='container-fluid' style={estiloBoton}>
                 <div className='row row-cols-1 row-cols-md-4 g-4'>
