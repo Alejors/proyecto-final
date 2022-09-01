@@ -43,7 +43,7 @@ const InfoUpdate = () => {
                         <input type="text" className="form-control" name='phonenumber' value={store.phonenumber} onChange={e => actions.handleChange(e)} />
                     </div>
                     <div className="input-group mb-3">
-                        <input type="file" className="form-control" name='picture' id="inputGroupFile02" onChange={e => actions.handlePicture(e)}/>
+                        <input type="file" className="form-control" name='picture' id="inputGroupFile02" onChange={e => actions.handlePicture(e)} />
                         <label className="input-group-text" htmlFor="inputGroupFile02">Foto de Perfil</label>
                     </div>
                     <div className="input-group mb-3">
@@ -74,7 +74,7 @@ const InfoUpdate = () => {
                         <span className="input-group-text">
                             Contraseña
                         </span>
-                        <input type="password" placeholder="xxxxxx" className="form-control" name='password' value={store.password} onChange={actions.handleChange} />
+                        <input type="password" placeholder="xxxxxx" className="form-control" name='password' value={store.password} onChange={actions.handleChange} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?¡*°]).{8,}" />
                     </div>
                     <input type={'submit'} className="btn btn-primary" value="Actualizar" />
                 </form>
@@ -84,12 +84,12 @@ const InfoUpdate = () => {
                     <span className="input-group-text">Mis Temas</span>
                     <ul className="list-group list-group-flush">
                         {
-                      !!store.currentUser &&
-                      store.currentUser?.user?.profile?.services.length > 0 &&
-                      store.currentUser.user.profile.services.map((ele, i) => {
-                        return <li key={i} className="list-group-item" style={{'textTransform': 'capitalize'}}>{ele}</li>
-                      })
-                    }
+                            !!store.currentUser &&
+                            store.currentUser?.user?.profile?.services.length > 0 &&
+                            store.currentUser.user.profile.services.map((ele, i) => {
+                                return <li key={i} className="list-group-item" style={{ 'textTransform': 'capitalize' }}>{ele}</li>
+                            })
+                        }
                     </ul>
                     <Link to='/preferences'><button className="btn btn-primary mt-3">Actualizar Preferencias</button></Link>
                     <Link to='/profile'><button className="btn btn-danger mt-3">Cancelar</button></Link>
