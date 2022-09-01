@@ -69,6 +69,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			rol: '',
 			currentUser: null,
 			services: null,
+			nameIndividual: '',
+			descriptionIndividual: '',
+			especificationIndividual: '',
+			urlmediaIndividual: '',
+			services_idIndividual: '',
 			preferences: {
 				'petcare': null,
 				'outdoor': null,
@@ -389,26 +394,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const { status, data } = await response.json();
 
-				if (status == 'success'){
+				if (status == 'success') {
 					Email.send({
-						SecureToken : "b72215c9-47d6-4a21-b24a-2a0a5f0dc017",
-						To : `${email}`,
-						From : "alejoatria@gmail.com",
-						Subject : "Password reset",
-						Body : data
+						SecureToken: "b72215c9-47d6-4a21-b24a-2a0a5f0dc017",
+						To: `${email}`,
+						From: "alejoatria@gmail.com",
+						Subject: "Password reset",
+						Body: data
 					}).then(
-					message => Notify.success(message)
+						message => Notify.success(message)
 					).then(
 						Notify.warning('Remember to check Spam')
 					).then(
 						history('/login')
 					)
-					
+
 				}
-				if (status == 'failed'){
+				if (status == 'failed') {
 					Notify.failure(message)
 				}
-			}
+			},
+			handleIndividual: async (e) => {
+				e.preventDefault();
+				const { api, nameIndividual, descriptionIndividual, especificationIndividual, urlmediaIndividual, services_idIndividual } = getStore();
+				const response = await fetch(`${api}/api/services/individual`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'nameIndividual': nameIndividual,
+						'descriptionIndividual': descriptionIndividual,
+						'especificationIndividual': especificationIndividual,
+						'urlmediaIndividual': urlmediaIndividual,
+						'services_idIndividual': services_idIndividual
+					})
+				});
+
+				console.log(services_idIndividual)
+				const { status, message, data } = await response.json();
+
+				if (status === 'failed') {
+					Notify.failure(message)
+				}
+				if (status === 'success') {
+					Notify.success(message)
+				}
+			},
 		}
 	}
 };

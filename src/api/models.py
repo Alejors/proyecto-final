@@ -153,7 +153,8 @@ class Individual(db.Model):
             "name": self.name,
             "urlmedia": self.urlmedia,
             "description": self.description,
-            "especification": self.especification
+            "especification": self.especification,
+            "services_id": self.services_id
         }
 
     def save(self):

@@ -27,8 +27,9 @@ const Spirituality = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         if (store.currentUser == null) history('/login');
-    }, [])
-    const { store } = useContext(Context);
+        actions.getServicios('http://127.0.0.1:5000/api/allservices')
+    }, [store])
+    const { store, actions } = useContext(Context);
     return (
         <>
             <div className="header-container mb-4 d-flex" style={estiloDiv}>

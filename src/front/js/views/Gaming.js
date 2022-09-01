@@ -28,8 +28,9 @@ const Gaming = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         if (store.currentUser == null) history('/login');
+        actions.getServicios('http://127.0.0.1:5000/api/allservices')
     }, [])
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
     return (
         <>
             <div className="header-container mb-4 d-flex align-items-center" style={estiloDiv}>

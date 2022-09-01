@@ -21,9 +21,10 @@ const estiloShow2 = {
 
 
 const Services = () => {
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
     useEffect(() => {
         window.scrollTo(0, 0);
+        actions.getServicios('http://127.0.0.1:5000/api/allservices')
     }, [])
     return (
         <>
