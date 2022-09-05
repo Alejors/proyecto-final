@@ -433,13 +433,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 
-				console.log(services_idIndividual)
 				const { status, message, data } = await response.json();
 
 				if (status === 'failed') {
 					Notify.failure(message)
 				}
 				if (status === 'success') {
+					setStore({
+						nameIndividual: '',
+						descriptionIndividual: '',
+						especificationIndividual: '',
+						urlmediaIndividual: '',
+						services_idIndividual: ''
+					})
 					Notify.success(message)
 				}
 			},

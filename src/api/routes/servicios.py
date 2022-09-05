@@ -40,4 +40,4 @@ def create_individual():
     individual.save()
 
     data = individual.serialize()
-    return jsonify({"status" : "Clase creada exitosamente", "data" : data}), 200
+    return jsonify({"status": "success", "message": "Clase creada exitosamente", "data": data}), 200
